@@ -6,13 +6,15 @@
                 <table class="table table-light text-cente">
                     <tr>
                         <th>Mã vé phim</th>
-                        <th>Loại vé phim</th>
+                        <th>Loại vé</th>
+                        <th>Loại ghế</th>
                         <th>Giá</th>
                         <th></th>
                     </tr>
                     <tr>
                         <td>1</td>
                         <td>2D</td>
+                        <td>Ghế thường</td>
                         <td>100.000đ</td>
                         <td>
                             <a class='btn btn-primary' href="">Sửa</a>
