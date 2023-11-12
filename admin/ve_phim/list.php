@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h5 class="card-title text-center">DANH SÁCH LOẠI VÉ</h5>
-                <table class="table table-light text-cente">
+                <table class="table table-light text-center">
                     <tr>
                         <th>Mã vé phim</th>
                         <th>Loại vé</th>
