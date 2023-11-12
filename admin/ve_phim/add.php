@@ -11,11 +11,19 @@
                                 <input type="number" class="form-control" disabled placeholder = "Tự tăng">
                             </div>
                             <div class="col-12">
-                                <label for="" class="form-label">Tên loại vé phim</label>
+                                <label for="" class="form-label">Loại vé</label>
                                 <select class="form-control" name="" id="">
                                     <option value="0">Chọn loại vé</option>
                                     <option value="1">2D</option>
                                     <option value="1">3D</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="" class="form-label">Loại ghế</label>
+                                <select class="form-control" name="" id="">
+                                    <option value="0">Chọn ghế</option>
+                                    <option value="1">Ghế thường</option>
+                                    <option value="1">Ghế VIP</option>
                                 </select>
                             </div>
                             <div class="col-12">
