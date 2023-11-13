@@ -7,33 +7,37 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
     <!-- Favicon -->
-    <link href="admin/img/favicon.ico" rel="icon">
+    <link href="img/favicon.ico" rel="icon">
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
     <!-- Icon Font Stylesheet -->
+    <link href="admin/layout_admin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="admin/layout_admin/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="admin/layout_admin/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="admin/layout_admin/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="admin/layout_admin/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="admin/layout_admin/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="admin/layout_admin/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="admin/layout_admin/assets/css/style.css" rel="stylesheet">
+
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
     <!-- Libraries Stylesheet -->
-    <link href="admin/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="admin/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="admin/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="admin/style/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="admin/style/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="admin/style/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="admin/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="admin/style/lib/wow/wow.min.js"></script>
-    <script src="admin/style/lib/easing/easing.min.js"></script>
-    <script src="admin/style/lib/waypoints/waypoints.min.js"></script>
-    <script src="admin/style/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="admin/style/lib/tempusdominus/js/moment.min.js"></script>
-    <script src="admin/style/lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="admin/style/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-    <!-- Template Javascript -->
-    <script src="admin/style/js/main.js"></script>
+    <link href="admin/style/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Template Stylesheet -->
     <link href="admin/style/css/style.css" rel="stylesheet">
 </head>
@@ -41,26 +45,66 @@
     <div class="container-fluid p-0 mt-4">
         <div class = "container">
             <div class = "row mb-3">
-                <div class = "col-1">
+                <div class = "col-md-2">
                     <a href="index.php" class="navbar-brand p-0 text-center">
                         <h3 class="text-primary m-0"><i class="fa-solid fa-film fa-lg" style="color: #88b816;"></i> Movie</h3>
                     </a>
                 </div>
-                <div class = "col-8 text-center">
+
+                <div class = "col-md-8 text-center">
                     <a class="text-light navbar-brand" href="index.php">Trang chủ</a>
                     <a class="text-light navbar-brand" href="index.php?act=lich_chieu">Lịch chiếu</a>                    
                     <a class="text-light navbar-brand" href="index.php?act=gia_ve">Giá vé</a>
                     <a class="text-light navbar-brand" href="index.php?act=tin_tuc">Tin tức</a>
                     <a class="text-light navbar-brand" href="index.php?act=khuyen_mai">Khuyến mãi</a>
-                    <a class="text-light navbar-brand" href="index.php?act=lien_hoan_phim">Liên hoan phim</a>
                     <a class="text-light navbar-brand" href="index.php?act=gioi_thieu">Giới thiệu</a>
                 </div>
-                <div class = "col-3 text-center">
-                    <a href="index.php?act=dang_nhap" class="btn btn-primary rounded-pill py-2 px-4">Đăng nhập</a>
-                    <a href="index.php?act=dang_ky" class="btn btn-outline-success rounded-pill py-2 px-4 text-light">Đăng ký</a>
+
+                <div class = "col-md-2 text-lg-end list-unstyled text-lg-end">
+                    <?php
+                        if(isset($_SESSION['user']) && is_array($_SESSION['user'])) {
+                            extract($_SESSION['user'])
+                            ?>
+                            <li class="nav-item dropdown pe-3">
+                                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                                    <i class="fa-regular fa-user fa-xl" style="color: #98a4b9;"></i>
+                                    <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $username ?></span>
+                                </a>
+                                <!--end  thông tin tài khoản -->
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                                    <li class="dropdown-header">
+                                        <h6> Hello <?php echo $username ?></h6>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center" href="index.php?act=thong_tin_tai_khoan">
+                                            <i class="bi bi-person"></i>
+                                            <span>Thông tin tài khoản</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center" href="index.php?act=dang_xuat">
+                                            <i class="bi bi-box-arrow-right"></i>
+                                            <span>Đăng xuất</span>
+                                        </a>
+                                    </li>
+                                </ul><!-- End Profile Dropdown Items -->
+                            </li><!-- End Profile Nav -->
+                            <?php
+                        } else { ?>
+                            <a href="index.php?act=dang_nhap" class="btn btn-primary rounded-pill py-2 px-4">Đăng nhập</a>
+                            <?php
+                        }
+                    ?>
+
                 </div>
-            </div>
-        </div>
+
+
 
 
     

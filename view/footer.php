@@ -90,6 +90,15 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <script src="admin/layout_admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="admin/layout_admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="admin/layout_admin/assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="admin/layout_admin/assets/vendor/echarts/echarts.min.js"></script>
+    <script src="admin/layout_admin/assets/vendor/quill/quill.min.js"></script>
+    <script src="admin/layout_admin/assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="admin/layout_admin/assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="admin/layout_admin/assets/vendor/php-email-form/validate.js"></script>
 </body>
 
 </html>

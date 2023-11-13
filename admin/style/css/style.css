@@ -444,7 +444,3 @@
 #menu_your_self a:hover {
     color: #86B817 ;
 }
-.header .navbar a.active,
-.header .navbar a:hover {
-    color: var(--primary) ;
-}

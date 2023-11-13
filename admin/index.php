@@ -1,5 +1,6 @@
 <?php
 include "header.php";
+include "./model/pdo.php";
 
     if((isset($_GET['act'])) && ($_GET['act'] != "")){
         $act = $_GET['act'];

@@ -4,17 +4,17 @@
         <div class = "col-4">
         </div>
         <div class="col-lg-4 col-md-12 wow shadow p-3 mb-5 bg-white rounded">
-            <form action="#" method="post">
+            <form action="index.php?act=dang_nhap" method="post">
                 <div class="row g-3">
                     <div class="col-md-12">
                         <div class="form-floating">
-                            <input type="text" class="form-control"  placeholder="Tên đăng nhập">
+                            <input type="text" class="form-control" name="name"  placeholder="Tên đăng nhập">
                             <label for="name">Tên đăng nhập</label>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-floating">
-                            <input type="password" class="form-control" id="email" placeholder="Mật khẩu">
+                            <input type="password" class="form-control" id="email" name="password" placeholder="Mật khẩu">
                             <label for="password">Mật khẩu</label>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                     </div>
                     
                     <div class="col-12">
-                        <input class="btn btn-primary w-100 py-3" type="submit" name="" value="Đăng nhập">
+                        <input class="btn btn-primary w-100 py-3" type="submit" name="dang_nhap" value="Đăng nhập">
                     </div>
                 </div>
             </form>
