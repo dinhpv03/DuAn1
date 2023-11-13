@@ -127,6 +127,8 @@ include "model/tai_khoan.php";
                 include "view/home.php";
                 break;
             }
+
+
             case "chi_tiet_phim": {
                 include "view/chi_tiet_phim.php";
                 break;
@@ -149,3 +151,5 @@ include "model/tai_khoan.php";
     }
 
 include "view/footer.php";
+
+//    đây sẽ test git
