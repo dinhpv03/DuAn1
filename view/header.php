@@ -15,13 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
-    <link href="admin/layout_admin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="admin/layout_admin/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="admin/layout_admin/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="admin/layout_admin/assets/vendor/quill/quill.snow.css" rel="stylesheet">
-    <link href="admin/layout_admin/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-    <link href="admin/layout_admin/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="admin/layout_admin/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
     <link href="admin/layout_admin/assets/css/style.css" rel="stylesheet">
