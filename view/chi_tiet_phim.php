@@ -10,7 +10,6 @@
             <h6 class="section-title bg-dark text-start text-primary pe-3">Thông tin</h6>
             <!-- tên phim -->
             <h1 class="mb-4 text-light">Avengers: Endgame</h1>
-
             <!-- mô tả phim -->
             <p class="mb-4">
                 Avengers: Hồi kết (tựa gốc tiếng Anh: Avengers: Endgame)
