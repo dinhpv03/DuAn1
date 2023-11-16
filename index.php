@@ -7,7 +7,7 @@ include "model/phim.php";
 include "model/loai_phim.php";
 
     // data trang chủ
-    $phim_new = get_phim_new(3);
+    $phim_new = get_phim_new(4);
     $ds_loai_phim = loai_phim_all();
 
     // data 2 bảng

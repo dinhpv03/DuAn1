@@ -8,7 +8,7 @@
 
     // cấu lệnh kết nối 2 bảng phim với loai_phim
     function phim_connect_loai_phim(){
-        $sql = "SELECT * FROM loai_phim INNER JOIN phim ON loai_phim.id_loaiphim = phim.id_loaiphim";
+        $sql = "SELECT * FROM phim INNER JOIN loai_phim ON phim.id_loaiphim = loai_phim.id_loaiphim";
         return pdo_query($sql);
     }   
 ?>
