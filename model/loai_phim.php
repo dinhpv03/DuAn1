@@ -18,3 +18,22 @@
         pdo_execute($sql);
     }
 
+    function delete_loai_phim($id_loaiphim) {
+        $sql = "DELETE  FROM danhmuc WHERE id_loaiphim =".$_GET['$id_loaiphim'];
+        pdo_execute($sql);
+    }
+
+    function load_one_loai_phim($id_loaiphim) {
+        $sql = "SELECT * FROM loai_phim WHERE id_loaiphim =".$id_loaiphim;
+        $loai_phim = pdo_query_one($sql);
+        return $loai_phim;
+    }
+
+function update_loai_phim($id_loaiphim, $name) {
+    $sql = "UPDATE loai_phim SET loai_phim = '".$name."' WHERE id_loaiphim = ".$id_loaiphim;
+//    var_dump($sql);
+//    die;
+     pdo_execute($sql);
+}
+
+

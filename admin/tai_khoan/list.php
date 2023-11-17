@@ -39,7 +39,8 @@
                             ";
                         }
                     ?>
-                </table>   
+                </table>
+                <a class="btn btn-outline-primary" href="index.php?act=them-moi_tai_khoan">Thêm mới tài khoản</a>
             </div>
         </div>
     </section>

@@ -14,14 +14,18 @@
                     <?php
                     foreach ($ds_loai_phim as $ds) {
                         extract($ds);
+
+                        $delete = "index.php?act=edit_loai_phim&id_loaiphim=" . $id_loaiphim;
+                        $edit = "index.php?act=edit_loai_phim&id_loaiphim=" . $id_loaiphim;
+
                         echo "
                                 <tr>
                                     <td>$id_loaiphim</td>
                                     <td>$STT</td>
                                     <td>$loai_phim</td>
                                     <td>
-                                        <a class='btn btn-primary'>Sửa</a>
-                                        <button class='btn btn-outline-danger' type='button' onclick=\"if (confirm('Bạn có chắc muốn xóa ?')) window.location.href=''\">Xóa</button>
+                                        <a class='btn btn-primary' href='$edit'>Sửa</a>
+                                        <button class='btn btn-outline-danger' type='button' onclick=\"if (confirm('Bạn có chắc muốn xóa ?')) window.location.href='$delete'\">Xóa</button>
                                     </td>
                                 </tr>
                             ";

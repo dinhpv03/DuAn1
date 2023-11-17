@@ -12,6 +12,8 @@ include "../model/tai_khoan.php";
                 include "phim/add.php";
                 break;
             }
+
+
             case "them_moi_loai_phim" : {
                 if($_SERVER["REQUEST_METHOD"] == 'POST') {
                     $name = $_POST['name'];
@@ -82,6 +84,19 @@ include "../model/tai_khoan.php";
                 break;
             }
 
+            case "delete":
+            {
+                if (isset($_GET['id_loaiphim']) && ($_GET['id_loaiphim'] > 0)) {
+                    delete_loai_phim($_GET['$d_loaiphim']);
+                }
+                $ds_loai_phim = loai_phim_all();
+                include "loai_phim/list.php";
+                break;
+            }
+
+
+
+
 //            sửa
             case "edit_user" : {
                 if (isset($_GET['id_user']) && ($_GET['id_user'] > 0)) {
@@ -115,6 +130,25 @@ include "../model/tai_khoan.php";
                 }
                 $ds_tai_khoan = load_all_tai_khoan();
                 include "tai_khoan/list.php";
+                break;
+            }
+
+            case "edit_loai_phim" : {
+                if (isset($_GET['id_loaiphim']) && ($_GET['id_loaiphim'] > 0)) {
+                    $list_loai_phim = load_one_loai_phim($_GET['id_loaiphim']);
+                }
+                include "loai_phim/edit.php";
+                break;
+            }
+
+            case "update_loai_phim" : {
+                if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    $name = $_POST['name'];
+                    $id_loaiphim = $_POST['id_loaiphim'];
+                    update_loai_phim($id_loaiphim, $name);
+                }
+                $ds_loai_phim = loai_phim_all();
+                include "loai_phim/list.php";
                 break;
             }
 
