@@ -29,3 +29,8 @@ function update_taikhoan($iduser,$email,$user,$address,$number_phone)  {
     pdo_execute($sql);
 }
 
+function load_all_tai_khoan() {
+    $sql = "SELECT * FROM user;";
+    $list = pdo_query($sql);
+    return $list;
+}

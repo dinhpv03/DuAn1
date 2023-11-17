@@ -1,6 +1,8 @@
 <?php
 include "header.php";
-include "./model/pdo.php";
+include "../model/pdo.php";
+include "../model/loai_phim.php";
+include "../model/tai_khoan.php";
 
     if((isset($_GET['act'])) && ($_GET['act'] != "")){
         $act = $_GET['act'];
@@ -32,6 +34,7 @@ include "./model/pdo.php";
 
             // danh sách
             case "danh_sach_loai_phim" : {
+                $ds_loai_phim = load_all_loai_phim();
                 include "loai_phim/list.php";
                 break;
             }
@@ -40,6 +43,7 @@ include "./model/pdo.php";
                 break;
             }
             case "danh_sach_tai_khoan" : {
+                $ds_tai_khoan = load_all_tai_khoan();
                 include "tai_khoan/list.php";
                 break;
             }

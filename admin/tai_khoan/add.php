@@ -8,29 +8,29 @@
                         <form class="row g-3" action="" method="post">
                             <div class="col-12">
                                 <label for="" class="form-label">Họ tên</label>
-                                <input type="text" class="form-control" id="inputNanme4">
+                                <input type="text" class="form-control" name="name" >
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Email</label>
-                                <input type="email" class="form-control">
+                                <input type="email" class="form-control" name="email">
                             </div>
                             <div class="row">
                                 <div class="col-6">
                                     <label for="" class="form-label">Địa chỉ</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="address">
                                 </div>
                                 <div class="col-6">
                                     <label for="" class="form-label">Số điện thoại</label>
-                                    <input type="number" class="form-control">
+                                    <input type="tel" class="form-control" name="tel">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Mật khẩu</label>
-                                <input type="password" class="form-control">
+                                <input type="password" class="form-control" name="password">
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Vai trò</label>
-                                <input type="number" class="form-control">
+                                <input type="number" min="0" max="1" class="form-control" name="role">
                             </div>
                             <div class="mt-4">
                                 <input type="submit" class="btn btn-primary" value = " Thêm mới ">
