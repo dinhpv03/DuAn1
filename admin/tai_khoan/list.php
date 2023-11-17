@@ -18,6 +18,10 @@
                     <?php
                     foreach ($ds_tai_khoan as $ds) {
                         extract($ds);
+
+                        $delete_user = "index.php?act=delete_user&id_user=" . $id_user;
+                        $edit_user = "index.php?act=edit_user&id_user=" . $id_user;
+
                         echo "
                                 <tr>
                                     <td>$id_user</td>
@@ -28,7 +32,8 @@
                                     <td>$number_phone</td>
                                     <td>$role</td>
                                     <td>
-                                    
+                                        <a class='btn btn-primary' href='$edit_user'>Edit</a>
+                                        <button class='btn btn-outline-danger' type='button' onclick=\"if (confirm('Bạn có chắc muốn xóa ?')) window.location.href='$delete_user'\">Xóa</button>
                                     </td>
                                 </tr>
                             ";

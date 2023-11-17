@@ -3,6 +3,15 @@ session_start();
 include "view/header.php";
 include "model/pdo.php";
 include "model/tai_khoan.php";
+include "model/phim.php";
+include "model/loai_phim.php";
+
+    // data trang chủ
+    $phim_new = get_phim_new(4);
+    $ds_loai_phim = loai_phim_all();
+
+    // data 2 bảng
+    $phim_vs_loai_phim = phim_connect_loai_phim();
 
     if((isset($_GET['act'])) && ($_GET['act'] != "")){
         $act = $_GET['act'];

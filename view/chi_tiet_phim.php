@@ -31,7 +31,7 @@
                     <p class="mb-0"><i class="fa-solid fa-bars fa-sm" style="color: #88b816;"></i> Thể loại: Hành động.</p>
                 </div> 
             </div>
-            <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
+            <a class="btn btn-primary py-3 px-5 mt-2" href="">Đặt vé</a>
         </div>
     </div>
     <hr class="bg-while">

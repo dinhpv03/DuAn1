@@ -1,4 +1,22 @@
 <!-- slide show -->
+<?php 
+    $html_get_phim_new = select_phim($phim_vs_loai_phim);
+    $html_slide = "";
+    foreach ($phim_vs_loai_phim as $film) {
+        extract($film);
+        $act = "";
+        if ($id_phim == 1) {
+            $act = "active";
+        } else {
+            $act = "";
+        }
+        
+        $html_slide.= '<div class="carousel-item '.$act.'">
+                            <img src="admin/style/img/'.$banner.'" alt="Slide '.$id_phim.'" style="width: 100%; height: 700px;">
+                        </div>';
+    }
+
+?>
 <div class="slide-show">
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
 
@@ -6,37 +24,22 @@
             <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
             <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
             <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+            <li data-bs-target="#myCarousel" data-bs-slide-to="3"></li>
         </ol>
 
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            <?=$html_slide;?>
+            <!-- <div class="carousel-item active">
                 <img src="admin/style/img/poster-3.jpg" alt="Slide 1" style="width: 100%; height: 700px;">
-                <div class="carousel-caption">
-                    <h3 class="text-warning">Killer: Number 7 (Găng Tay Đỏ)</h3>
-                    <p>Găng Tay Đỏ là hành trình tìm lại chính mình của nữ sát thủ mang mật danh Số 7. 
-                        Là đứa trẻ mồ côi từ thuở nhỏ, cô được đưa ra nước ngoài rồi trở thành công cụ giết người tàn bạo của một tổ chức sát thủ. 
-                        Khi trở về Việt Nam nhận một nhiệm vụ thanh trừng, Số Bảy tình cờ quen biết một chàng trai. 
-                        Dần dần, cô học được nhiều bài học về con người- cuộc đời và muốn rũ bỏ quá khứ để trở thành người lương thiện. 
-                    </p>
-                </div>
             </div>
             <div class="carousel-item">
-                <img src="admin/style/img/poster-2.jpg" alt="Slide 2" style="width: 100%; height: 700px;">
-                <div class="carousel-caption">
-                    <h3 class="text-warning">Shut In (Giam cầm quỷ dữ)</h3>
-                    <p>Găng Tay Đỏ là hành trình tìm lại chính mình của nữ sát thủ mang mật danh Số 7. 
-                        Là đứa trẻ mồ côi từ thuở nhỏ, cô được đưa ra nước ngoài rồi trở thành công cụ giết người tàn bạo của một tổ chức sát thủ. 
-                        Khi trở về Việt Nam nhận một nhiệm vụ thanh trừng, Số Bảy tình cờ quen biết một chàng trai. 
-                        Dần dần, cô học được nhiều bài học về con người- cuộc đời và muốn rũ bỏ quá khứ để trở thành người lương thiện. </p>
-                </div>
+                <img src="admin/style/img/poster-2.jpg" alt="Slide 3" style="width: 100%; height: 700px;">
+                
             </div>
             <div class="carousel-item">
-                <img src="admin/style/img/poster-1.jpg" alt="Slide 3" style="width: 100%; height: 700px;">
-                <div class="carousel-caption">
-                <h3 class="text-warning">Avengers: Endgame</h3>
-                    <p>Sau sự kiện Thanos làm cho một nửa vũ trụ tan biến và khiến cho biệt đội Avengers thảm bại, những siêu anh hùng sống sót phải tham gia trận chiến cuối cùng trong Avengers: Endgame - tác phẩm điện ảnh đánh dấu sự khép lại sau 22 bộ phim của Marvel Studios. </p>
-                </div>
-            </div>
+                <img src="admin/style/img/poster-3.jpg" alt="Slide 4" style="width: 100%; height: 700px;">
+                
+            </div> -->
         </div>
 
         <a class="carousel-control-prev" href="#myCarousel" data-bs-slide="prev">
@@ -56,7 +59,8 @@
             <h4 class="mb-5 text-light">DANH SÁCH PHIM ĐANG HOT</h4>
         </div>
         <div class="row g-4 justify-content-center">
-        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <?= $html_get_phim_new; ?>
+            <!-- <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="package-item">
                     <div class="overflow-hidden">
                         <a href="index.php?act=chi_tiet_phim"><img class="img-fluid" src="admin/style/img/p_avengersendgame.jpeg" alt=""></a></h5>
@@ -81,8 +85,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+            </div> -->
+            <!-- <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="package-item">
                     <div class="overflow-hidden">
                         <img class="img-fluid" src="admin/style/img/age-of-ultron.jpg" alt="">
@@ -107,8 +111,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            </div> -->
+            <!-- <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="package-item">
                     <div class="overflow-hidden">
                         <img class="img-fluid" src="admin/style/img/iron-man.jpg" alt="">
@@ -145,7 +149,7 @@
                         <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>2 Person</small>
                     </div>
                     <div class="text-center p-4">
-                    <h5 class="mb-0 text-truncate"><a href="index.php?act=chi_tiet_phim">Thor: The Dark World</a></h5>
+                        <h5 class="mb-0 text-truncate"><a href="index.php?act=chi_tiet_phim">Thor: The Dark World</a></h5>
                         <div class="mb-3">
                             <small class="fa fa-star text-primary"></small>
                             <small class="fa fa-star text-primary"></small>
@@ -159,7 +163,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <!-- End Danh sách phim hot -->
