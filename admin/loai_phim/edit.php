@@ -20,7 +20,7 @@
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Tên thể loại phim</label>
-                                <input type="text" class="form-control" name="name"  value="<?= $loai_phim ?>">
+                                <input type="text" class="form-control" name="name"  value="<?= $the_loai_phim ?>">
                             </div>
                             <div class="mt-3">
                                 <input type="submit" class="btn btn-primary" name="them_moi" value="Cập nhật">

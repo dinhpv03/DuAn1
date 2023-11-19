@@ -32,7 +32,7 @@
                                     <td>$number_phone</td>
                                     <td>$role</td>
                                     <td>
-                                        <a class='btn btn-primary' href='$edit_user'>Edit</a>
+                                        <a class='btn btn-primary'  href='$edit_user'>Sửa</a>
                                         <button class='btn btn-outline-danger' type='button' onclick=\"if (confirm('Bạn có chắc muốn xóa ?')) window.location.href='$delete_user'\">Xóa</button>
                                     </td>
                                 </tr>
@@ -40,7 +40,7 @@
                         }
                     ?>
                 </table>
-                <a class="btn btn-outline-primary" href="index.php?act=them-moi_tai_khoan">Thêm mới tài khoản</a>
+                <a class="btn btn-outline-primary" href="index.php?act=them_moi_tai_khoan">Thêm mới tài khoản</a>
             </div>
         </div>
     </section>

@@ -13,8 +13,8 @@
         return pdo_query($sql);
     }   
 
-    function insert_loai_phim($name) {
-        $sql = "INSERT INTO loai_phim(loai_phim) VALUES ('.$name.')";
+    function insert_loai_phim($stt,$name) {
+        $sql = "INSERT INTO loai_phim(stt,the_loai_phim) VALUES ('.$stt.','.$name.')";
         pdo_execute($sql);
     }
 
@@ -30,7 +30,7 @@
     }
 
 function update_loai_phim($id_loaiphim, $name) {
-    $sql = "UPDATE loai_phim SET loai_phim = '".$name."' WHERE id_loaiphim = ".$id_loaiphim;
+    $sql = "UPDATE loai_phim SET the_loai_phim = '".$name."' WHERE id_loaiphim = ".$id_loaiphim;
 //    var_dump($sql);
 //    die;
      pdo_execute($sql);

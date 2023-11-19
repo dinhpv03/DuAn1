@@ -1,14 +1,20 @@
+<?php
+if (is_array($phim)) {
+    extract($phim);
+}
+?>
 <main id="main" class="main">
     <section class="section dashboard">
         <div class="row">
             <div class="col-lg-10">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center" >THÊM MỚI PHIM</h5>
-                        <form class="row g-3" action="index.php?act=them_moi_phim" method="post" enctype="multipart/form-data">
+                        <h5 class="card-title text-center" >CẬP NHẬT PHIM</h5>
+                        <form class="row g-3" action="index.php?act=update_phim" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="id_phim" value="<?=$id_phim?>" >
                             <div class="col-12">
                                 <label for="" class="form-label">Tên phim</label>
-                                <input type="text" class="form-control" name="name" placeholder="Film name">
+                                <input type="text" class="form-control" name="name" placeholder="Film name" value="<?= $film_name ?>">
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Poster</label>
@@ -20,25 +26,24 @@
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Thời lượng phim</label>
-                                <input type="text" class="form-control" name="thoi_luong_phim" placeholder="Movie duration">
+                                <input type="text" class="form-control" name="thoi_luong_phim" placeholder="Movie duration" value="<?= $thoi_luong_phim ?>">
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Ngày phát hành</label>
-                                <input type="text" class="form-control" name="ngay_phat_hanh" placeholder="Release date">
+                                <input type="text" class="form-control" name="ngay_phat_hanh" placeholder="Release date" value="<?= $release_date ?>">
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Mô tả</label>
-                                <textarea type="text" class="form-control" name="mo_ta" placeholder="Description"></textarea>
+                                <textarea type="text" class="form-control" name="mo_ta" placeholder="Description"><?= $mo_ta ?></textarea>
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Suất chiếu</label>
                                 <select name="id_suat_chieu" class="form-control">
                                     <option value="0">Chọn suất chiếu</option>
-                                    <?php foreach ($ds_suat_chieu as $ds) {
-                                        extract($ds);
-                                        echo '
-                                            <option value ="'.$id_suatchieu.'">Ngày '.$day.' / '.$month.' , '.$time.'</option>
-                                        ';
+                                    <?php foreach ($ds_suat_chieu as $ds_suat) {
+                                        extract($ds_suat);
+                                        if($id_suatchieu == $id_phim) $s = "selected"; else $s = "";
+                                        echo '<option value="' . $id_suatchieu . '"'. $s .'>Ngày ' . $day .' / ' .$month . ', '.$time.'</option>';
                                     } ?>
                                 </select>
                             </div>
@@ -46,22 +51,21 @@
                                 <label for="" class="form-label">Loại phim</label>
                                 <select  name="id_loai_phim" class="form-control">
                                     <option value="0">Chọn thể loại phim</option>
-                                    <?php foreach ($ds_loai_phim as $ds) {
-                                        extract($ds);
-                                        echo '
-                                            <option value = "'.$id_loaiphim.'">'.$the_loai_phim.'</option>
-                                        ';
+                                    <?php foreach ($ds_loai_phim as $ds_loai) {
+                                        extract($ds_loai);
+                                        if($id_loaiphim == $id_phim) $s = "selected"; else $s = "";
+                                        echo '<option value="' . $id_loaiphim . '"'. $s .'>' . $the_loai_phim . '</option>';
                                     }  ?>
                                 </select>
                             </div>
                             <div class="mt-4">
-                                <input type="submit" class="btn btn-primary" name="them_moi" value = "Thêm mới">
+                                <input type="submit" class="btn btn-primary" name="cap_nhat" value = "Cập nhật">
                                 <button type="reset" class="btn btn-outline-success">Reset</button>
                                 <a class="btn btn-outline-success" href="index.php?act=danh_sach_phim">Danh sách</a>
                             </div>
                         </form>
                     </div>
-                </div>    
+                </div>
             </div>
         </div>
     </section>

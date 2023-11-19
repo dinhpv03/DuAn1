@@ -8,32 +8,32 @@
                         <form class="row g-3" action="index.php?act=them_moi_tai_khoan" method="post">
                             <div class="col-12">
                                 <label for="" class="form-label">Họ tên</label>
-                                <input type="text" class="form-control" name="name" >
+                                <input type="text" class="form-control" name="name" placeholder="Full name">
                                 <span style="color: red"><?= isset($errUser) ? $errUser : '' ?></span>
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Email</label>
-                                <input type="email" class="form-control" name="email">
+                                <input type="email" class="form-control" name="email" placeholder="Email">
                                 <span style="color: red"><?= isset($errEmail) ? $errEmail : '' ?></span>
                             </div>
                             <div class="row">
                                 <div class="col-6">
                                     <label for="" class="form-label">Địa chỉ</label>
-                                    <input type="text" class="form-control" name="address">
+                                    <input type="text" class="form-control" name="address" placeholder="Address">
                                 </div>
                                 <div class="col-6">
                                     <label for="" class="form-label">Số điện thoại</label>
-                                    <input type="tel" class="form-control" name="tel">
+                                    <input type="tel" class="form-control" name="tel" placeholder="Phone number">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Mật khẩu</label>
-                                <input type="password" class="form-control" name="password">
+                                <input type="password" class="form-control" name="password" placeholder="Password">
                                 <span style="color: red"><?= isset($errPass) ? $errPass : '' ?></span>
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Vai trò</label>
-                                <input type="number"  min="0" max="1" class="form-control" name="role">
+                                <input type="number"  min="0" max="1" class="form-control" name="role" placeholder="0 - User, 1 - Admin">
                             </div>
                             <div class="mt-4">
                                 <input type="submit" class="btn btn-primary" name="them_moi" value = " Thêm mới ">

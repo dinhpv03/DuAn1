@@ -10,6 +10,12 @@
                                 <label for="" class="form-label">ID loại phim</label>
                                 <input type="number" class="form-control"  disabled placeholder = "Tự tăng">
                             </div>
+
+                            <div class="col-12">
+                                <label for="" class="form-label">Số thứ tự</label>
+                                <input type="number" class="form-control" name="stt">
+                                <span style="color: red"><?= isset($errStt) ? $errStt : '' ?></span>
+                            </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Tên thể loại phim</label>
                                 <input type="text" class="form-control" name="name" placeholder="Vd: Hành động , ...">

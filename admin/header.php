@@ -76,39 +76,45 @@
                     </a>
                 </li>    
                 <!-- End Messages Icon -->
+                <?php
+                if(isset($_SESSION['user']) && is_array($_SESSION['user'])) {
+                    extract($_SESSION['user'])?>
+                        <li class="nav-item dropdown pe-3">
+                            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                                <i class="fa-regular fa-user fa-xl" style="color: #98a4b9;"></i>
+                                <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $username ?></span>
+                            </a>
+                            <!--end  thông tin tài khoản -->
 
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                                <li class="dropdown-header">
+                                    <h6><?php echo $username ?></h6>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center" href="index.php?act=thong_tin_tai_khoan">
+                                        <i class="bi bi-person"></i>
+                                        <span>Thông tin tài khoản</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center" href="index.php?act=dang_xuat">
+                                        <i class="bi bi-box-arrow-right"></i>
+                                        <span>Đăng xuất</span>
+                                    </a>
+                                </li>
+                            </ul><!-- End Profile Dropdown Items -->
+                        </li><!-- End Profile Nav -->
+                        <?php
+                    }
+                ?>
                 <!-- thông tin tài khoản -->
-                <li class="nav-item dropdown pe-3">
-                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <i class="fa-regular fa-user fa-xl" style="color: #98a4b9;"></i>
-                        <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
-                    </a>  
-                <!--end  thông tin tài khoản -->
 
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                    <li class="dropdown-header">
-                        <h6>Kevin Anderson</h6>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="index.php?act=thong_tin_tai_khoan">
-                            <i class="bi bi-person"></i>
-                            <span>Thông tin tài khoản</span>
-                        </a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="index.php?act=dang_xuat">
-                            <i class="bi bi-box-arrow-right"></i>
-                            <span>Đăng xuất</span>
-                        </a>
-                    </li>
-                    </ul><!-- End Profile Dropdown Items -->
-                </li><!-- End Profile Nav -->
             </ul>
         </nav><!-- End Icons Navigation -->
     </header>

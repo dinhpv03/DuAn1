@@ -45,6 +45,15 @@
                     <div class="col-6">
                         <input class="btn btn-outline-light w-100 py-3" type="submit" name="doi_mat_khau" value="Đổi mật khẩu">
                     </div>
+
+                    <?php if($role == 1) { ?>
+                        <div class="col-6">
+                            <a class="btn btn-outline-light w-100 py-3" href="../../du-an-1/admin/index.php">Đăng nhập vào admin</a>
+                        </div>
+                    <?php
+                    }
+                    ?>
+
                 </div>
                 <div class="text-center text-danger m-4">
                     <?php
