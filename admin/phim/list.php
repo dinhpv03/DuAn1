@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h5 class="card-title text-center">DANH SÁCH PHIM</h5>
-                <table class="table table-light text-cente">
+                <table class="table table-light text-center">
                     <tr>
                         <th>Mã</th>
                         <th>Tên phim</th>
@@ -20,9 +20,26 @@
                     <?php
                         foreach ($ds_phim as $ds) {
                             extract($ds);
+//                            var_dump($ds);
+//                            die;
 
                             $delete = "index.php?act=delete_phim&id_phim=" . $id_phim;
                             $edit = "index.php?act=edit_phim&id_phim=" . $id_phim;
+
+                            $imagePath = './upload/' . $poster;
+                            if(is_file($imagePath)) {
+                                $poster = "<img src = '".$imagePath."' height = '80'>";
+                            } else {
+                                $poster = "Không có ảnh poster.";
+                            }
+
+                            $imagePath = './upload/' . $banner;
+                            if(is_file($imagePath)) {
+                                $banner = "<img src = '".$imagePath."' height = '80'>";
+                            } else {
+                                $banner = "Không có ảnh banner.";
+                            }
+
                             echo "
                                 <tr>
                                     <td>$id_phim</td>
@@ -42,8 +59,8 @@
                             ";
                         }
                     ?>
-
-                </table>    
+                </table>
+                <a class="btn btn-outline-primary" href="index.php?act=them_moi_phim">Thêm mới phim</a>
             </div>
         </div>
     </section>

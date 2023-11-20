@@ -1,6 +1,8 @@
 <?php
 if (is_array($phim)) {
     extract($phim);
+//    var_dump($phim);
+//    die;
 }
 ?>
 <main id="main" class="main">
@@ -42,7 +44,7 @@ if (is_array($phim)) {
                                     <option value="0">Chọn suất chiếu</option>
                                     <?php foreach ($ds_suat_chieu as $ds_suat) {
                                         extract($ds_suat);
-                                        if($id_suatchieu == $id_phim) $s = "selected"; else $s = "";
+                                        if($id_suatchieu == $id_suatchieu) $s = "selected"; else $s = "";
                                         echo '<option value="' . $id_suatchieu . '"'. $s .'>Ngày ' . $day .' / ' .$month . ', '.$time.'</option>';
                                     } ?>
                                 </select>
@@ -53,7 +55,7 @@ if (is_array($phim)) {
                                     <option value="0">Chọn thể loại phim</option>
                                     <?php foreach ($ds_loai_phim as $ds_loai) {
                                         extract($ds_loai);
-                                        if($id_loaiphim == $id_phim) $s = "selected"; else $s = "";
+                                        if($id_loaiphim == $id_loaiphim) $s = "selected"; else $s = "";
                                         echo '<option value="' . $id_loaiphim . '"'. $s .'>' . $the_loai_phim . '</option>';
                                     }  ?>
                                 </select>

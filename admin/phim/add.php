@@ -9,26 +9,32 @@
                             <div class="col-12">
                                 <label for="" class="form-label">Tên phim</label>
                                 <input type="text" class="form-control" name="name" placeholder="Film name">
+                                <span style="color: red"><?= isset($errName) ? $errName : '' ?></span>
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Poster</label>
                                 <input type="file" class="form-control" name="poster">
+                                <span style="color: red"><?= isset($errPoster) ? $errPoster : '' ?></span>
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Banner</label>
                                 <input type="file" class="form-control" name="banner">
+                                <span style="color: red"><?= isset($errBanner) ? $errBanner : '' ?></span>
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Thời lượng phim</label>
                                 <input type="text" class="form-control" name="thoi_luong_phim" placeholder="Movie duration">
+                                <span style="color: red"><?= isset($errThoi_luong) ? $errThoi_luong : '' ?></span>
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Ngày phát hành</label>
                                 <input type="text" class="form-control" name="ngay_phat_hanh" placeholder="Release date">
+                                <span style="color: red"><?= isset($errNgay_phat_hanh) ? $errNgay_phat_hanh : '' ?></span>
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Mô tả</label>
                                 <textarea type="text" class="form-control" name="mo_ta" placeholder="Description"></textarea>
+                                <span style="color: red"><?= isset($errMota) ? $errMota : '' ?></span>
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Suất chiếu</label>
@@ -41,6 +47,7 @@
                                         ';
                                     } ?>
                                 </select>
+                                <span style="color: red"><?= isset($errSuat_chieu) ? $errSuat_chieu : '' ?></span>
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Loại phim</label>
@@ -53,6 +60,7 @@
                                         ';
                                     }  ?>
                                 </select>
+                                <span style="color: red"><?= isset($errLoai_phim) ? $errLoai_phim : '' ?></span>
                             </div>
                             <div class="mt-4">
                                 <input type="submit" class="btn btn-primary" name="them_moi" value = "Thêm mới">
