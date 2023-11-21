@@ -5,7 +5,7 @@
     foreach ($phim_vs_loai_phim as $film) {
         extract($film);
         $act = "";
-        if ($id_phim == 1) {
+        if ($id_phim <= 1) {
             $act = "active";
         } else {
             $act = "";
@@ -59,7 +59,7 @@
             <h4 class="mb-5 text-light">DANH SÁCH PHIM ĐANG HOT</h4>
         </div>
         <div class="row g-4 justify-content-center">
-            <?= $html_get_phim_new;  ?>
+            <?= $html_get_phim_new;?>
         </div>
     </div>
     <!-- End Danh sách phim hot -->

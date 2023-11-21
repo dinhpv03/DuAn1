@@ -7,6 +7,7 @@
         return pdo_query($sql);
     }
 
+    
     // cấu lệnh kết nối 2 bảng phim với loai_phim
     function phim_connect_loai_phim(){
         $sql = "SELECT * FROM phim INNER JOIN loai_phim ON phim.id_loaiphim = loai_phim.id_loaiphim";

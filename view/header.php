@@ -39,8 +39,9 @@
         <div class = "container">
             <div class = "row mb-3">
                 <div class = "col-md-2">
-                    <a href="index.php" class="navbar-brand p-0 text-center">
-                        <h3 class="text-primary m-0"><i class="fa-solid fa-film fa-lg" style="color: #88b816;"></i> Movie</h3>
+                    <a href="index.php" class="navbar-brand p-0 img-center">
+                        <!-- <h3 class="text-primary m-0"><i class="fa-solid fa-film fa-lg" style="color: #88b816;"></i> Nature Cinema</h3> -->
+                        <img src="admin/style/img/logo-black.png">
                     </a>
                 </div>
 
