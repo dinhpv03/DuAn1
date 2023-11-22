@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 include "view/header.php";
 include "model/pdo.php";
 include "model/tai_khoan.php";
@@ -35,7 +36,7 @@ include "model/loai_phim.php";
                         if (is_array($check_user)) {
                             $_SESSION['user'] = $check_user;
                             echo '<h6 class="text-danger">Đăng nhập thành công!</h6>';
-                            include "view/home.php";
+                            header('location: index.php');
                         } else {
                             $thongbao = "Tài khoản không tồn tại. Đăng ký ngay!";
                             include "view/tai_khoan/dang_ky.php";
@@ -146,8 +147,8 @@ include "model/loai_phim.php";
             }
 
             case "dang_xuat": {
-                session_unset();
-                include "view/home.php";
+                session_destroy();
+                header('location:index.php');
                 break;
             }
 
@@ -184,5 +185,5 @@ include "model/loai_phim.php";
     }
 
 include "view/footer.php";
-
+ob_end_flush();
 //    đây sẽ test git

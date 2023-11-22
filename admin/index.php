@@ -26,33 +26,32 @@ include "../model/loai_ve.php";
                     $errName = $errThoi_luong = $errNgay_phat_hanh = $errMota = $errSuat_chieu = $errLoai_phim = $errBanner = $errPoster = null;
 
                     if (empty($name)) {
-                        $errName = 'Vui lòng nhập tên phim';
+                        $errName = '*Vui lòng nhập tên phim';
                     }
                     if (empty($thoi_luong_phim)) {
-                        $errThoi_luong = 'Vui lòng nhập thời lượng phim';
+                        $errThoi_luong = '*Vui lòng nhập thời lượng phim';
                     }
 
                     if (empty($ngay_phat_hanh)) {
-                        $errNgay_phat_hanh = 'Vui lòng nhập ngày phát hành';
+                        $errNgay_phat_hanh = '*Vui lòng nhập ngày phát hành';
                     } elseif (!preg_match('/^\d{4}\/\d{2}\/\d{2}$/', $ngay_phat_hanh)) {
-                        $errNgay_phat_hanh = 'Ngày phát hành không đúng định dạng (yyyy/mm/dd)';
+                        $errNgay_phat_hanh = '*Ngày phát hành không đúng định dạng (yyyy/mm/dd)';
                     }
-
 
                     if (empty($mo_ta)) {
-                        $errMota = 'Vui lòng nhập mô tả';
+                        $errMota = '*Vui lòng nhập mô tả';
                     }
                     if (empty($id_suatchieu)) {
-                        $errSuat_chieu = 'Vui chọn suất chiếu';
+                        $errSuat_chieu = '*Vui chọn suất chiếu';
                     }
                     if (empty($id_loai_phim)) {
-                        $errLoai_phim = 'Vui lòng chọn loại phim';
+                        $errLoai_phim = '*Vui lòng chọn loại phim';
                     }
                     if($_FILES['banner']['error'] != UPLOAD_ERR_OK) {
-                        $errBanner = 'Vui lòng chọn ảnh banner';
+                        $errBanner = '*Vui lòng chọn ảnh banner';
                     }
                     if($_FILES['poster']['error'] != UPLOAD_ERR_OK) {
-                        $errPoster = 'Vui lòng chọn ảnh poster';
+                        $errPoster = '*Vui lòng chọn ảnh poster';
                     }
 
                     if(empty($errName) && empty($errThoi_luong) && empty($errNgay_phat_hanh)
@@ -86,10 +85,10 @@ include "../model/loai_ve.php";
                     $errName = $errStt = null;
 
                     if (empty($name)) {
-                        $errName = 'Vui lòng nhập tên loai phim';
+                        $errName = '*Vui lòng nhập tên loai phim';
                     }
                     if (empty($STT)) {
-                        $errStt = 'Vui lòng nhập số thứ tự';
+                        $errStt = '*Vui lòng nhập số thứ tự';
                     }
                     if(empty($errName) && empty($errStt)) {
                         insert_loai_phim($STT,$name);
@@ -110,15 +109,15 @@ include "../model/loai_ve.php";
 
                     $errEmail = $errUser = $errPass = $errAddress = $errTel = null;
                     if (empty($email)) {
-                        $errEmail = 'Vui lòng nhập email';
+                        $errEmail = '*Vui lòng nhập email';
                     }
 
                     if (empty($name)) {
-                        $errUser = 'Vui lòng nhập username';
+                        $errUser = '*Vui lòng nhập username';
                     }
 
                     if(empty($password)) {
-                        $errPass = 'Vui lòng nhập mật khẩu';
+                        $errPass = '*Vui lòng nhập mật khẩu';
                     }
                     if(empty($errEmail) && empty($errUser) && empty($errPass)) {
                         insert_taikhoan_admin($name,$email,$address,$number_phone,$password,$role);
