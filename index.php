@@ -8,7 +8,7 @@ include "model/loai_phim.php";
 
     // data trang chủ
     $phim_new = get_phim_new(4);
-    $ds_loai_phim = loai_phim_all();
+    
 
     // data 2 bảng
     $phim_vs_loai_phim = phim_connect_loai_phim();
@@ -151,23 +151,33 @@ include "model/loai_phim.php";
                 break;
             }
 
-
             case "chi_tiet_phim": {
+                if (isset($_GET['id_phim'])) {
+                    $id = $_GET['id_phim'];
+                    $ds_loai_phim = loai_phim_all();
+                    $chi_tiet_phim = get_phim_by_id($id);
+                } else {
+                    include "view/home.php";
+                }
                 include "view/chi_tiet_phim.php";
                 break;
             }
+
             case "gia_ve": {
                 include "view/gia_ve.php";
                 break;
             }
+
             case "lich_chieu": {
                 include "view/lich_chieu.php";
                 break;
             }
+
             default : {
                 include "view/home.php";
                 break;
             }
+
         }
     } else {
         include "view/home.php";

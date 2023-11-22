@@ -7,6 +7,7 @@
         return pdo_query($sql);
     }
 
+    
     // cấu lệnh kết nối 2 bảng phim với loai_phim
     function phim_connect_loai_phim(){
         $sql = "SELECT * FROM phim 
