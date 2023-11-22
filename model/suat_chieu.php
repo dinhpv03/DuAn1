@@ -7,3 +7,10 @@ function load_all_suat_chieu() {
             ORDER BY id_suatchieu DESC";
     return pdo_query($sql);
 }
+
+function them_moi_suat_chieu($ngay_chieu, $gio_chieu) {
+    $sql = "INSERT INTO chon_suat_chieu(id_date, id_time) VALUES ($ngay_chieu, $gio_chieu)";
+//    var_dump($sql);
+//    die;
+    pdo_execute($sql);
+}

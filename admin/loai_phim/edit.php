@@ -19,6 +19,10 @@
                                 <input type="number" class="form-control"  disabled placeholder = "Tự tăng">
                             </div>
                             <div class="col-12">
+                                <label for="" class="form-label">Số thự tự</label>
+                                <input type="number" class="form-control" name="STT" value="<?= $STT ?>">
+                            </div>
+                            <div class="col-12">
                                 <label for="" class="form-label">Tên thể loại phim</label>
                                 <input type="text" class="form-control" name="name"  value="<?= $the_loai_phim ?>">
                             </div>

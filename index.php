@@ -22,15 +22,25 @@ include "model/loai_phim.php";
                     $user = $_POST['name'];
                     $pass = $_POST['password'];
 
-                    $check_user = check_user($user, $pass);
-                    if (is_array($check_user)) {
-                        $_SESSION['user'] = $check_user;
-                        echo '<h6 class="text-danger">Đăng nhập thành công!</h6>';
-                        include "view/home.php";
-                    } else {
-                        $thongbao = "Tài khoản không tồn tại. Đăng ký ngay!";
-                        include "view/tai_khoan/dang_ky.php";
-                        break;
+                    $errUser = $errPass = null;
+
+                    if (empty($user)) {
+                        $errUser = '*Vui lòng nhập tên tài khoản! ';
+                    }
+                    if (empty($pass)) {
+                        $errPass = '*Vui lòng nhập pass! ';
+                    }
+                    if(empty($errUser) && empty($errPass)) {
+                        $check_user = check_user($user, $pass);
+                        if (is_array($check_user)) {
+                            $_SESSION['user'] = $check_user;
+                            echo '<h6 class="text-danger">Đăng nhập thành công!</h6>';
+                            include "view/home.php";
+                        } else {
+                            $thongbao = "Tài khoản không tồn tại. Đăng ký ngay!";
+                            include "view/tai_khoan/dang_ky.php";
+                            break;
+                        }
                     }
                 }
                 include "view/tai_khoan/dang_nhap.php";
@@ -49,28 +59,32 @@ include "model/loai_phim.php";
                     $errEmail = $errUser = $errPass = $errRepass = null;
 
                     if (empty($email)) {
-                        $errEmail = "Vui lòng nhập Email!";
+                        $errEmail = "*Vui lòng nhập Email!";
                     } else {
                         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                            $errEmail = "Lỗi cú pháp Email. Vui lòng nhập lại!";
+                            $errEmail = "*Lỗi cú pháp Email. Vui lòng nhập lại!";
                         }
                     }
 
                     if (empty($user)) {
-                        $errUser = 'Vui lòng nhập tên tài khoản! ';
+                        $errUser = '*Vui lòng nhập tên tài khoản!';
+                    } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', $user)) {
+                        $errUser = '*Tên tài khoản chỉ được chứa chữ cái, số và dấu gạch dưới.';
+                    } elseif (strlen($user) < 6 || strlen($user) > 20) {
+                        $errUser = '*Tên tài khoản phải có độ dài từ 6 đến 20 ký tự.';
                     }
 
                     if (empty($repass)) {
-                        $errRepass = 'Vui lòng nhập lại mật khẩu!';
+                        $errRepass = '*Vui lòng nhập lại mật khẩu!';
                     } elseif ($repass !== $pass) {
-                        $errRepass = 'Mật khẩu xác nhận không trùng khớp!';
+                        $errRepass = '*Mật khẩu xác nhận không trùng khớp!';
                     }
 
                     if (empty($pass)) {
-                        $errPass = 'Vui lòng nhập mật khẩu!';
+                        $errPass = '*Vui lòng nhập mật khẩu!';
                     } else {
                         if (!preg_match("/^[a-zA-Z0-9]*$/", $pass)) {
-                            $errPass = "Mật khẩu chỉ chứa kí tự từ A-Z 0-9. Vui lòng nhập lại!";
+                            $errPass = "*Mật khẩu chỉ chứa kí tự từ A-Z 0-9. Vui lòng nhập lại!";
                         }
                     }
 
@@ -89,7 +103,7 @@ include "model/loai_phim.php";
                     $email = $_POST['email'];
                     $errEmail = null;
                     if(empty($email)) {
-                        $errEmail = 'Vui lòng nhập Email!';
+                        $errEmail = '*Vui lòng nhập Email!';
                     }
                     if(empty($errEmail)) {
                         $checkEmail = check_email($email);
@@ -115,10 +129,10 @@ include "model/loai_phim.php";
 
                     $errUser = $errPass = null;
                     if(empty($user)) {
-                        $errUser = "Không được để tên đăng nhập trống";
+                        $errUser = "*Không được để tên đăng nhập trống";
                     }
                     if(empty($pass)) {
-                        $errPass = "Không được để mật khẩu trống";
+                        $errPass = "*Không được để mật khẩu trống";
                     }
 
                     if(empty($errUser)) {

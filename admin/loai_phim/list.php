@@ -15,7 +15,7 @@
                     foreach ($ds_loai_phim as $ds) {
                         extract($ds);
 
-                        $delete = "index.php?act=edit_loai_phim&id_loaiphim=" . $id_loaiphim;
+                        $delete = "index.php?act=delete_loai_phim&id_loaiphim=" . $id_loaiphim;
                         $edit = "index.php?act=edit_loai_phim&id_loaiphim=" . $id_loaiphim;
 
                         echo "

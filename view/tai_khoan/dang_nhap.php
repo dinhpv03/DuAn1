@@ -10,12 +10,14 @@
                         <div class="form-floating">
                             <input type="text" class="form-control" name="name"  placeholder="Tên đăng nhập">
                             <label for="name">Tên đăng nhập</label>
+                            <span style="color: red"><?= isset($errUser) ? $errUser : '' ?></span>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-floating">
                             <input type="password" class="form-control" id="email" name="password" placeholder="Mật khẩu">
                             <label for="password">Mật khẩu</label>
+                            <span style="color: red"><?= isset($errPass) ? $errPass : '' ?></span>
                         </div>
                     </div>
 

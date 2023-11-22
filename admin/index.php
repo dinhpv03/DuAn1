@@ -31,17 +31,22 @@ include "../model/loai_ve.php";
                     if (empty($thoi_luong_phim)) {
                         $errThoi_luong = 'Vui lòng nhập thời lượng phim';
                     }
+
                     if (empty($ngay_phat_hanh)) {
                         $errNgay_phat_hanh = 'Vui lòng nhập ngày phát hành';
+                    } elseif (!preg_match('/^\d{4}\/\d{2}\/\d{2}$/', $ngay_phat_hanh)) {
+                        $errNgay_phat_hanh = 'Ngày phát hành không đúng định dạng (yyyy/mm/dd)';
                     }
+
+
                     if (empty($mo_ta)) {
                         $errMota = 'Vui lòng nhập mô tả';
                     }
-                    if (empty($id_suatchieu) && $id_suatchieu > 0) {
+                    if (empty($id_suatchieu)) {
                         $errSuat_chieu = 'Vui chọn suất chiếu';
                     }
                     if (empty($id_loai_phim)) {
-                        $errLoai_phim = 'Vui lòng chọn loaij phim';
+                        $errLoai_phim = 'Vui lòng chọn loại phim';
                     }
                     if($_FILES['banner']['error'] != UPLOAD_ERR_OK) {
                         $errBanner = 'Vui lòng chọn ảnh banner';
@@ -84,7 +89,7 @@ include "../model/loai_ve.php";
                         $errName = 'Vui lòng nhập tên loai phim';
                     }
                     if (empty($STT)) {
-                        $errStt = 'Vui lòng nhập so thu tu';
+                        $errStt = 'Vui lòng nhập số thứ tự';
                     }
                     if(empty($errName) && empty($errStt)) {
                         insert_loai_phim($STT,$name);
@@ -126,6 +131,19 @@ include "../model/loai_ve.php";
                 break;
             }
             case "them_moi_suat_chieu" : {
+                if($_SERVER["REQUEST_METHOD"] == 'POST') {
+                    $ngay_chieu = $_POST['ngay_chieu'];
+                    $gio_chieu = $_POST['gio_chieu'];
+
+                    them_moi_suat_chieu($ngay_chieu,$gio_chieu);
+                    $ds_suat_chieu = load_all_suat_chieu();
+                    include "suat_chieu/list.php";
+                    break;
+                }
+
+
+
+                $ds_suat_chieu = load_all_suat_chieu();
                 include "suat_chieu/add.php";
                 break;
             }
@@ -145,7 +163,7 @@ include "../model/loai_ve.php";
                 break;
             }
 
-            case "delete":
+            case "delete_loai_phim":
             {
                 if (isset($_GET['id_loaiphim']) && ($_GET['id_loaiphim'] > 0)) {
                     delete_loai_phim($_GET['$d_loaiphim']);
@@ -223,8 +241,9 @@ include "../model/loai_ve.php";
             case "update_loai_phim" : {
                 if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $name = $_POST['name'];
+                    $stt = $_POST['STT'];
                     $id_loaiphim = $_POST['id_loaiphim'];
-                    update_loai_phim($id_loaiphim,$name);
+                    update_loai_phim($id_loaiphim,$stt,$name);
                 }
                 $ds_loai_phim = loai_phim_all();
                 include "loai_phim/list.php";
@@ -259,8 +278,6 @@ include "../model/loai_ve.php";
                     } else {
                         $banner = $current_images['banner'];
                     }
-
-
                     cap_nhat_phim($id_phim, $name, $thoi_luong_phim, $ngay_phat_hanh, $poster, $banner,$mo_ta,$id_suatchieu,$id_loaiphim);
 
                 }

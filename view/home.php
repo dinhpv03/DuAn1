@@ -10,12 +10,12 @@
         } else {
             $act = "";
         }
+
         
         $html_slide.= '<div class="carousel-item '.$act.'">
                             <img src="admin/upload/'.$banner.'" alt="Slide '.$id_phim.'" style="width: 100%; height: 700px;">
                         </div>';
     }
-
 ?>
 <div class="slide-show">
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -28,18 +28,19 @@
         </ol>
 
         <div class="carousel-inner">
-            <?=$html_slide;?>
-            <!-- <div class="carousel-item active">
-                <img src="admin/style/img/poster-3.jpg" alt="Slide 1" style="width: 100%; height: 700px;">
-            </div>
-            <div class="carousel-item">
-                <img src="admin/style/img/poster-2.jpg" alt="Slide 3" style="width: 100%; height: 700px;">
 
+            <div class="carousel-item active">
+                <?=$html_slide;?>
+<!--                <img src="admin/style/img/poster-3.jpg" alt="Slide 1" style="width: 100%; height: 700px;">-->
             </div>
-            <div class="carousel-item">
-                <img src="admin/style/img/poster-3.jpg" alt="Slide 4" style="width: 100%; height: 700px;">
-
-            </div> -->
+<!--            <div class="carousel-item">-->
+<!--                <img src="admin/style/img/poster-2.jpg" alt="Slide 3" style="width: 100%; height: 700px;">-->
+<!---->
+<!--            </div>-->
+<!--            <div class="carousel-item">-->
+<!--                <img src="admin/style/img/poster-3.jpg" alt="Slide 4" style="width: 100%; height: 700px;">-->
+<!---->
+<!--            </div>-->
         </div>
 
         <a class="carousel-control-prev" href="#myCarousel" data-bs-slide="prev">
