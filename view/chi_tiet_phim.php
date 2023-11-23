@@ -1,12 +1,17 @@
-<?php 
+<?php
+    $html_showtimes = "";
     extract($chi_tiet_phim);
+    foreach ($chi_tiet_showtimes as $times) {
+        extract($times);
+        $html_showtimes.= '<a class="btn btn-primary py-3 px-5 mt-2 mx-1" href="">'.$time.'</a>';
+    }
 ?>
 <div class="container-xxl py-5">    
     <div class="row g-5">
         <div class="col-lg-6 wow " style="min-height: 600px;">
             <div class="position-relative h-100">
                 <!-- ảnh phim ở đây -->
-                <img class="img-fluid position-absolute w-100 h-100" src="admin/style/img/<?=$poster?>" alt="" style="object-fit: contain;">
+                <img class="img-fluid position-absolute w-100 h-100" src="admin/upload/<?=$poster?>" alt="" style="object-fit: contain;">
             </div>
         </div>
         <div class="col-lg-6 wow">
@@ -32,10 +37,7 @@
                     <p class="mb-0"><i class="fa-solid fa-bars fa-sm" style="color: #88b816;"></i> <?=$the_loai_phim?></p>
                 </div> 
             </div>
-            <a class="btn btn-primary py-3 px-5 mt-2" href="">Đặt vé</a>
-            <a class="btn btn-primary py-3 px-5 mt-2" href="">Đặt vé</a>
-            <a class="btn btn-primary py-3 px-5 mt-2" href="">Đặt vé</a>
-            <a class="btn btn-primary py-3 px-5 mt-2" href="">Đặt vé</a>
+            <?=$html_showtimes;?>
         </div>
     </div>
     <hr class="bg-while">
