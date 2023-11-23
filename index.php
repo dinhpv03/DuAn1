@@ -13,7 +13,7 @@ include "model/loai_phim.php";
 
     // data kết nối 2 hay nhiều bảng với nhau
     $phim_vs_loai_phim = phim_connect_loai_phim();
-    $phim_vs_bien_the_showtimes = phim_LK_loai_phim_LK_bt_showtimes();
+    $phim_vs_bien_the_showtimes = phim_connect_bt_showtimes();
 
     if((isset($_GET['act'])) && ($_GET['act'] != "")){
         $act = $_GET['act'];

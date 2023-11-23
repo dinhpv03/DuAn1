@@ -1,6 +1,11 @@
-<?php 
+<?php
+    $html_chieu_phim = "";
+    foreach ($phim_vs_bien_the_showtimes as $film) {
+        extract($film);
+        $html_chieu_phim.='<a class="btn btn-primary py-3 px-5 mt-2" href="">'.$time.'</a>';
+    }
     $html_get_phim = "";
-    foreach ($phim_vs_bien_the_showtimes as $phim) {
+    foreach ($phim_vs_loai_phim as $phim) {
         extract($phim);
         $html_get_phim.='
                         <div class = "row col-6">
@@ -15,7 +20,7 @@
                                 <div class="row gy-2 gx-4 mb-4">
                                     <div class="col-sm-6">
                                         <!-- thời gian phim -->
-                                        <p class="mb-0"><i class="fa-solid fa-clock fa-sm" style="color: #88b816;"></i>'.$thoi_luong_phim.'</p>
+                                        <p class="mb-0"><i class="fa-solid fa-clock fa-sm" style="color: #88b816;"></i> '.$thoi_luong_phim.'</p>
                                     </div>
                                     <div class="col-sm-6">
                                         <!--Ngày chiếu phim -->
@@ -24,10 +29,10 @@
 
                                     <div class="col-sm-6">
                                         <!-- Thể loại phim -->
-                                        <p class="mb-0"><i class="fa-solid fa-bars fa-sm" style="color: #88b816;"></i>'.$the_loai_phim.'</p>
+                                        <p class="mb-0"><i class="fa-solid fa-bars fa-sm" style="color: #88b816;"></i> '.$the_loai_phim.'</p>
                                     </div> 
                                 </div>
-                                <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
+                                '.$html_chieu_phim.'
                             </div>
                         </div>';
     }
