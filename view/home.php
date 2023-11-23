@@ -10,8 +10,6 @@
         } else {
             $act = "";
         }
-
-        
         $html_slide.= '<div class="carousel-item '.$act.'">
                             <img src="admin/upload/'.$banner.'" alt="Slide '.$id_phim.'" style="width: 100%; height: 700px;">
                         </div>';
@@ -25,22 +23,20 @@
             <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
             <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
             <li data-bs-target="#myCarousel" data-bs-slide-to="3"></li>
+            <li data-bs-target="#myCarousel" data-bs-slide-to="4"></li>
         </ol>
 
         <div class="carousel-inner">
-
-            <div class="carousel-item active">
-                <?=$html_slide;?>
-<!--                <img src="admin/style/img/poster-3.jpg" alt="Slide 1" style="width: 100%; height: 700px;">-->
+            <?=$html_slide;?>
+            <!-- <div class="carousel-item active">
+               <img src="admin/style/img/poster-3.jpg" alt="Slide 1" style="width: 100%; height: 700px;">
             </div>
-<!--            <div class="carousel-item">-->
-<!--                <img src="admin/style/img/poster-2.jpg" alt="Slide 3" style="width: 100%; height: 700px;">-->
-<!---->
-<!--            </div>-->
-<!--            <div class="carousel-item">-->
-<!--                <img src="admin/style/img/poster-3.jpg" alt="Slide 4" style="width: 100%; height: 700px;">-->
-<!---->
-<!--            </div>-->
+           <div class="carousel-item">
+               <img src="admin/style/img/poster-2.jpg" alt="Slide 3" style="width: 100%; height: 700px;">
+           </div>
+           <div class="carousel-item">
+               <img src="admin/style/img/poster-3.jpg" alt="Slide 4" style="width: 100%; height: 700px;">
+           </div> -->
         </div>
 
         <a class="carousel-control-prev" href="#myCarousel" data-bs-slide="prev">
@@ -49,6 +45,7 @@
         <a class="carousel-control-next" href="#myCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon"></span>
         </a>
+
     </div>
 </div>
 <!-- end slide show -->

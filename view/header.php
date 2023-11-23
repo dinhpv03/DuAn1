@@ -38,14 +38,17 @@
     <div class="container-fluid p-0 mt-4">
         <div class = "container">
             <div class = "row mb-3">
-                <div class = "col-md-2">
-                    <a href="index.php" class="navbar-brand p-0 img-center">
+                <div class="col-md-1">
+
+                </div>
+                <div class = "col-md-1">
+                    <a href="index.php" class="navbar-brand p-0">
                         <!-- <h3 class="text-primary m-0"><i class="fa-solid fa-film fa-lg" style="color: #88b816;"></i> Nature Cinema</h3> -->
-                        <img src="admin/style/img/logo-black.png">
+                        <img src="admin/style/img/logo-black.png ">
                     </a>
                 </div>
 
-                <div class = "col-md-8 text-center">
+                <div class = "col-md-8 text-center mt-4">
                     <a class="text-light navbar-brand" href="index.php">Trang chủ</a>
                     <a class="text-light navbar-brand" href="index.php?act=lich_chieu">Lịch chiếu</a>                    
                     <a class="text-light navbar-brand" href="index.php?act=gia_ve">Giá vé</a>
@@ -54,7 +57,7 @@
                     <a class="text-light navbar-brand" href="index.php?act=gioi_thieu">Giới thiệu</a>
                 </div>
 
-                <div class = "col-md-2 text-lg-end list-unstyled text-lg-end">
+                <div class = "col-md-2 text-lg-end list-unstyled text-lg-end mt-4">
                     <?php
                         if(isset($_SESSION['user']) && is_array($_SESSION['user'])) {
                             extract($_SESSION['user'])

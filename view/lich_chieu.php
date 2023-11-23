@@ -1,13 +1,47 @@
+<?php 
+    $html_get_phim = "";
+    foreach ($phim_vs_bien_the_showtimes as $phim) {
+        extract($phim);
+        $html_get_phim.='
+                        <div class = "row col-6">
+                            <div class = "col-6">
+                                <img class="img-fluid" src="admin/style/img/'.$poster.'" alt="">
+                            </div>
+                            <div class = "col-6">   
+                                <h6 class="mb-4 text-light">'.$film_name.'</h6>
+                                <p class="mb-4">
+                                    '.$mo_ta.'
+                                </p>
+                                <div class="row gy-2 gx-4 mb-4">
+                                    <div class="col-sm-6">
+                                        <!-- thời gian phim -->
+                                        <p class="mb-0"><i class="fa-solid fa-clock fa-sm" style="color: #88b816;"></i>'.$thoi_luong_phim.'</p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <!--Ngày chiếu phim -->
+                                        <p class="mb-0"><i class="fa fa-calendar-alt text-primary me-2"></i>'.$release_date.'</p>
+                                    </div>
 
+                                    <div class="col-sm-6">
+                                        <!-- Thể loại phim -->
+                                        <p class="mb-0"><i class="fa-solid fa-bars fa-sm" style="color: #88b816;"></i>'.$the_loai_phim.'</p>
+                                    </div> 
+                                </div>
+                                <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
+                            </div>
+                        </div>';
+    }
+?>
 <div class="container-xxl py-5">
     <div class="container">
         <div class = "text-center mt-3">
             <h6 class="section-title bg-dark text-center text-primary px-3">
-            <i class="fa-solid fa-circle fa-sm" style="color: #df0c0c;"></i>    Phim Đang chiếu</h6>
+            <i class="fa-solid fa-circle fa-sm" style="color: #df0c0c;"></i> Phim Đang chiếu</h6>
         </div>
 
         <div class = "row">
-            <div class = "row col-6">
+            <?=$html_get_phim;?>
+            <!-- <div class = "row col-6">
                 <div class = "col-6">
                     <img class="img-fluid" src="admin/style/img/p_avengersendgame.jpeg" alt="">
                 </div>
@@ -20,16 +54,16 @@
                     </p>
                     <div class="row gy-2 gx-4 mb-4">
                         <div class="col-sm-6">
-                            <!-- thời gian phim -->
+                            thời gian phim
                             <p class="mb-0"><i class="fa-solid fa-clock fa-sm" style="color: #88b816;"></i>  101 phút.</p>
                         </div>
                         <div class="col-sm-6">
-                            <!--Ngày chiếu phim -->
+                            Ngày chiếu phim
                             <p class="mb-0"><i class="fa fa-calendar-alt text-primary me-2"></i>06/11/2023.</p>
                         </div>
 
                         <div class="col-sm-6">
-                            <!-- Thể loại phim -->
+                            Thể loại phim
                             <p class="mb-0"><i class="fa-solid fa-bars fa-sm" style="color: #88b816;"></i> Thể loại: Hành động.</p>
                         </div> 
                     </div>
@@ -50,22 +84,22 @@
                     </p>
                     <div class="row gy-2 gx-4 mb-4">
                         <div class="col-sm-6">
-                            <!-- thời gian phim -->
+                            thời gian phim
                             <p class="mb-0"><i class="fa-solid fa-clock fa-sm" style="color: #88b816;"></i>  101 phút.</p>
                         </div>
                         <div class="col-sm-6">
-                            <!--Ngày chiếu phim -->
+                            Ngày chiếu phim
                             <p class="mb-0"><i class="fa fa-calendar-alt text-primary me-2"></i>06/11/2023.</p>
                         </div>
 
                         <div class="col-sm-6">
-                            <!-- Thể loại phim -->
+                            Thể loại phim
                             <p class="mb-0"><i class="fa-solid fa-bars fa-sm" style="color: #88b816;"></i> Thể loại: Hành động.</p>
                         </div> 
                     </div>
                     <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>

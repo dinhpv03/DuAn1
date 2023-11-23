@@ -11,8 +11,9 @@ include "model/loai_phim.php";
     $phim_new = get_phim_new(4);
     
 
-    // data 2 bảng
+    // data kết nối 2 hay nhiều bảng với nhau
     $phim_vs_loai_phim = phim_connect_loai_phim();
+    $phim_vs_bien_the_showtimes = phim_LK_loai_phim_LK_bt_showtimes();
 
     if((isset($_GET['act'])) && ($_GET['act'] != "")){
         $act = $_GET['act'];
@@ -170,6 +171,7 @@ include "model/loai_phim.php";
             }
 
             case "lich_chieu": {
+                $select_phim=
                 include "view/lich_chieu.php";
                 break;
             }

@@ -13,7 +13,14 @@
         $sql = "SELECT * FROM phim 
                 INNER JOIN loai_phim ON phim.id_loaiphim = loai_phim.id_loaiphim";
         return pdo_query($sql);
-    }   
+    }
+
+    function phim_LK_loai_phim_LK_bt_showtimes(){
+        $sql = "SELECT * FROM phim 
+                INNER JOIN loai_phim ON phim.id_loaiphim = loai_phim.id_loaiphim
+                INNER JOIN bien_the_showtimes ON phim.id_phim = bien_the_showtimes.id_phim";
+        return pdo_query($sql);
+    }
 
     function insert_loai_phim($stt,$name) {
         $sql = "INSERT INTO loai_phim(stt,the_loai_phim) VALUES ($stt,'$name')";
