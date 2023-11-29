@@ -16,8 +16,8 @@
                     extract($_SESSION['user']);
                     }
                 ?>
-                <div class="row g-3 text-dark">
-                    <div class="col-md-6">
+                <div class="row g-3 text-dark ">
+                    <div class="col-md-6 rounded ">
                         <div class="form-floating">
                             <input type="text" class="form-control bg-dark text-light"  placeholder="Tên đăng nhập" name="name" value="<?="$username"?>">
                             <span style="color: red"><?= isset($errUser) ? $errUser : '' ?></span>

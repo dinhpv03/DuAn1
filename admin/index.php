@@ -71,7 +71,6 @@ include "../model/loai_ve.php";
                     }
                 }
                 $ds_loai_phim = loai_phim_all();
-                $ds_suat_chieu = load_all_suat_chieu();
                 include "phim/add.php";
                 break;
             }
@@ -165,7 +164,7 @@ include "../model/loai_ve.php";
             case "delete_loai_phim":
             {
                 if (isset($_GET['id_loaiphim']) && ($_GET['id_loaiphim'] > 0)) {
-                    delete_loai_phim($_GET['$d_loaiphim']);
+                    delete_loai_phim($_GET['$id_loaiphim']);
                 }
                 $ds_loai_phim = loai_phim_all();
                 include "loai_phim/list.php";
@@ -295,8 +294,6 @@ include "../model/loai_ve.php";
             }
             case "danh_sach_phim" : {
                     $ds_phim = all_phim();
-    //                var_dump($ds_phim);
-    //                die;
                     include "phim/list.php";
                     break;
             }

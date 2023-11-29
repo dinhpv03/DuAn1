@@ -37,19 +37,6 @@
                                 <span style="color: red"><?= isset($errMota) ? $errMota : '' ?></span>
                             </div>
                             <div class="col-12">
-                                <label for="" class="form-label">Suất chiếu</label>
-                                <select name="id_suat_chieu" class="form-control">
-                                    <option value="0">Chọn suất chiếu</option>
-                                    <?php foreach ($ds_suat_chieu as $ds) {
-                                        extract($ds);
-                                        echo '
-                                            <option value ="'.$id_suatchieu.'">Ngày '.$day.' / '.$month.' , '.$time.'</option>
-                                        ';
-                                    } ?>
-                                </select>
-                                <span style="color: red"><?= isset($errSuat_chieu) ? $errSuat_chieu : '' ?></span>
-                            </div>
-                            <div class="col-12">
                                 <label for="" class="form-label">Loại phim</label>
                                 <select  name="id_loai_phim" class="form-control">
                                     <option value="0">Chọn thể loại phim</option>

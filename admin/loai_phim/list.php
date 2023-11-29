@@ -15,19 +15,19 @@
                     foreach ($ds_loai_phim as $ds) {
                         extract($ds);
 
-                        $delete = "index.php?act=delete_loai_phim&id_loaiphim=" . $id_loaiphim;
+                        $delete = "index.php?act=delete _loai_phim&id_loaiphim=" . $id_loaiphim;
                         $edit = "index.php?act=edit_loai_phim&id_loaiphim=" . $id_loaiphim;
 
                         echo "
-                                <tr>
-                                    <td>$id_loaiphim</td>
-                                    <td>$STT</td>
-                                    <td>$the_loai_phim</td>
-                                    <td>
-                                        <a class='btn btn-primary' href='$edit'>Sửa</a>
-                                        <button class='btn btn-outline-danger' type='button' onclick=\"if (confirm('Bạn có chắc muốn xóa ?')) window.location.href='$delete'\">Xóa</button>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>$id_loaiphim</td>
+                                <td>$STT</td>
+                                <td>$the_loai_phim</td>
+                                <td>
+                                    <a class='btn btn-primary' href='$edit'>Sửa</a>
+                                    <button class='btn btn-outline-danger' type='button' onclick=\"if (confirm('Bạn có chắc muốn xóa ?')) window.location.href='$delete'\">Xóa</button>
+                                </td>
+                            </tr>
                             ";
                     }
 

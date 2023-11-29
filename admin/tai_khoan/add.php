@@ -1,3 +1,4 @@
+
 <main id="main" class="main">
     <section class="section dashboard">
         <div class="row">
@@ -23,7 +24,7 @@
                                 </div>
                                 <div class="col-6">
                                     <label for="" class="form-label">Số điện thoại</label>
-                                    <input type="tel" class="form-control" name="tel" placeholder="Phone number">
+                                    <input type="text" class="form-control" name="tel" placeholder="Phone number">
                                 </div>
                             </div>
                             <div class="col-12">

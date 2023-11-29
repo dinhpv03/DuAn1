@@ -31,7 +31,7 @@ function load_one_loai_phim($id_loaiphim) {
 }
 
 function update_loai_phim($id_loaiphim,$stt, $name) {
-$sql = "UPDATE loai_phim SET STT = $stt, the_loai_phim = '".$name."' WHERE id_loaiphim = ".$id_loaiphim;
+    $sql = "UPDATE loai_phim SET STT = $stt, the_loai_phim = '".$name."' WHERE id_loaiphim = ".$id_loaiphim;
     pdo_execute($sql);
 }
 

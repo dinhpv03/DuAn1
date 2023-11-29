@@ -94,4 +94,42 @@ function get_current_images($id_phim) {
     $result = pdo_query_one($sql);
     return $result;
 }
-?>
+
+function search_phim($keyw = "", $id_loaiphim = 0) {
+    $sql = "SELECT *
+            FROM phim p
+            INNER JOIN loai_phim lp 
+            ON lp.id_loaiphim = p.id_loaiphim
+            WHERE 1";
+
+    if ($keyw != "") {
+        $sql .= " AND (p.film_name LIKE '%" . $keyw . "%' OR lp.the_loai_phim LIKE '%" . $keyw . "%')";
+    }
+
+    if ($id_loaiphim > 0) {
+        $sql .= " AND lp.id_loaiphim = '" . $id_loaiphim . "'";
+    }
+
+    $sql .= " GROUP BY p.id_phim, p.film_name, p.mo_ta, lp.id_loaiphim ORDER BY p.id_phim DESC";
+    $listphim = pdo_query($sql);
+
+    return $listphim;
+}
+
+
+
+
+function load_the_loai_phim($id_loaiphim)   {
+    if($id_loaiphim > 0) {
+        $sql = "SELECT * FROM loai_phim WHERE id=" . $id_loaiphim;
+        $ten = pdo_query_one($sql);
+        extract($ten);
+        return $the_loai_phim;
+    } else {
+        return "";
+    }
+}
+
+
+
+
