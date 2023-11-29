@@ -165,6 +165,30 @@ include "model/suat_chieu.php";
                 break;
             }
 
+            case "search_phim":
+                {
+                    if((isset($_POST['kyw'])) && ($_POST['kyw'] != "")) {
+                        $kyw = $_POST['kyw'];
+                    } else {
+                        $kyw = "";
+                    }
+                    if((isset($_GET['id_loaiphim'])) && ($_GET['id_loaiphim'] > 0)) {
+                        $id_loaiphim = $_GET['id_loaiphim'];
+                    } else {
+                        $id_loaiphim = 0;
+
+                    }
+                    $ds_search = search_phim($kyw, $id_loaiphim);
+                    $the_loai_phim = load_the_loai_phim($id_loaiphim);
+
+                    if (empty($ds_search)) {
+                        $no_result_message = "Không có kết quả phù hợp.";
+                    }
+
+                    include "view/search_phim.php";
+                    break;
+                }
+
             case "gia_ve": {
                 include "view/gia_ve.php";
                 break;

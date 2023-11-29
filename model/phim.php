@@ -1,20 +1,6 @@
 <?php
 require_once "pdo.php";
 
-<<<<<<< HEAD
-    function get_phim_new($limit){
-        $sql = "SELECT * FROM phim ORDER BY id_phim DESC limit ".$limit;
-        return pdo_query($sql);
-    }
-    
-    function get_phim_by_id($id_phim){
-        $sql = "SELECT * FROM phim 
-                INNER JOIN loai_phim ON phim.id_loaiphim = loai_phim.id_loaiphim 
-                WHERE id_phim =" . $id_phim;
-        return pdo_query_one($sql);
-    }
-=======
->>>>>>> 4bd41f91a37190900c6e088351807a6f4552ca37
 
 function get_phim($limit){
     $sql = "SELECT * FROM phim ORDER BY id_phim DESC limit ".$limit;
@@ -68,24 +54,6 @@ function them_phim_moi($name, $poster, $banner, $thoi_luong_phim, $mo_ta, $ngay_
 }
 
 
-<<<<<<< HEAD
-    function all_phim() {
-        $sql = "SELECT *
-                FROM phim p
-                INNER JOIN loai_phim l ON p.id_loaiphim = l.id_loaiphim     
-                INNER JOIN bien_the_date date ON c.id_date = date.id_date
-                INNER JOIN bien_the_showtimes sh ON c.id_time = sh.id_time
-                ORDER BY id_phim DESC";
-    //    var_dump($sql);
-    //    die;
-        return pdo_query($sql);
-    }
-
-    function delete_phim(){
-        $sql = "DELETE  FROM phim WHERE id_phim =" . $_GET['id_phim'];
-        pdo_execute($sql);
-    }
-=======
 function all_phim() {
     $sql = "SELECT *
             FROM phim p
@@ -103,7 +71,6 @@ function delete_phim($id_phim){
     $sql = "DELETE  FROM phim WHERE id_phim =" . $_GET['id_phim'];
     pdo_execute($sql);
 }
->>>>>>> 4bd41f91a37190900c6e088351807a6f4552ca37
 
 function load_one_phim($id_phim){
     $sql = "SELECT * FROM phim WHERE id_phim =" . $id_phim;
@@ -130,4 +97,42 @@ function get_current_images($id_phim) {
     $result = pdo_query_one($sql);
     return $result;
 }
-?>
+
+function search_phim($keyw = "", $id_loaiphim = 0) {
+    $sql = "SELECT *
+            FROM phim p
+            INNER JOIN loai_phim lp 
+            ON lp.id_loaiphim = p.id_loaiphim
+            WHERE 1";
+
+    if ($keyw != "") {
+        $sql .= " AND (p.film_name LIKE '%" . $keyw . "%' OR lp.the_loai_phim LIKE '%" . $keyw . "%')";
+    }
+
+    if ($id_loaiphim > 0) {
+        $sql .= " AND lp.id_loaiphim = '" . $id_loaiphim . "'";
+    }
+
+    $sql .= " GROUP BY p.id_phim, p.film_name, p.mo_ta, lp.id_loaiphim ORDER BY p.id_phim DESC";
+    $listphim = pdo_query($sql);
+
+    return $listphim;
+}
+
+
+
+
+function load_the_loai_phim($id_loaiphim)   {
+    if($id_loaiphim > 0) {
+        $sql = "SELECT * FROM loai_phim WHERE id=" . $id_loaiphim;
+        $ten = pdo_query_one($sql);
+        extract($ten);
+        return $the_loai_phim;
+    } else {
+        return "";
+    }
+}
+
+
+
+

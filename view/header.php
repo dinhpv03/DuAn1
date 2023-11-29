@@ -35,86 +35,75 @@
     <link href="admin/style/css/style.css" rel="stylesheet">
 </head>
 <body class="bg-dark">
-    <div class="container-fluid p-0 mt-4">
-        <div class = "container">
-            <div class = "row mb-3">
-<<<<<<< HEAD
-                <div class = "col-md-1">
-                    <a href="index.php" class="navbar-brand p-0 m-4">
-=======
-                <div class="col-md-1">
+<div class="container-fluid p-0 mt-4">
+    <div class = "container">
+        <div class = "row mb-3">
+            <div class = "col-md-1">
+                <a href="index.php" class="navbar-brand p-0">
+                    <!-- <h3 class="text-primary m-0"><i class="fa-solid fa-film fa-lg" style="color: #88b816;"></i> Nature Cinema</h3> -->
+                    <img src="admin/style/img/logo-black.png ">
+                </a>
+            </div>
 
-                </div>
-                <div class = "col-md-1">
-                    <a href="index.php" class="navbar-brand p-0">
->>>>>>> 4bd41f91a37190900c6e088351807a6f4552ca37
-                        <!-- <h3 class="text-primary m-0"><i class="fa-solid fa-film fa-lg" style="color: #88b816;"></i> Nature Cinema</h3> -->
-                        <img src="admin/style/img/logo-black.png ">
-                    </a>
-                </div>
+            <div class = "col-md-6 text-center mt-4">
+                <a class="text-light navbar-brand" href="index.php">Trang chủ</a>
+                <a class="text-light navbar-brand" href="index.php?act=lich_chieu">Lịch chiếu</a>
+                <a class="text-light navbar-brand" href="index.php?act=gia_ve">Giá vé</a>
+                <a class="text-light navbar-brand" href="index.php?act=tin_tuc">Tin tức</a>
+                <a class="text-light navbar-brand" href="index.php?act=khuyen_mai">Khuyến mãi</a>
+                <a class="text-light navbar-brand" href="index.php?act=gioi_thieu">Giới thiệu</a>
+            </div>
 
-<<<<<<< HEAD
-                <div class = "col-md-7 text-center mt-4">
-=======
-                <div class = "col-md-8 text-center mt-4">
->>>>>>> 4bd41f91a37190900c6e088351807a6f4552ca37
-                    <a class="text-light navbar-brand" href="index.php">Trang chủ</a>
-                    <a class="text-light navbar-brand" href="index.php?act=lich_chieu">Lịch chiếu</a>                    
-                    <a class="text-light navbar-brand" href="index.php?act=gia_ve">Giá vé</a>
-                    <a class="text-light navbar-brand" href="index.php?act=tin_tuc">Tin tức</a>
-                    <a class="text-light navbar-brand" href="index.php?act=khuyen_mai">Khuyến mãi</a>
-                    <a class="text-light navbar-brand" href="index.php?act=gioi_thieu">Giới thiệu</a>
-                </div>
-                <div class="col-md-2 mt-4">
-                    <form class="d-flex" action="index.php?act=sanpham" method="post">
-                        <input class="form-control mr20" type="text" name="kyw" placeholder="Tìm kiếm sản phẩm" aria-label="Search" required>
-                        <input class="btn btn-outline-success " name="timkiem" value="Tìm kiếm" type="submit">
-                    </form>
-                </div>
+            <div class="col-md-3 mt-4">
+                <form class="d-flex" action="index.php?act=search_phim" method="post">
+                    <input class="form-control mr20" type="text" name="kyw" placeholder="Tìm kiếm sản phẩm" aria-label="Search" required>
+                    <input class="btn btn-outline-success " name="timkiem" value="Tìm kiếm" type="submit">
+                </form>
+            </div>
 
-                <div class = "col-md-2 text-lg-end list-unstyled text-lg-end mt-4">
-                    <?php
-                        if(isset($_SESSION['user']) && is_array($_SESSION['user'])) {
-                            extract($_SESSION['user'])
-                            ?>
-                            <li class="nav-item dropdown pe-3 ">
-                                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                                    <i class="fa-regular fa-user fa-xl" style="color: #98a4b9;"></i>
-                                    <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $username ?></span>
-                                </a>
-                                <!--end  thông tin tài khoản -->
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                                    <li class="dropdown-header">
-                                        <h6> Hello <?php echo $username ?></h6>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item d-flex align-items-center" href="index.php?act=thong_tin_tai_khoan">
-                                            <i class="bi bi-person"></i>
-                                            <span>Thông tin tài khoản</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item d-flex align-items-center" href="index.php?act=dang_xuat">
-                                            <i class="bi bi-box-arrow-right"></i>
-                                            <span>Đăng xuất</span>
-                                        </a>
-                                    </li>
-                                </ul><!-- End Profile Dropdown Items -->
-                            </li><!-- End Profile Nav -->
-                            <?php
-                        } else { ?>
-                            <a href="index.php?act=dang_nhap" class="btn btn-primary rounded-pill py-2 px-4">Đăng nhập</a>
-                            <?php
-                        }
+            <div class = "col-md-2 text-lg-end list-unstyled text-lg-end mt-4">
+                <?php
+                if(isset($_SESSION['user']) && is_array($_SESSION['user'])) {
+                    extract($_SESSION['user'])
                     ?>
+                    <li class="nav-item dropdown pe-3">
+                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                            <i class="fa-regular fa-user fa-xl" style="color: #98a4b9;"></i>
+                            <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $username ?></span>
+                        </a>
+                        <!--end  thông tin tài khoản -->
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                            <li class="dropdown-header">
+                                <h6> Hello <?php echo $username ?></h6>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="index.php?act=thong_tin_tai_khoan">
+                                    <i class="bi bi-person"></i>
+                                    <span>Thông tin tài khoản</span>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="index.php?act=dang_xuat">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span>Đăng xuất</span>
+                                </a>
+                            </li>
+                        </ul><!-- End Profile Dropdown Items -->
+                    </li><!-- End Profile Nav -->
+                    <?php
+                } else { ?>
+                    <a href="index.php?act=dang_nhap" class="btn btn-primary rounded-pill py-2 px-4">Đăng nhập</a>
+                    <?php
+                }
+                ?>
 
-                </div>
+            </div>
 
 
 
