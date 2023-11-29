@@ -38,14 +38,26 @@
     <div class="container-fluid p-0 mt-4">
         <div class = "container">
             <div class = "row mb-3">
+<<<<<<< HEAD
                 <div class = "col-md-1">
                     <a href="index.php" class="navbar-brand p-0 m-4">
+=======
+                <div class="col-md-1">
+
+                </div>
+                <div class = "col-md-1">
+                    <a href="index.php" class="navbar-brand p-0">
+>>>>>>> 4bd41f91a37190900c6e088351807a6f4552ca37
                         <!-- <h3 class="text-primary m-0"><i class="fa-solid fa-film fa-lg" style="color: #88b816;"></i> Nature Cinema</h3> -->
-                        <img src="admin/style/img/logo-black.png">
+                        <img src="admin/style/img/logo-black.png ">
                     </a>
                 </div>
 
+<<<<<<< HEAD
                 <div class = "col-md-7 text-center mt-4">
+=======
+                <div class = "col-md-8 text-center mt-4">
+>>>>>>> 4bd41f91a37190900c6e088351807a6f4552ca37
                     <a class="text-light navbar-brand" href="index.php">Trang chủ</a>
                     <a class="text-light navbar-brand" href="index.php?act=lich_chieu">Lịch chiếu</a>                    
                     <a class="text-light navbar-brand" href="index.php?act=gia_ve">Giá vé</a>

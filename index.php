@@ -6,13 +6,13 @@ include "model/pdo.php";
 include "model/tai_khoan.php";
 include "model/phim.php";
 include "model/loai_phim.php";
+include "model/suat_chieu.php";
 
     // data trang chủ
-    $phim_new = get_phim_new(4);
-    
+    $ds_phim = get_phim(4);
 
-    // data 2 bảng
-    $phim_vs_loai_phim = phim_connect_loai_phim();
+    // data kết nối 2 hay nhiều bảng với nhau
+    $phim_LK_loai_phim = phim_connect_loai_phim();
 
     if((isset($_GET['act'])) && ($_GET['act'] != "")){
         $act = $_GET['act'];
@@ -157,6 +157,7 @@ include "model/loai_phim.php";
                     $id = $_GET['id_phim'];
                     $ds_loai_phim = loai_phim_all();
                     $chi_tiet_phim = get_phim_by_id($id);
+                    $chi_tiet_showtimes = get_bt_showtimes_by_id($id);
                 } else {
                     include "view/home.php";
                 }
@@ -170,6 +171,7 @@ include "model/loai_phim.php";
             }
 
             case "lich_chieu": {
+                $get_bien_the_showtimes = get_bt_showtimes_by_id(1);
                 include "view/lich_chieu.php";
                 break;
             }

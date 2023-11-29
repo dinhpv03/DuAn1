@@ -1,21 +1,19 @@
 <!-- slide show -->
 <?php 
-    $html_get_phim_new = select_phim($phim_vs_loai_phim);
-    $html_slide = "";
-    foreach ($phim_vs_loai_phim as $film) {
-        extract($film);
-        $act = "";
-        if ($id_phim <= 1) {
-            $act = "active";
-        } else {
-            $act = "";
-        }
-
-        
-        $html_slide.= '<div class="carousel-item '.$act.'">
-                            <img src="admin/upload/'.$banner.'" alt="Slide '.$id_phim.'" style="width: 100%; height: 700px;">
-                        </div>';
-    }
+    $html_get_phim = select_phim($phim_LK_loai_phim);
+    // $html_slide = "";
+    // foreach ($phim_LK_loai_phim as $film) {
+    //     extract($film);
+    //     $act = "";
+    //     if ($id_phim <= 1) {
+    //         $act = "active";
+    //     } else {
+    //         $act = "";
+    //     }
+    //     $html_slide.= '<div class="carousel-item '.$act.'">
+    //                         <img src="admin/upload/'.$banner.'" alt="Slide '.$id_phim.'" style="width: 100%; height: 700px;">
+    //                     </div>';
+    // }
 ?>
 <div class="slide-show">
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -25,21 +23,25 @@
             <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
             <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
             <li data-bs-target="#myCarousel" data-bs-slide-to="3"></li>
+            <li data-bs-target="#myCarousel" data-bs-slide-to="4"></li>
         </ol>
 
         <div class="carousel-inner">
+<<<<<<< HEAD
             <?=$html_slide;?>
             <div class="carousel-item active">
                 <img src="admin/style/img/banner_1.jpg" alt="Slide 1" style="width: 100%; height: 700px;">
+=======
+            <div class="carousel-item active">
+               <img src="admin/style/img/banner_1.jpg" alt="Slide 1" style="width: 100%; height: 700px;">
+>>>>>>> 4bd41f91a37190900c6e088351807a6f4552ca37
             </div>
-<!--            <div class="carousel-item">-->
-<!--                <img src="admin/style/img/poster-2.jpg" alt="Slide 3" style="width: 100%; height: 700px;">-->
-<!---->
-<!--            </div>-->
-<!--            <div class="carousel-item">-->
-<!--                <img src="admin/style/img/poster-3.jpg" alt="Slide 4" style="width: 100%; height: 700px;">-->
-<!---->
-<!--            </div>-->
+           <div class="carousel-item">
+               <img src="admin/style/img/banner_2.webp" alt="Slide 2" style="width: 100%; height: 700px;">
+           </div>
+           <div class="carousel-item">
+               <img src="admin/style/img/banner_3.jpg" alt="Slide 3" style="width: 100%; height: 700px;">
+           </div>
         </div>
 
         <a class="carousel-control-prev" href="#myCarousel" data-bs-slide="prev">
@@ -48,6 +50,7 @@
         <a class="carousel-control-next" href="#myCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon"></span>
         </a>
+
     </div>
 </div>
 <!-- end slide show -->
@@ -59,7 +62,7 @@
             <h4 class="mb-5 text-light">DANH SÁCH PHIM ĐANG HOT</h4>
         </div>
         <div class="row g-4 justify-content-center">
-            <?= $html_get_phim_new;?>
+            <?= $html_get_phim;?>
         </div>
     </div>
     <!-- End Danh sách phim hot -->
