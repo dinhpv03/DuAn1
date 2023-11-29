@@ -6,7 +6,7 @@
         <div class="col-lg-6 wow " style="min-height: 600px;">
             <div class="position-relative h-100">
                 <!-- ảnh phim ở đây -->
-                <img class="img-fluid position-absolute w-100 h-100" src="admin/style/img/<?=$poster?>" alt="" style="object-fit: contain;">
+                <img class="img-fluid position-absolute w-100 h-100" src="admin/upload/<?=$poster?>" alt="" style="object-fit: contain;">
             </div>
         </div>
         <div class="col-lg-6 wow">

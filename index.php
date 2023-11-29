@@ -173,6 +173,10 @@ include "model/loai_phim.php";
                 include "view/lich_chieu.php";
                 break;
             }
+            case "payment" : {
+                include "view/payment/payment.php";
+                break;
+            }
 
             default : {
                 include "view/home.php";

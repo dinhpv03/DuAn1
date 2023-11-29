@@ -1,6 +1,6 @@
 <?php
 function pdo_get_connection(){
-    $dburl = "mysql:host=localhost;dbname=db_booking_ticket;charset=utf8";
+    $dburl = "mysql:host=localhost;dbname=booking_movie_ticket;charset=utf8";
     $username = 'root';
     $password = '';
 

@@ -7,7 +7,9 @@
     }
     
     function get_phim_by_id($id_phim){
-        $sql = "SELECT * FROM phim INNER JOIN loai_phim ON phim.id_loaiphim = loai_phim.id_loaiphim WHERE id_phim =" . $id_phim;
+        $sql = "SELECT * FROM phim 
+                INNER JOIN loai_phim ON phim.id_loaiphim = loai_phim.id_loaiphim 
+                WHERE id_phim =" . $id_phim;
         return pdo_query_one($sql);
     }
 
@@ -56,7 +58,6 @@
     function all_phim() {
         $sql = "SELECT *
                 FROM phim p
-                INNER JOIN chon_suat_chieu c ON p.id_suatchieu = c.id_suatchieu
                 INNER JOIN loai_phim l ON p.id_loaiphim = l.id_loaiphim     
                 INNER JOIN bien_the_date date ON c.id_date = date.id_date
                 INNER JOIN bien_the_showtimes sh ON c.id_time = sh.id_time
@@ -66,7 +67,7 @@
         return pdo_query($sql);
     }
 
-    function delete_phim($id_phim){
+    function delete_phim(){
         $sql = "DELETE  FROM phim WHERE id_phim =" . $_GET['id_phim'];
         pdo_execute($sql);
     }

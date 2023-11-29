@@ -20,7 +20,7 @@
         pdo_execute($sql);
     }
 
-    function delete_loai_phim() {
+    function delete_loai_phim($id_loaiphim) {
         $sql = "DELETE  FROM loai_phim WHERE id_loaiphim =".$_GET['id_loaiphim'];
         pdo_execute($sql);
     }

@@ -28,10 +28,9 @@
         </ol>
 
         <div class="carousel-inner">
-
+            <?=$html_slide;?>
             <div class="carousel-item active">
-                <?=$html_slide;?>
-<!--                <img src="admin/style/img/poster-3.jpg" alt="Slide 1" style="width: 100%; height: 700px;">-->
+                <img src="admin/style/img/banner_1.jpg" alt="Slide 1" style="width: 100%; height: 700px;">
             </div>
 <!--            <div class="carousel-item">-->
 <!--                <img src="admin/style/img/poster-2.jpg" alt="Slide 3" style="width: 100%; height: 700px;">-->
