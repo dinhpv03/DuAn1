@@ -1,9 +1,13 @@
 <?php
-    $html_showtimes = "";
-    foreach ($get_bien_the_showtimes as $times) {
-        extract($times);
-        $html_showtimes.='<a class="btn btn-primary py-1 px-3 mt-2 mx-1" href="">'.$time.'</a>';
-    }
+    // $html_showtimes = "";
+    // foreach ($get_bien_the_showtimes as $times) {
+    //     extract($times);
+    //     $html_showtimes.='<a class="btn btn-primary py-1 px-3 mt-2 mx-1" href="">'.$time.'</a>';
+    //     $html_showtimes.='
+    //     <form action="index.php?act=chon_ghe" method="post">
+    //     <input type="submit" class="btn btn-primary py-1 px-3 mt-2 mx-1" value="'.$time.'">
+    //     </form>';
+    // }
 
     $html_get_phim = "";
     foreach ($phim_LK_loai_phim as $phim) {
@@ -34,7 +38,7 @@
                                         <p class="mb-0"><i class="fa-solid fa-bars fa-sm" style="color: #88b816;"></i> '.$the_loai_phim.'</p>
                                     </div> 
                                 </div>
-                                '.$html_showtimes.'
+                                <a class="btn btn-primary py-3 px-5 mt-2 mx-1" href="'.$link.'">Đặt Vé</a>
                             </div>
                         </div>';
     }

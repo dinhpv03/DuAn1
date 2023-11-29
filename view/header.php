@@ -33,6 +33,20 @@
 
     <!-- Template Stylesheet -->
     <link href="admin/style/css/style.css" rel="stylesheet">
+    <style>
+        /* Add your custom styles here */
+        .seat {
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            background-color: #eee;
+            cursor: pointer;
+        }
+
+        .seat.selected {
+            background-color: #28a745;
+        }
+    </style>
 </head>
 <body class="bg-dark">
     <div class="container-fluid p-0 mt-4">

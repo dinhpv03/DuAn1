@@ -11,10 +11,10 @@
                         <th>Banner</th>
                         <th>Thời lượng phim</th>
                         <th>Ngày phát hành</th>
-                        <th>Suất chiếu</th>
-                        <th>Giờ chiếu</th>
+                        <!-- <th>Suất chiếu</th>
+                        <th>Giờ chiếu</th> -->
                         <th>Thể loại</th>
-                        <th></th>
+                        <th>Chức năng</th>
                     </tr>
 
                     <?php
@@ -48,8 +48,6 @@
                                     <td>$banner</td>
                                     <td>$thoi_luong_phim</td>
                                     <td>$release_date</td>
-                                    <td>Ngày $day/$month</td>
-                                    <td>$time</td>
                                     <td>$the_loai_phim</td>
                                     <td>
                                         <a class='btn btn-primary'  href='$edit'>Sửa</a>

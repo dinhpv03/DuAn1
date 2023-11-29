@@ -24,6 +24,7 @@
             <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
             <li data-bs-target="#myCarousel" data-bs-slide-to="3"></li>
             <li data-bs-target="#myCarousel" data-bs-slide-to="4"></li>
+            
         </ol>
 
         <div class="carousel-inner">
@@ -54,6 +55,7 @@
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h6 class="section-title bg-dark text-center text-primary px-3">Đang chiếu</h6>
             <h4 class="mb-5 text-light">DANH SÁCH PHIM ĐANG HOT</h4>
+            
         </div>
         <div class="row g-4 justify-content-center">
             <?= $html_get_phim;?>

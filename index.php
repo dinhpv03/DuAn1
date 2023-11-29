@@ -157,7 +157,8 @@ include "model/suat_chieu.php";
                     $id = $_GET['id_phim'];
                     $ds_loai_phim = loai_phim_all();
                     $chi_tiet_phim = get_phim_by_id($id);
-                    $chi_tiet_showtimes = get_bt_showtimes_by_id($id);
+                    $chi_tiet_showtimes = get_showtimes_by_id($id);
+                    
                 } else {
                     include "view/home.php";
                 }
@@ -171,8 +172,12 @@ include "model/suat_chieu.php";
             }
 
             case "lich_chieu": {
-                $get_bien_the_showtimes = get_bt_showtimes_by_id(1);
                 include "view/lich_chieu.php";
+                break;
+            }
+
+            case "chon_ghe": { 
+                include "view/chon_ghe.php";
                 break;
             }
 
