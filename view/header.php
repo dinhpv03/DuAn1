@@ -56,7 +56,7 @@
 
             <div class="col-md-3 mt-4">
                 <form class="d-flex" action="index.php?act=search_phim" method="post">
-                    <input class="form-control mr20" type="text" name="kyw" placeholder="Tìm kiếm sản phẩm" aria-label="Search" required>
+                    <input class="form-control mr20" type="text" name="kyw" placeholder="Tìm kiếm phim" aria-label="Search" required>
                     <input class="btn btn-outline-success " name="timkiem" value="Tìm kiếm" type="submit">
                 </form>
             </div>
