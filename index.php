@@ -1,12 +1,17 @@
 <?php
 session_start();
 ob_start();
+$currentDate = date('Y-m-d');
 include "view/header.php";
+
 include "model/pdo.php";
 include "model/tai_khoan.php";
 include "model/phim.php";
 include "model/loai_phim.php";
-include "model/suat_chieu.php";
+include "model/showtimes.php";
+include "model/date.php";
+include "model/seat.php";
+include "model/cinema_room.php";
 
     // data trang chủ
     $ds_phim = get_phim(4);
@@ -155,10 +160,16 @@ include "model/suat_chieu.php";
             case "chi_tiet_phim": {
                 if (isset($_GET['id_phim'])) {
                     $id = $_GET['id_phim'];
-                    $ds_loai_phim = loai_phim_all();
+                    // $ds_loai_phim = loai_phim_all();
                     $chi_tiet_phim = get_phim_by_id($id);
                     $chi_tiet_showtimes = get_showtimes_by_id($id);
-                    
+                    $chi_tiet_date = get_date($id);
+                    if (!isset($_GET['id_date'])) {
+                        $id_date = 0;
+                    } else {
+                        $id_date = $_GET['id_date'];
+                    }
+                    $ds_showtimes = get_showtimes_by_id_date($id,$id_date);
                 } else {
                     include "view/home.php";
                 }
@@ -204,7 +215,11 @@ include "model/suat_chieu.php";
                 break;
             }
 
-            case "chon_ghe": { 
+            case "chon_ghe": {
+                $seats = seat_all();
+                $id = $_GET['id_phim'];
+                $time = $_GET['time'];
+                // var_dump($id,$time);
                 include "view/chon_ghe.php";
                 break;
             }
