@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th12 03, 2023 lúc 05:00 PM
+-- Thời gian đã tạo: Th12 04, 2023 lúc 09:45 PM
 -- Phiên bản máy phục vụ: 8.0.30
 -- Phiên bản PHP: 8.1.10
 
@@ -101,7 +101,7 @@ CREATE TABLE `loai_ve` (
   `id_loaive` int NOT NULL,
   `dinh_dang_ve` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `hang_ghe` tinyint NOT NULL DEFAULT '0' COMMENT '0: ghế thường - 1: ghế vip',
-  `price` double(10,3) NOT NULL
+  `price` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -109,10 +109,10 @@ CREATE TABLE `loai_ve` (
 --
 
 INSERT INTO `loai_ve` (`id_loaive`, `dinh_dang_ve`, `hang_ghe`, `price`) VALUES
-(1, '2D', 0, 60.000),
-(2, '2D', 1, 80.000),
-(3, '3D', 0, 100.000),
-(4, '3D', 1, 120.000);
+(1, '2D', 0, '60.000'),
+(2, '2D', 1, '80.000'),
+(3, '3D', 0, '100.000'),
+(4, '3D', 1, '120.000');
 
 -- --------------------------------------------------------
 
@@ -249,7 +249,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `email`, `number_phone`, `address`, `role`) VALUES
-(1, 'duc', '123', 'duc@gmail.com', 123456, 'Kim Hoa', 0);
+(1, 'duc', '123', 'duc@gmail.com', 123456, 'HN', 1);
 
 -- --------------------------------------------------------
 

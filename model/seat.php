@@ -7,8 +7,7 @@ function seat_all(){
 }
 
 function seat_LK_loai_ve(){
-    $sql = "SELECT * FROM seat
-            INNER JOIN loai_ve";
+        $sql = "SELECT * FROM seat INNER JOIN loai_ve ON seat.id_loaive = loai_ve.id_loaive";
     return pdo_query($sql);
 }
 

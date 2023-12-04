@@ -48,7 +48,7 @@
 
                     <?php if($role == 1) { ?>
                         <div class="col-6">
-                            <a class="btn btn-outline-light w-100 py-3" href="../../du-an-1/admin/index.php">Đăng nhập vào admin</a>
+                            <a class="btn btn-outline-light w-100 py-3" href="../../admin/index.php">Đăng nhập vào admin</a>
                         </div>
                     <?php
                     }

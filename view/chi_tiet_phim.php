@@ -2,9 +2,12 @@
     extract($chi_tiet_phim);
     // var_dump($ds_showtimes);
     $html_showtimes = "";
+    // $linkPro = "";
     foreach ($ds_showtimes as $times) {
         extract($times);
-        $html_showtimes.= '<a class="btn btn-primary py-1 px-3 mt-2 mx-1" href="index.php?act=chon_ghe&id_phim='.$id_phim.'&time='.$time.'">'.$time.'</a>';
+        $linkPro = 'index.php?act=chon_ghe&id_phim='.$id_phim.'&id_date='.$id_date.'&time='.$time.'';
+
+        $html_showtimes.= '<a class="btn btn-primary py-1 px-3 mt-2 mx-1" href="'.$linkPro.'">'.$time.'</a>';
         // $html_showtimes.='<form action="index.php?act=chon_ghe&time='.$time.'" method="post">
         //                     <input type="hidden" name="">
         //                     <input type="submit" class="btn btn-primary py-3 px-5 mt-2 mx-1" value="'.$time.'">
@@ -116,16 +119,3 @@
       }
     };
   </script>
-<!-- <script>
-  function changeColor(clickedBox) {
-    var boxes = document.getElementsByClassName("box");
-    
-    for (var i = 0; i < boxes.length; i++) {
-      if (boxes[i] === clickedBox) {
-        boxes[i].classList.add("active");
-      } else {
-        boxes[i].classList.remove("active");
-      }
-    }
-  }
-</script> -->

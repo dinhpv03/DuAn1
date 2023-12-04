@@ -36,10 +36,10 @@
     <style>
         /* Add your custom styles here */
         .seat {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             margin: 5px;
-            padding: 8px;
+            padding: 10px;
             background-color: lightgray;
             text-align: center;
             cursor: pointer;
@@ -48,9 +48,15 @@
         }
 
         .selected {
-            background-color: #28a745 !important;
+            --tw-bg-opacity: 1;
+            background-color: rgb(59 130 246/var(--tw-bg-opacity)) !important;
+            color: white;
+            /* background-color: #28a745 !important; */
         }
-
+        .custom-bg {
+            --tw-bg-opacity: 1;
+            background-color: rgb(26 29 35/var(--tw-bg-opacity));
+        }
         .active {
             background-color: #86B817;
         }
@@ -71,8 +77,8 @@
                 <a class="text-light navbar-brand" href="index.php">Trang chủ</a>
                 <a class="text-light navbar-brand" href="index.php?act=lich_chieu">Lịch chiếu</a>
                 <a class="text-light navbar-brand" href="index.php?act=gia_ve">Giá vé</a>
-                <a class="text-light navbar-brand" href="index.php?act=tin_tuc">Tin tức</a>
-                <a class="text-light navbar-brand" href="index.php?act=khuyen_mai">Khuyến mãi</a>
+                <!-- <a class="text-light navbar-brand" href="index.php?act=tin_tuc">Tin tức</a> -->
+                <!-- <a class="text-light navbar-brand" href="index.php?act=khuyen_mai">Khuyến mãi</a> -->
                 <a class="text-light navbar-brand" href="index.php?act=gioi_thieu"><?= $currentDate ?></a> 
             </div>
 

@@ -159,17 +159,18 @@ include "model/cinema_room.php";
 
             case "chi_tiet_phim": {
                 if (isset($_GET['id_phim'])) {
-                    $id = $_GET['id_phim'];
+                    $id_phim = $_GET['id_phim'];
                     // $ds_loai_phim = loai_phim_all();
-                    $chi_tiet_phim = get_phim_by_id($id);
-                    $chi_tiet_showtimes = get_showtimes_by_id($id);
-                    $chi_tiet_date = get_date($id);
+                    $chi_tiet_phim = get_phim_by_id($id_phim);
+                    $chi_tiet_showtimes = get_showtimes_by_id($id_phim);
+                    $chi_tiet_date = get_date($id_phim);
                     if (!isset($_GET['id_date'])) {
                         $id_date = 0;
                     } else {
                         $id_date = $_GET['id_date'];
                     }
-                    $ds_showtimes = get_showtimes_by_id_date($id,$id_date);
+                    $ds_showtimes = get_showtimes_by_id_date($id_phim,$id_date);
+                    // var_dump($_SESSION['user']['username']);
                 } else {
                     include "view/home.php";
                 }
@@ -210,16 +211,27 @@ include "model/cinema_room.php";
                 include "view/lich_chieu.php";
                 break;
             }
-            case "payment" : {
-                include "view/payment/payment.php";
+            case "thanh_toan" : {
+                include "view/thanh_toan.php";
                 break;
             }
 
             case "chon_ghe": {
-                $seats = seat_all();
-                $id = $_GET['id_phim'];
-                $time = $_GET['time'];
-                // var_dump($id,$time);
+                $seats = seat_LK_loai_ve();
+                if (isset($_GET['id_phim'])) {
+                    $id_phim = $_GET['id_phim'];
+                }
+
+                if (isset($_GET['time'])) {
+                    $time = $_GET['time'];
+                }
+
+                if (isset($_GET['id_date'])) {
+                    $id_date = $_GET['id_date'];
+                }
+                
+                
+                // var_dump($id_date);
                 include "view/chon_ghe.php";
                 break;
             }

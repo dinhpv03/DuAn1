@@ -1,5 +1,66 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
+<head>
+  <title>Đếm ngược thời gian</title>
+</head>
+<body>
+  <h1 id="countdown">05:00</h1>
+  <button id="startButton" onclick="startCountdown()">Bắt đầu</button>
+
+  <script>
+  let countdownElement = document.getElementById("countdown");
+let countdownInterval;
+
+// Hàm để chuyển hướng sang trang mới và bắt đầu đếm ngược
+function redirectToNewPage() {
+  // Thay đổi URL của trang mới ở đây
+  window.location.href = "newpage.php";
+}
+
+// Hàm để bắt đầu đếm ngược
+function startCountdown() {
+  let timeInSeconds = 300; // 5 phút = 300 giây
+
+  // Hiển thị thời gian ban đầu
+  updateCountdownDisplay(timeInSeconds);
+
+  // Bắt đầu đếm ngược
+  countdownInterval = setInterval(function() {
+    timeInSeconds--;
+
+    // Kiểm tra nếu hết thời gian
+    if (timeInSeconds <= 0) {
+      clearInterval(countdownInterval);
+      redirectToNewPage();
+    }
+
+    // Cập nhật hiển thị thời gian còn lại
+    updateCountdownDisplay(timeInSeconds);
+  }, 1000);
+}
+
+// Hàm để cập nhật hiển thị thời gian
+function updateCountdownDisplay(timeInSeconds) {
+  let minutes = Math.floor(timeInSeconds / 60);
+  let seconds = timeInSeconds % 60;
+
+  // Định dạng thời gian thành chuỗi "mm:ss"
+  let formattedTime = String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0");
+
+  countdownElement.textContent = formattedTime;
+}
+console.log(window.location.href.includes("test.php"));
+// Gọi hàm startCountdown() nếu trang mới được mở
+if (window.location.href.includes("newpage.php")) {
+  startCountdown();
+}
+</script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+
 <head>
   <title>Chọn box</title>
   <style>
@@ -10,48 +71,61 @@
       margin-bottom: 10px;
       cursor: pointer;
     }
-    
+    .colored {
+      background-color: green !important;
+      color: white;
+    }
+
     .selected {
       background-color: green;
     }
   </style>
 </head>
+
 <body>
-  <div class="box" onclick="changeColor(event, 'box1')">
-    Box 1
-    <a href="https://example.com/page1" onclick="linkClick(event, 'example.com/page1')">Link</a>
-  </div>
-  <div class="box" onclick="changeColor(event, 'box2')">
-    Box 2
-    <a href="https://example.com/page2" onclick="linkClick(event, 'page2')">Link</a>
-  </div>
-  <div class="box" onclick="changeColor(event, 'box3')">
-    Box 3
-    <a href="https://example.com/page3" onclick="linkClick(event, 'page3')">Link</a>
-  </div>
-  
+<div class="box" onclick="changeColorAndReturnValue(this)">Box 1</div>
+<div class="box" onclick="changeColorAndReturnValue(this)">Box 2</div>
+<div class="box" onclick="changeColorAndReturnValue(this)">Box 3</div>
+
+<p id="result"></p>
+
   <script>
-    // Hàm được gọi khi box được nhấp vào
-    function changeColor(event, boxId) {
-      var clickedBox = event.currentTarget;
-      
-      // Kiểm tra nếu phần tử được nhấp vào là thẻ "a"
-      if (event.target.tagName.toLowerCase() === 'a') {
-        return;
-      }
-      
-      clickedBox.classList.toggle("selected");
-      history.pushState(null, '', '#' + boxId);
+    var selectedValues = [];
+
+function changeColorAndReturnValue(box) {
+  var value = box.innerText;
+  // console.log(value);
+  // Lấy thẻ <p> dựa trên id
+  var resultElement = document.getElementById('result');
+
+  // Kiểm tra xem box đã có màu hay chưa
+  var hasColor = box.classList.contains('colored');
+
+  if (hasColor) {
+    // Nếu box đã có màu, xóa màu và giá trị khỏi mảng
+    // box.style.backgroundColor = '';
+    box.classList.remove('colored');
+    var index = selectedValues.indexOf(value);
+    if (index !== -1) {
+      selectedValues.splice(index, 1);
+    // console.log(selectedValues);
     }
-    
-    // Hàm được gọi khi click vào các thẻ "a" trong box
-    function linkClick(event, pageId) {
-      event.preventDefault();
-      history.pushState(null, '', pageId);
-    }
+  } else {
+    // Nếu box chưa có màu, đặt màu xanh và thêm giá trị vào mảng
+    // box.style.backgroundColor = 'green';
+    box.classList.add('colored');
+    selectedValues.push(value);
+    // console.log(selectedValues);
+  }
+  console.log(selectedValues);
+
+  // Hiển thị các giá trị đã chọn trong thẻ <p>
+  resultElement.innerText = selectedValues.join(', ');
+}
   </script>
 </body>
-</html>
+
+</html> -->
 <!-- <!DOCTYPE html>
 <html>
 <head>
