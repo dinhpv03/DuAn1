@@ -7,7 +7,6 @@
                     <tr>
                         <th>Mã loại vé</th>
                         <th>Loại vé</th>
-                        <th>Loại ghế</th>
                         <th>Giá</th>
                         <th></th>
                     </tr>
@@ -16,17 +15,17 @@
                     foreach ($ds_loai_ve as $ds) {
                         extract($ds);
 
-//                        $delete = "index.php?act=edit_loai_phim&id_loaiphim=" . $id_loaiphim;
-//                        $edit = "index.php?act=edit_loai_phim&id_loaiphim=" . $id_loaiphim;
+                        $delete = "index.php?act=delete_loai_ve&id_loaive=" . $id_loaive;
+                        $edit = "index.php?act=edit_loai_ve&id_loaive=" . $id_loaive;
 
                         echo "
                                 <tr>
-                                    <td>$id_bienthevephim</td>
-                                    <td>$loai_ve</td>
-                                    <td>$loai_ghe</td>
-                                    <td>$price</td>
+                                    <td>$id_loaive </td>
+                                    <td>$dinh_dang_ve</td>
+                                    <td>$price.000</td>
                                     <td>
-                                        
+                                        <a class='btn btn-primary'  href='$edit'>Sửa</a>
+                                        <button class='btn btn-outline-danger' type='button' onclick=\"if (confirm('Bạn có chắc muốn xóa ?')) window.location.href='$delete'\">Xóa</button>
                                     </td>
                                 </tr>
                             ";
@@ -34,6 +33,7 @@
 
                     ?>
                 </table>
+                <a class="btn btn-outline-primary" href="index.php?act=them_moi_loai_ve">Thêm mới ve</a>
             </div>
     </section>
 </main>

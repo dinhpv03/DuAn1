@@ -134,24 +134,6 @@
             sumPr = sumPrice();
             price.innerText = sumPr == 0 ? "" : sumPr + ".000đ";
             price1.innerText = sumPr == 0 ? "" : sumPr + ".000đ";
-
-            // console.log(price.innerText);
-        // if (price.innerText == 0) {
-        //     price.innerText = "";
-        // } else {
-        //     price.innerText = sumPrice() + ".000 đ";
-        // }
-        // price.innerText = priceValue.sumPrice();
-
-        // for (let i = 0; i < select.length; i++) {
-        //     let valueSeat = select[i].getAttribute("value")
-        //     console.log(valueSeat);
-        //     if (select[i].classList.contains("selected")) {
-        //         seat.innerHTML = valueSeat
-        //     } else {
-        //         seat.innerHTML = "";
-        //     }
-        // }
     }
 
     var fiveMin = document.getElementById("countdown");
@@ -201,72 +183,3 @@ function formatTime(minutes, seconds) {
 }
   </script>
 </body>
-
-
-<!-- <body>
-
-<div class="container mt-5">
-    <h2 class="mb-4">Select Your Seat</h2>
-    <div id="seat-map" class="d-flex flex-wrap justify-content-center"> -->
-        <!-- Generate your seat elements dynamically here using JavaScript/PHP -->
-        <!-- Example: -->
-        <!-- <div class="seat" data-seat-number="A1">A1</div> -->
-        <!-- ... Repeat for all seats ... -->
-    <!-- </div>
-    <div class="mt-4">
-        <button id="book-btn" class="btn btn-success">Book Selected Seats</button>
-    </div>
-</div> -->
-
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script>
-    // Add your JavaScript code here
-    $(document).ready(function () {
-        // Sample: Generate seat elements dynamically (you may use PHP for this in a real application)
-        var seatMap = $('#seat-map');
-
-    // Gửi yêu cầu AJAX để lấy dữ liệu từ bảng seat
-    $.ajax({
-    url: 'model/seat.php', // Đặt đường dẫn đến tệp xử lý dữ liệu từ bảng seat
-    method: 'GET',
-    dataType: 'json',
-    success: function(data) {
-        // Xử lý dữ liệu trả về từ yêu cầu AJAX
-        var seats = data.seats;
-        for (var i = 0; i < seats.length; i++) {
-        var seat = $('<div class="seat" data-seat-number="' + seats[i].seat_name + '">' +
-            seats[i].seat_name +
-            '</div>');
-        seatMap.append(seat);
-        }
-    },
-    error: function() {
-        // Xử lý lỗi nếu có
-        console.log('Có lỗi xảy ra khi lấy dữ liệu từ bảng seat.');
-    }
-    });
-
-        // Seat selection logic
-        $('.seat').on('click', function () {
-            $(this).toggleClass('selected');
-        });
-
-        // Booking logic
-        $('#book-btn').on('click', function () {
-            var selectedSeats = $('.seat.selected');
-            if (selectedSeats.length > 0) {
-                var seatNumbers = selectedSeats.map(function () {
-                    return $(this).data('seat-number');
-                }).get().join(', ');
-
-                alert('Selected Seats: ' + seatNumbers);
-            } else {
-                alert('Please select at least one seat.');
-            }
-        });
-    });
-</script>
-
-</body> -->
