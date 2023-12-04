@@ -74,15 +74,14 @@ function load_one_phim($id_phim){
     return pdo_query_one($sql);
 }
 
-function cap_nhat_phim($id_phim, $name, $thoi_luong_phim, $ngay_phat_hanh, $poster, $banner, $mo_ta, $id_suatchieu, $id_loaiphim) {
+function cap_nhat_phim($id_phim, $name, $thoi_luong_phim, $ngay_phat_hanh, $poster, $banner, $mo_ta, $id_loaiphim) {
     $sql = "UPDATE phim 
             SET film_name = '".$name."', 
             thoi_luong_phim = '".$thoi_luong_phim."', 
             release_date = '".$ngay_phat_hanh."', 
             poster = '".$poster."',
             banner = '".$banner."',
-            mo_ta = '".$mo_ta."',   
-            id_suatchieu = '".$id_suatchieu."',   
+            mo_ta = '".$mo_ta."',     
             id_loaiphim = '".$id_loaiphim."'   
             WHERE id_phim=" . $id_phim;
     pdo_execute($sql);

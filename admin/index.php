@@ -204,7 +204,6 @@ include "../model/loai_ve.php";
                     $phim = load_one_phim($_GET['id_phim']);
                 }
                 $ds_loai_phim = loai_phim_all();
-                $ds_suat_chieu = load_all_suat_chieu();
                 include "phim/edit.php";
                 break;
             }
@@ -255,7 +254,6 @@ include "../model/loai_ve.php";
                     $thoi_luong_phim = $_POST['thoi_luong_phim'];
                     $ngay_phat_hanh = $_POST['ngay_phat_hanh'];
                     $mo_ta = $_POST['mo_ta'];
-                    $id_suatchieu = $_POST['id_suat_chieu'];
                     $id_loaiphim = $_POST['id_loai_phim'];
 
 
@@ -276,7 +274,7 @@ include "../model/loai_ve.php";
                     } else {
                         $banner = $current_images['banner'];
                     }
-                    cap_nhat_phim($id_phim, $name, $thoi_luong_phim, $ngay_phat_hanh, $poster, $banner,$mo_ta,$id_suatchieu,$id_loaiphim);
+                    cap_nhat_phim($id_phim, $name, $thoi_luong_phim, $ngay_phat_hanh, $poster, $banner,$mo_ta,$id_loaiphim);
 
                 }
                 $ds_phim = all_phim();

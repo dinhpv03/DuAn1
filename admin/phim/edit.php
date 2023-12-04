@@ -39,17 +39,6 @@ if (is_array($phim)) {
                                 <textarea type="text" class="form-control" name="mo_ta" placeholder="Description"><?= $mo_ta ?></textarea>
                             </div>
                             <div class="col-12">
-                                <label for="" class="form-label">Suất chiếu</label>
-                                <select name="id_suat_chieu" class="form-control">
-                                    <option value="0">Chọn suất chiếu</option>
-                                    <?php foreach ($ds_suat_chieu as $ds_suat) {
-                                        extract($ds_suat);
-                                        if($id_suatchieu == $id_suatchieu) $s = "selected"; else $s = "";
-                                        echo '<option value="' . $id_suatchieu . '"'. $s .'>Ngày ' . $day .' / ' .$month . ', '.$time.'</option>';
-                                    } ?>
-                                </select>
-                            </div>
-                            <div class="col-12">
                                 <label for="" class="form-label">Loại phim</label>
                                 <select  name="id_loai_phim" class="form-control">
                                     <option value="0">Chọn thể loại phim</option>

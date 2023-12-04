@@ -3,8 +3,8 @@
     extract($chi_tiet_phim);
     foreach ($chi_tiet_showtimes as $times) {
         extract($times);
-        // $html_showtimes.= '<a class="btn btn-primary py-3 px-5 mt-2 mx-1" href="index.php?act=chon_ghe">'.$time.'</a>';
-        $html_showtimes.='<input type="submit" class="btn btn-primary py-3 px-5 mt-2 mx-1" value="'.$time.'">';
+         $html_showtimes.= '<a class="btn btn-primary py-3 px-5 mt-2 mx-1" href="index.php?act=chon_ghe">'.$time.'</a>';
+//        $html_showtimes.='<input type="submit" class="btn btn-primary py-3 px-5 mt-2 mx-1" value="'.$time.'">';
     }
 ?>
 <div class="container-xxl py-5">    
@@ -21,13 +21,13 @@
             <!-- tên phim -->
             <h1 class="mb-4 text-light"><?=$film_name?></h1>
             <!-- mô tả phim -->
-            <p class="mb-4">
+            <p class="mb-4 ">
             <?=$mo_ta?>
             </p>
             <div class="row gy-2 gx-4 mb-4">
                 <div class="col-sm-6">
                     <!-- thời gian phim -->
-                    <p class="mb-0"><i class="fa-solid fa-clock fa-sm" style="color: #88b816;"></i> <?=$thoi_luong_phim?></p>
+                    <p class="mb-0"><i class="fa-sodlid fa-clock fa-sm" style="color: #88b816;"></i> <?=$thoi_luong_phim?></p>
                 </div>
                 <div class="col-sm-6">
                     <!--Ngày chiếu phim -->
