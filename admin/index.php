@@ -5,7 +5,6 @@ include "../model/pdo.php";
 include "../model/loai_phim.php";
 include "../model/tai_khoan.php";
 include "../model/phim.php";
-include "../model/suat_chieu.php";
 include "../model/loai_ve.php";
 
     if((isset($_GET['act'])) && ($_GET['act'] != "")){
@@ -139,14 +138,42 @@ include "../model/loai_ve.php";
                     break;
                 }
 
-
-
                 $ds_suat_chieu = load_all_suat_chieu();
                 include "suat_chieu/add.php";
                 break;
             }
             case "them_moi_loai_ve" : {
-                include "ve_phim/add.php";
+                if($_SERVER["REQUEST_METHOD"] == 'POST') {
+                    $loai_ve = $_POST['loai_ve'];
+                    $loai_ghe = $_POST['loai_ghe'];
+                    $price = $_POST['price'];
+
+                    if (empty($loai_ve)) {
+                        $errLoai = '*Vui lòng chọn loại vé';
+                    } elseif (!in_array($loai_ve, ['2D', '3D'])) {
+                        $errLoai = '*Loại vé không hợp lệ, chỉ nhập 2D và 3D';
+                    }
+
+                    if (empty($loai_ghe)) {
+                        $errGhe = '*Vui lòng chọn loại ghế';
+                    } elseif (!in_array($loai_ghe, ['0', '1'])) {
+                        $errGhe = '*Loại ghế không hợp lệ, chỉ 0 và 1';
+                    }
+
+                    if (empty($price)) {
+                        $errPrice = '*Vui lòng nhập giá vé';
+                    } elseif (!is_numeric($price)) {
+                        $errPrice = '*Giá vé phải là một số';
+                    }
+
+
+                    if(empty($errLoai) && empty($errGhe) && empty($errPrice)) {
+                        them_moi_loai_ve($loai_ve,$loai_ghe,$price);
+                        include "tai_khoan/list.php";
+                        break;
+                    }
+                }
+                include "loai_ve/add.php";
                 break;
             }
 
@@ -156,8 +183,8 @@ include "../model/loai_ve.php";
                 if (isset($_GET['id_user']) && ($_GET['id_user'] > 0)) {
                     delete_tai_khoan($_GET['id_user']);
                 }
-                $ds_tai_khoan = load_all_tai_khoan();
-                include "tai_khoan/list.php";
+                $ds_loai_ve = load_add_loai_ve();
+                include "loai_ve/list.php";
                 break;
             }
 
@@ -177,6 +204,14 @@ include "../model/loai_ve.php";
                 }
                 $ds_phim = all_phim();
                 include "phim/list.php";
+                break;
+            }
+            case "delete_loai_ve" : {
+                if (isset($_GET['id_loaive']) && ($_GET['id_loaive'] > 0)) {
+                    delete_ve($_GET['id_phim']);
+                }
+                $ds_loai_ve = load_add_loai_ve();
+                include "loai_ve/list.php";
                 break;
             }
 
@@ -205,6 +240,14 @@ include "../model/loai_ve.php";
                 }
                 $ds_loai_phim = loai_phim_all();
                 include "phim/edit.php";
+                break;
+            }
+            case "edit_loai_ve" : {
+                if (isset($_GET['id_loaive']) && ($_GET['id_loaive'] > 0)) {
+                    $loai_ve = load_one_loai_ve($_GET['id_loaive']);
+                }
+                $ds_loai_ve = load_add_loai_ve();
+                include "loai_ve/edit.php";
                 break;
             }
 
@@ -279,6 +322,21 @@ include "../model/loai_ve.php";
                 }
                 $ds_phim = all_phim();
                 include "phim/list.php";
+                break;
+            }
+
+            case "update_loai_ve" : {
+                if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    $loai_ve = $_POST['loai_ve'];
+                    $loai_ghe = $_POST['loai_ghe'];
+                    $price = $_POST['price'];
+                    $id_loaive = $_POST['id_loaive'];
+
+
+                    update_loai_ve($loai_ve,$loai_ghe,$price,$id_loaive);
+                }
+                $ds_loai_ve = load_add_loai_ve();
+                include "loai_ve/list.php";
                 break;
             }
 

@@ -58,15 +58,7 @@
                 <!-- Example: -->
                 <!-- <div class="seat" data-seat-number="A1">A1</div> -->
                 <!-- ... Repeat for all seats ... -->
-            </div>
-        </div>
-        <div class="col-6">
-            <h2 class="mb-4">Thong tin</h2>
-        </div>
-    </div>
-=======
-    <h2 class="mb-4">Select Your Seat</h2>
-    <div id="seat-map" class="d-flex flex-wrap justify-content-center"> -->
+
         <!-- Generate your seat elements dynamically here using JavaScript/PHP -->
         <!-- Example: -->
         <!-- <div class="seat" data-seat-number="A1">A1</div> -->
