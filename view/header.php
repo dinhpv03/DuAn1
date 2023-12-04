@@ -39,12 +39,20 @@
             width: 40px;
             height: 40px;
             margin: 5px;
-            background-color: #eee;
+            padding: 8px;
+            background-color: lightgray;
+            text-align: center;
             cursor: pointer;
+            color: black;
+            border-radius: 5px;
         }
 
-        .seat.selected {
-            background-color: #28a745;
+        .selected {
+            background-color: #28a745 !important;
+        }
+
+        .active {
+            background-color: #86B817;
         }
     </style>
 </head>
@@ -65,7 +73,7 @@
                 <a class="text-light navbar-brand" href="index.php?act=gia_ve">Giá vé</a>
                 <a class="text-light navbar-brand" href="index.php?act=tin_tuc">Tin tức</a>
                 <a class="text-light navbar-brand" href="index.php?act=khuyen_mai">Khuyến mãi</a>
-                <a class="text-light navbar-brand" href="index.php?act=gioi_thieu">Giới thiệu</a>
+                <a class="text-light navbar-brand" href="index.php?act=gioi_thieu"><?= $currentDate ?></a> 
             </div>
 
             <div class="col-md-3 mt-4">
