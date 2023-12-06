@@ -1,11 +1,15 @@
 <?php
+
 session_start();
-include "header.php";
-include "../model/pdo.php";
-include "../model/loai_phim.php";
-include "../model/tai_khoan.php";
-include "../model/phim.php";
-include "../model/loai_ve.php";
+ob_start();
+require_once "check-login.php";
+if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
+    include "header.php";
+    include "../model/pdo.php";
+    include "../model/loai_phim.php";
+    include "../model/tai_khoan.php";
+    include "../model/phim.php";
+    include "../model/loai_ve.php";
 
     if((isset($_GET['act'])) && ($_GET['act'] != "")){
         $act = $_GET['act'];
@@ -344,7 +348,7 @@ include "../model/loai_ve.php";
 
             // danh sách
             case "danh_sach_loai_phim" : {
-                $ds_loai_phim = loai_phim_all($dsphim);
+                $ds_loai_phim = loai_phim_all();
                 include "loai_phim/list.php";
                 break;
             }
@@ -371,7 +375,7 @@ include "../model/loai_ve.php";
 
 
 
-            // các trang view phụ
+                    // các trang view phụ
             case "thong_tin_tai_khoan" : {
                 include "tai_khoan/thong_tin_tai_khoan.php";
                 break;
@@ -389,15 +393,21 @@ include "../model/loai_ve.php";
                 break;
             }
             case "dang_xuat" : {
-                session_unset();
+                include "log-out.php";
+                break;
             }
             default : {
                 include "home.php";
                 break;
+                }
             }
+        } else {
+            include "home.php";
         }
-    } else {
-        include "home.php";
-    }
 
-include "footer.php";
+    include "footer.php";
+
+}else {
+    header("Location: login.php");
+}
+ob_end_flush();

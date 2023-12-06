@@ -21,10 +21,12 @@
                                 <div class="col-6">
                                     <label for="" class="form-label">Địa chỉ</label>
                                     <input type="text" class="form-control" name="address" placeholder="Address">
+                                    <span style="color: red"><?= isset($errAddress) ? $errAddress : '' ?></span>
                                 </div>
                                 <div class="col-6">
                                     <label for="" class="form-label">Số điện thoại</label>
                                     <input type="text" class="form-control" name="tel" placeholder="Phone number">
+                                    <span style="color: red"><?= isset($errPhone) ? $errPhone : '' ?></span>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -34,7 +36,9 @@
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Vai trò</label>
-                                <input type="number"  min="0" max="1" class="form-control" name="role" placeholder="0 - User, 1 - Admin">
+                                <input name="role" class="form-control" type="number" placeholder="0 - User, 1 - Admin">
+
+                                <span style="color: red"><?= isset($errRole) ? $errRole : '' ?></span>
                             </div>
                             <div class="mt-4">
                                 <input type="submit" class="btn btn-primary" name="them_moi" value = " Thêm mới ">

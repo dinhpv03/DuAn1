@@ -222,6 +222,7 @@
                 </div>
             </div>
         </div>
+        <a href="log-out.php">LOG OUT</a>
     </section>
 </main>
 <!-- end top bán chạy hôm nay -->

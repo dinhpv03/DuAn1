@@ -245,7 +245,7 @@
             <li class="nav-heading">Pages</li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="users-profile.html">
+                <a class="nav-link collapsed" href="index.php?act=thong_tin_tai_khoan">
                     <i class="bi bi-person"></i>
                     <span>Thông tin tài khoản</span>
                 </a>
@@ -265,19 +265,6 @@
                 </a>
             </li><!-- End Contact Page Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-register.html">
-                    <i class="bi bi-card-list"></i>
-                    <span>Register</span>
-                </a>
-            </li><!-- End Register Page Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-login.html">
-                    <i class="bi bi-box-arrow-in-right"></i>
-                    <span>Login</span>
-                </a>
-            </li><!-- End Login Page Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="index.php?act=erro_404">
@@ -287,11 +274,11 @@
             </li><!-- End Error 404 Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-blank.html">
-                    <i class="bi bi-file-earmark"></i>
-                    <span>Blank</span>
+                <a class="nav-link collapsed" href="index.php?act=dang_xuat">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    <span>Đăng xuất</span>
                 </a>
-            </li><!-- End Blank Page Nav -->
+            </li><!-- End Login Page Nav -->
         </ul>
     </aside>
     <!-- End Sidebar-->
