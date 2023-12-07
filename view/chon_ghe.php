@@ -5,21 +5,34 @@
     foreach ($seats as $s) {
         extract($s);
         if ($id_loaive == 2) {
-            $seat_vip = 'bg-warning';
+            $seat_vip = 'vip-seat';
         } else {
             $seat_vip = '';
         }
-        if ($stt == 10) {
-            $html_seat.= '<div class="col-1 fs-5 seat '.$seat_vip.'" onclick="changeColor(this)">
-                            <p>'.$seat_name.$stt.'</p>
-                            <input type="hidden" name="price" value="'.$price.'">
-                        </div>
-                        <div class="w-100"></div>';
+        if ($status == 0) {
+            if ($stt == 10) {
+                $html_seat.= '<div class="col-1 fs-5 seat '.$seat_vip.'" onclick="changeColor(this)">
+                                <p>'.$seat_name.$stt.'</p>
+                                <input type="hidden" name="price" value="'.$price.'">
+                            </div>
+                            <div class="w-100"></div>';
+            } else {
+                $html_seat.= '<div class="col-1 fs-5 seat '.$seat_vip.'" onclick="changeColor(this)">
+                                <p>'.$seat_name.$stt.'</p>
+                                <input type="hidden" name="price" value="'.$price.'">
+                            </div>';
+            }
         } else {
-            $html_seat.= '<div class="col-1 fs-5 seat '.$seat_vip.'" onclick="changeColor(this)">
-                            <p>'.$seat_name.$stt.'</p>
-                            <input type="hidden" name="price" value="'.$price.'">
-                        </div>';
+            if ($stt == 10) {
+                $html_seat.= '<div class="col-1 fs-5 no-seat">
+                                <i class="fa-solid fa-xmark fa-xl"></i>
+                            </div>
+                            <div class="w-100"></div>';
+            } else {
+                $html_seat.= '<div class="col-1 fs-5 no-seat">
+                                <i class="fa-solid fa-xmark fa-xl"></i>
+                            </div>';
+            }
         }
     }
 ?>
@@ -45,7 +58,7 @@
             <div class="col-2"></div>
         </div>
 
-        <form action="index.php?act=thanh_toan" method="post">
+        <form action="" method="post">
             <div class="row justify-content-center">
                     <?= $html_seat; ?>
             </div>
@@ -53,7 +66,7 @@
             <input type="hidden" name="id_date" value="<?= $id_date ?>">
             <input type="hidden" name="time" value="<?= $time ?>">
             <input id="seat1" type="hidden" name="seat" value="">
-            <input id="price1" type="hidden" name="price" value="">
+            <input id="price1" type="hidden" name="price" value="" />
             <div class="row justify-content-around">
                 <!-- <div class="col-9"></div> -->
                 <div class="col-1"></div>
@@ -66,11 +79,10 @@
                     <p class="fs-5 text-white m-0">Thành tiền: 
                         <span id="price" class="fs-5 text-white"></span>
                     </p>
-                    
                 </div>
 
                 <div class="col-2 py-2">
-                    <button class="btn btn-primary py-2 px-4 mt-2 mx-1 rounded-pill fs-5" type="submit">Thanh Toán</button>
+                    <input class="btn btn-primary py-2 px-4 mt-2 mx-1 rounded-pill fs-5" name="thanh_toan" id="btnPayment" type="submit" disabled value="Thanh Toán">
                 </div>
 
                 <div class="col-1"></div>
@@ -85,10 +97,11 @@
     var seatValue = [];
     var priceValue = [];
     // Hàm được gọi khi box được nhấp vào
+
     function changeColor(clickedBox) {
         value = clickedBox.innerText;
         valuePr = clickedBox.querySelector('input[type="hidden"]').value;
-
+        btnPayment = document.getElementById('btnPayment');
         // clickedBox.classList.toggle("selected");
 
         var seat = document.getElementById("seat");
@@ -115,11 +128,13 @@
         } else {
             // Nếu box chưa có màu, đặt màu xanh và thêm giá trị vào mảng
             clickedBox.classList.add('selected');
-
             seatValue.push(value);
             priceValue.push(valuePr);
         }
-        
+        const anyBox = document.querySelector('.selected');
+        btnPayment.disabled = !anyBox;
+
+        console.log(anyBox);
         seat.innerText = seatValue.join(', ');
         seat1.value = seatValue.join(', ');
 
@@ -133,7 +148,8 @@
         }
             sumPr = sumPrice();
             price.innerText = sumPr == 0 ? "" : sumPr + ".000đ";
-            price1.innerText = sumPr == 0 ? "" : sumPr + ".000đ";
+            price1.value = sumPr;
+            // price1.value = sumPr == 0 ? "" : sumPr + ".000đ";
     }
 
     var fiveMin = document.getElementById("countdown");

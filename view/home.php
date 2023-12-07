@@ -53,7 +53,7 @@ $html_get_phim = select_phim($phim_LK_loai_phim);
 <!-- Danh sách phim hot -->
     <div class="container mt-4">
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="section-title bg-dark text-center text-primary px-3">Đang chiếu</h6>
+            <h5 class="section-title bg-dark text-center text-primary px-3">Đang chiếu</h5>
             <h4 class="mb-5 text-light">DANH SÁCH PHIM ĐANG HOT</h4>
         </div>
         <div class="row g-4 justify-content-center">

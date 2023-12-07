@@ -5,6 +5,10 @@ function get_date($id_phim){
     $sql = "SELECT DATE_FORMAT(date_month, '%d-%m') AS date_month, id_date, stt FROM date WHERE id_phim = ".$id_phim;
     return pdo_query($sql);
 }
+function get_date_by_id($id_date){
+    $sql = "SELECT DATE_FORMAT(date_month, '%d-%m-%Y') AS date_month FROM date WHERE id_date = ".$id_date;
+    return pdo_query($sql);
+}
 
 
 // function phim_connect_bt_showtimes_by_id($id_phim){

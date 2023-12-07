@@ -1,35 +1,29 @@
 <?php
     extract($chi_tiet_phim);
-    // var_dump($ds_showtimes);
     $html_showtimes = "";
-    // $linkPro = "";
     foreach ($ds_showtimes as $times) {
         extract($times);
         $linkPro = 'index.php?act=chon_ghe&id_phim='.$id_phim.'&id_date='.$id_date.'&time='.$time.'';
 
         $html_showtimes.= '<a class="btn btn-primary py-1 px-3 mt-2 mx-1" href="'.$linkPro.'">'.$time.'</a>';
-        // $html_showtimes.='<form action="index.php?act=chon_ghe&time='.$time.'" method="post">
-        //                     <input type="hidden" name="">
-        //                     <input type="submit" class="btn btn-primary py-3 px-5 mt-2 mx-1" value="'.$time.'">
-        //                 </form>';
     }
 
-$html_date = "";
-foreach ($chi_tiet_date as $d) {
-    extract($d);
-    $link = 'index.php?act=chi_tiet_phim&id_phim='.$id_phim.'&id_date='.$id_date;
-    // if ($stt == 1) {
-    //     $active = 'active';
-    // } else {
-    //     $active = "";
-    // }
-    if ($id_phim == $_GET['id_phim']) {
-        $html_date.='
-            <a href="'.$link.'">
-                <div class="box btn text-white py-3 px-5 mt-2 mx-1 border-1" onclick="changeColor(this)">'.$date_month.'</div>
-            </a>';
+    $html_date = "";
+    foreach ($chi_tiet_date as $d) {
+        extract($d);
+        $link = 'index.php?act=chi_tiet_phim&id_phim='.$id_phim.'&id_date='.$id_date;
+        // if ($stt == 1) {
+        //     $active = 'active';
+        // } else {
+        //     $active = "";
+        // }
+        if ($id_phim == $_GET['id_phim']) {
+            $html_date.='
+                <a href="'.$link.'">
+                    <div class="box btn text-white py-3 px-5 mt-2 mx-1 border-1" onclick="changeColor(this)">'.$date_month.'</div>
+                </a>';
+        }
     }
-}
 ?>
 <div class="container-xxl py-5">
     <div class="row g-5">
@@ -83,7 +77,6 @@ foreach ($chi_tiet_date as $d) {
     <hr class="bg-while">
 </div>
 <script>
-
     var boxes = document.getElementsByClassName("box");
 
     // Gán sự kiện onclick cho từng phần tử
@@ -103,7 +96,7 @@ foreach ($chi_tiet_date as $d) {
             localStorage.setItem("selectedBox", this.textContent);
         };
     }
-
+    console.log(this.textContent);
     // Hàm được gọi khi tải lại trang
     window.onload = function() {
         var selectedBox = localStorage.getItem("selectedBox");
@@ -112,6 +105,11 @@ foreach ($chi_tiet_date as $d) {
             // Nếu có box được chọn trước đó, tìm và thêm lớp "active" vào box đó
             for (var k = 0; k < boxes.length; k++) {
                 if (boxes[k].textContent === selectedBox) {
+                    if (window.onload == true) {
+                        
+                    } else {
+                        
+                    }
                     boxes[k].classList.add("active");
                     break;
                 }

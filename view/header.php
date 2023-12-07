@@ -40,10 +40,22 @@
             height: 50px;
             margin: 5px;
             padding: 10px;
-            background-color: lightgray;
+            background-color: #252A31;
             text-align: center;
             cursor: pointer;
-            color: black;
+            color: #fff;
+            border-radius: 5px;
+        }
+        .vip-seat {
+            background-color: #FF8413;
+        }
+        .no-seat {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            padding: 12px 10px 0 10px;
+            background-color: #252A31;
+            text-align: center;
             border-radius: 5px;
         }
 
@@ -85,7 +97,7 @@
             <div class="col-md-3 mt-4">
                 <form class="d-flex" action="index.php?act=search_phim" method="post">
                     <input class="form-control mr20" type="text" name="kyw" placeholder="Tìm kiếm phim" aria-label="Search" required>
-                    <input class="btn btn-outline-success " name="timkiem" value="Tìm kiếm" type="submit">
+                    <input class="btn btn-primary py-1 px-3 mx-3 rounded-pill" name="timkiem" value="Tìm kiếm" type="submit">
                 </form>
             </div>
 

@@ -12,6 +12,11 @@ function get_phim_by_id($id_phim){
     return pdo_query_one($sql);
 }
 
+function get_film_name_by_id($id_phim){
+    $sql = "SELECT film_name FROM phim WHERE id_phim =" . $id_phim;
+    return pdo_query_one($sql);
+}
+
 function select_phim($dsphim){
     $html_select_phim = "";
     foreach ($dsphim as $film) {

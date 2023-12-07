@@ -9,7 +9,7 @@ function get_showtimes_by_id($id_phim){
 function get_showtimes_by_id_date($id_phim,$id_date){
     $sql = "SELECT DATE_FORMAT(time, '%H:%i') AS time FROM showtimes WHERE id_phim = ".$id_phim;
     // if ($id_date > 0) {
-        $sql .= " AND id_date =".$id_date;
+        $sql .= " AND id_date = ".$id_date;
     // }
     return pdo_query($sql);
 }

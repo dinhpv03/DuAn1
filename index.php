@@ -1,10 +1,13 @@
 <?php
 session_start();
 ob_start();
+if(!isset($_SESSION["ticket"])){
+    $_SESSION["ticket"]=[];
+}
 $currentDate = date('Y-m-d');
 include "view/header.php";
 
-include "model/pdo.php";
+include "model/pdo.php";    
 include "model/tai_khoan.php";
 include "model/phim.php";
 include "model/loai_phim.php";
@@ -12,6 +15,9 @@ include "model/showtimes.php";
 include "model/date.php";
 include "model/seat.php";
 include "model/cinema_room.php";
+include "model/chi_tiet_ve_phim.php";
+include "model/ve_phim.php";
+
 
     // data trang chủ
     $ds_phim = get_phim(4);
@@ -48,7 +54,11 @@ include "model/cinema_room.php";
                             break;
                         }
                     }
+                    if (!empty($_SESSION["ticket"])) {
+                        header('location: index.php?act=thanh_toan');
+                    }
                 }
+                // unset($_SESSION["ticket"]);
                 include "view/tai_khoan/dang_nhap.php";
                 break;
             }
@@ -98,7 +108,12 @@ include "model/cinema_room.php";
                         insert_tai_khoan($email, $user, $pass, $address, $number_phone);
                         $thongbao =  "Đăng ký tài khoản thành công!";
                     }
+
+                    if (!empty($_SESSION["ticket"])) {
+                        header('location: index.php?act=thanh_toan');
+                    }
                 }
+                // unset($_SESSION["ticket"]);
                 include "view/tai_khoan/dang_ky.php";
                 break;
             }
@@ -120,6 +135,7 @@ include "model/cinema_room.php";
                         }
                     }
                 }
+                // unset($_SESSION["ticket"]);
                 include "view/tai_khoan/quen_mat_khau.php";
                 break;
             }
@@ -147,6 +163,7 @@ include "model/cinema_room.php";
                         $thongbao = "Cập nhật tài khoản thành công!";
                     }
                 }
+                // unset($_SESSION["ticket"]);
                 include "view/tai_khoan/thong_tin_tai_khoan.php";
                 break;
             }
@@ -162,7 +179,6 @@ include "model/cinema_room.php";
                     $id_phim = $_GET['id_phim'];
                     // $ds_loai_phim = loai_phim_all();
                     $chi_tiet_phim = get_phim_by_id($id_phim);
-                    $chi_tiet_showtimes = get_showtimes_by_id($id_phim);
                     $chi_tiet_date = get_date($id_phim);
                     if (!isset($_GET['id_date'])) {
                         $id_date = 0;
@@ -174,6 +190,7 @@ include "model/cinema_room.php";
                 } else {
                     include "view/home.php";
                 }
+                unset($_SESSION["ticket"]);
                 include "view/chi_tiet_phim.php";
                 break;
             }
@@ -189,7 +206,6 @@ include "model/cinema_room.php";
                         $id_loaiphim = $_GET['id_loaiphim'];
                     } else {
                         $id_loaiphim = 0;
-
                     }
                     $ds_search = search_phim($kyw, $id_loaiphim);
                     $the_loai_phim = load_the_loai_phim($id_loaiphim);
@@ -197,7 +213,6 @@ include "model/cinema_room.php";
                     if (empty($ds_search)) {
                         $no_result_message = "Không có kết quả phù hợp.";
                     }
-
                     include "view/search_phim.php";
                     break;
                 }
@@ -211,31 +226,88 @@ include "model/cinema_room.php";
                 include "view/lich_chieu.php";
                 break;
             }
-            case "thanh_toan" : {
-                include "view/thanh_toan.php";
-                break;
-            }
 
             case "chon_ghe": {
                 $seats = seat_LK_loai_ve();
-                if (isset($_GET['id_phim'])) {
-                    $id_phim = $_GET['id_phim'];
-                }
+                if (isset($_POST['thanh_toan']) && $_POST['thanh_toan']) {
+                    if (isset($_GET['id_phim'])) {
+                        $id_phim = $_GET['id_phim'];
+                    }
+    
+                    if (isset($_GET['time'])) {
+                        $time = $_GET['time'];
+                    }
+    
+                    if (isset($_GET['id_date'])) {
+                        $id_date = $_GET['id_date'];
+                    }
 
-                if (isset($_GET['time'])) {
-                    $time = $_GET['time'];
-                }
+                    $seat = $_POST['seat'];
+                    $price = $_POST['price'];
 
-                if (isset($_GET['id_date'])) {
-                    $id_date = $_GET['id_date'];
+                    $_SESSION['get_link'] = $_SERVER['REQUEST_URI'];
+                    
+                    $ticket = array("id_phim" => $id_phim,"id_date" => $id_date,"time" => $time,"seat" => $seat,"price" => $price);
+                    array_push($_SESSION["ticket"],$ticket);
+                    header('location: index.php?act=thanh_toan');
+                } else {
+                    unset($_SESSION["ticket"]);
+                    include "view/chon_ghe.php";
                 }
-                
-                
-                // var_dump($id_date);
-                include "view/chon_ghe.php";
                 break;
             }
 
+            case "thanh_toan": {
+                if (empty($_SESSION["ticket"])) {
+                    header('location: index.php');
+                }
+
+                var_dump($_SESSION["ticket"]);
+                include "view/thanh_toan.php";
+                var_dump($_SESSION["user"]);
+                break;
+            }
+
+            case "thanh_toan_submit": {
+                if (empty($_SESSION['user'])) {
+                    header('location: index.php?act=dang_nhap');
+                    break;
+                } else {
+                    if (isset($_POST['payment']) && ($_POST['payment'])) {
+                        $ma_ve = "NC".rand(1000,9999).date('Ymd');
+                        $id_user = $_SESSION['user']['id_user'];
+                        $film_name = $_POST['film_name'];
+                        $showtime = $_POST['suat_chieu'];
+                        $date = $_POST['date_month'];
+                        $ghe_ngoi = $_POST['ghe_ngoi'];
+                        $total = $_POST['total'];
+                        $pttt = $_POST['pttt'];
+                        $id_chitietvephim = insert_chi_tiet_ve_phim($ma_ve , $id_user , $film_name , $showtime , $date , $ghe_ngoi , $total , $pttt);
+                        foreach ($_SESSION["ticket"] as $tik) {
+                            extract($tik);
+                            insert_ve_phim($id_date , $time , $id_phim , $id_user , $price , $seat , $id_chitietvephim);
+
+                            $arraySeat = explode(", ", $seat);
+                            $pattern = '/^([A-Za-z]+)(\d+)$/';
+                            foreach ($arraySeat as $key) {
+                                if (preg_match($pattern, $key, $matches)) {
+                                    $seat_name = $matches[1];
+                                    $stt = $matches[2];
+                                    update_status($seat_name, $stt);
+                                }
+                            }
+                        }
+                        header('location: index.php?act=confirm');
+                    }
+                }
+                break;
+            }
+
+            case "confirm": {
+                unset($_SESSION["ticket"]);
+                include "view/confirm.php";
+                break;
+            }
             default : {
                 include "view/home.php";
                 break;
@@ -248,4 +320,3 @@ include "model/cinema_room.php";
 
 include "view/footer.php";
 ob_end_flush();
-//    đây sẽ test git
