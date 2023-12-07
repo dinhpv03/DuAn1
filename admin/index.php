@@ -1,6 +1,8 @@
 <?php
 
+session_name("admin_session");
 session_start();
+
 ob_start();
 require_once "check-login.php";
 if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
@@ -10,6 +12,9 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
     include "../model/tai_khoan.php";
     include "../model/phim.php";
     include "../model/loai_ve.php";
+    include "../model/binh_luan.php";
+    include "../model/thong_ke.php";
+
 
     if((isset($_GET['act'])) && ($_GET['act'] != "")){
         $act = $_GET['act'];
@@ -219,6 +224,20 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
                 break;
             }
 
+            case "delete_binh_luan" : {
+                if(isset($_GET['id_binhluan']) && ($_GET['id_binhluan'])) {
+                    delete_binhluan($_GET['id_binhluan']);
+                    $ds_binh_luan = load_binh_luan();
+                    include "binh_luan/list.php";
+                }
+                break;
+            }
+            case "deleteAll" : {
+                delete_all();
+                include "binh_luan/list.php";
+                break;
+            }
+
 
 
 
@@ -373,6 +392,18 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
                 break;
             }
 
+            case "danh_sach_binh_luan" : {
+                $ds_binh_luan = load_binh_luan();
+                include "binh_luan/list.php";
+                break;
+            }
+
+
+            //Thống kê
+
+            case "thong_ke_tai_khoan" : {
+                $tong_tai_khoan = thong_ke_tai_khoan();
+            }
 
 
                     // các trang view phụ
@@ -402,6 +433,7 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
                 }
             }
         } else {
+            $tong_tai_khoan = thong_ke_tai_khoan();
             include "home.php";
         }
 

@@ -1,5 +1,7 @@
 <?php
+session_name("user_session");
 session_start();
+
 ob_start();
 if(!isset($_SESSION["ticket"])){
     $_SESSION["ticket"]=[];
@@ -255,6 +257,15 @@ include "model/ve_phim.php";
                     include "view/chon_ghe.php";
                 }
                 break;
+            }
+            case "delete_binh_luan" : {
+                if (isset($_POST['commentId'])) {
+                    $commentId = $_POST['commentId'];
+                    delete_binhluan($commentId);
+                    // Respond with a success message (optional)
+                    echo "Comment deleted successfully!";
+                    exit();
+                }
             }
 
             case "thanh_toan": {
