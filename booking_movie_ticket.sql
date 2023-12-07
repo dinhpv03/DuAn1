@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th12 04, 2023 lúc 09:45 PM
+-- Thời gian đã tạo: Th12 07, 2023 lúc 06:55 PM
 -- Phiên bản máy phục vụ: 8.0.30
 -- Phiên bản PHP: 8.1.10
 
@@ -29,7 +29,14 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `chi_tiet_ve_phim` (
   `id_chitietvephim` int NOT NULL,
-  `id_vephim` int NOT NULL
+  `ma_ve` varchar(50) NOT NULL,
+  `id_user` int NOT NULL,
+  `film_name` varchar(50) NOT NULL,
+  `showtime` varchar(50) NOT NULL,
+  `date` varchar(50) NOT NULL,
+  `ghe_ngoi` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `total` int NOT NULL,
+  `pttt` tinyint NOT NULL COMMENT 'Phương thức thanh toán -\r\n1: Tiền mặt\r\n2: Ví điện tử\r\n3: Chuyển khoản\r\n4: Thanh toán online'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -41,8 +48,7 @@ CREATE TABLE `chi_tiet_ve_phim` (
 CREATE TABLE `cinema_room` (
   `id_room` int NOT NULL,
   `id_showtimes` int NOT NULL,
-  `id_phim` int NOT NULL,
-  `status` tinyint NOT NULL DEFAULT '0' COMMENT '0: chưa đặt - 1: đã đặt'
+  `id_phim` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -159,37 +165,37 @@ CREATE TABLE `seat` (
 --
 
 INSERT INTO `seat` (`id_seat`, `seat_name`, `stt`, `status`, `id_loaive`) VALUES
-(1, 'A', 1, 0, 1),
+(1, 'A', 1, 1, 1),
 (2, 'A', 2, 0, 1),
 (3, 'A', 3, 0, 1),
 (4, 'A', 4, 0, 1),
 (5, 'A', 5, 0, 1),
-(6, 'A', 6, 0, 1),
+(6, 'A', 6, 1, 1),
 (7, 'A', 7, 0, 1),
 (8, 'A', 8, 0, 1),
 (9, 'A', 9, 0, 1),
-(10, 'A', 10, 0, 1),
+(10, 'A', 10, 1, 1),
 (11, 'B', 1, 0, 1),
 (12, 'B', 2, 0, 1),
 (13, 'B', 3, 0, 1),
 (14, 'B', 4, 0, 1),
-(15, 'B', 5, 0, 1),
+(15, 'B', 5, 1, 1),
 (16, 'B', 6, 0, 1),
 (17, 'B', 7, 0, 1),
 (18, 'B', 8, 0, 1),
 (19, 'B', 9, 0, 1),
 (20, 'B', 10, 0, 1),
-(21, 'C', 1, 0, 2),
+(21, 'C', 1, 0, 1),
 (22, 'C', 2, 0, 2),
 (23, 'C', 3, 0, 2),
 (24, 'C', 4, 0, 2),
-(25, 'C', 5, 0, 2),
+(25, 'C', 5, 1, 2),
 (26, 'C', 6, 0, 2),
 (27, 'C', 7, 0, 2),
 (28, 'C', 8, 0, 2),
 (29, 'C', 9, 0, 2),
-(30, 'C', 10, 0, 2),
-(31, 'D', 1, 0, 2),
+(30, 'C', 10, 0, 1),
+(31, 'D', 1, 0, 1),
 (32, 'D', 2, 0, 2),
 (33, 'D', 3, 0, 2),
 (34, 'D', 4, 0, 2),
@@ -198,7 +204,7 @@ INSERT INTO `seat` (`id_seat`, `seat_name`, `stt`, `status`, `id_loaive`) VALUES
 (37, 'D', 7, 0, 2),
 (38, 'D', 8, 0, 2),
 (39, 'D', 9, 0, 2),
-(40, 'D', 10, 0, 2);
+(40, 'D', 10, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -249,7 +255,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `email`, `number_phone`, `address`, `role`) VALUES
-(1, 'duc', '123', 'duc@gmail.com', 123456, 'HN', 1);
+(1, 'duc', '123', 'duc@gmail.com', 123456, 'HN', 1),
+(4, 'duc1234', '123', 'duc@gmail.com', 123456, 'hcm', 0);
 
 -- --------------------------------------------------------
 
@@ -259,11 +266,13 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `email`, `number_phone`, 
 
 CREATE TABLE `ve_phim` (
   `id_vephim` int NOT NULL,
-  `id_ghe` int NOT NULL,
-  `id_suatchieu` int NOT NULL,
-  `id_bienthevephim` int NOT NULL,
+  `id_date` int NOT NULL,
+  `time` varchar(10) NOT NULL,
   `id_phim` int NOT NULL,
-  `id_user` int NOT NULL
+  `id_user` int NOT NULL,
+  `price` int NOT NULL,
+  `seat` varchar(50) NOT NULL,
+  `id_chitietvephim` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -275,7 +284,7 @@ CREATE TABLE `ve_phim` (
 --
 ALTER TABLE `chi_tiet_ve_phim`
   ADD PRIMARY KEY (`id_chitietvephim`),
-  ADD KEY `chi_tiet_ve_phim_LK_ve_phim` (`id_vephim`);
+  ADD KEY `chi_tiet_ve_phim_LK_user` (`id_user`);
 
 --
 -- Chỉ mục cho bảng `cinema_room`
@@ -337,11 +346,10 @@ ALTER TABLE `user`
 --
 ALTER TABLE `ve_phim`
   ADD PRIMARY KEY (`id_vephim`),
-  ADD KEY `ve_phim_FK_bien_the_ve_phim` (`id_bienthevephim`),
-  ADD KEY `ve_phim_FK_chon_ghe` (`id_ghe`),
-  ADD KEY `ve_phim_FK_phim` (`id_phim`),
-  ADD KEY `ve_phim_FK_chon_suat_chieu` (`id_suatchieu`),
-  ADD KEY `ve_phim_FK_user` (`id_user`);
+  ADD KEY `ve_phim_LK_phim` (`id_phim`),
+  ADD KEY `ve_phim_LK_user` (`id_user`),
+  ADD KEY `ve_phim_LK_date` (`id_date`),
+  ADD KEY `ve_phim_LK_chi_tiet_ve_phim` (`id_chitietvephim`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -399,7 +407,7 @@ ALTER TABLE `showtimes`
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `ve_phim`
@@ -415,7 +423,7 @@ ALTER TABLE `ve_phim`
 -- Các ràng buộc cho bảng `chi_tiet_ve_phim`
 --
 ALTER TABLE `chi_tiet_ve_phim`
-  ADD CONSTRAINT `chi_tiet_ve_phim_LK_ve_phim` FOREIGN KEY (`id_vephim`) REFERENCES `ve_phim` (`id_vephim`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `chi_tiet_ve_phim_LK_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Các ràng buộc cho bảng `cinema_room`
@@ -453,10 +461,10 @@ ALTER TABLE `showtimes`
 -- Các ràng buộc cho bảng `ve_phim`
 --
 ALTER TABLE `ve_phim`
-  ADD CONSTRAINT `ve_phim_FK_bien_the_ve_phim` FOREIGN KEY (`id_bienthevephim`) REFERENCES `loai_ve` (`id_loaive`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `ve_phim_FK_chon_ghe` FOREIGN KEY (`id_ghe`) REFERENCES `cinema_room` (`id_room`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `ve_phim_FK_phim` FOREIGN KEY (`id_phim`) REFERENCES `phim` (`id_phim`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `ve_phim_FK_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `ve_phim_LK_chi_tiet_ve_phim` FOREIGN KEY (`id_chitietvephim`) REFERENCES `chi_tiet_ve_phim` (`id_chitietvephim`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `ve_phim_LK_date` FOREIGN KEY (`id_date`) REFERENCES `date` (`id_date`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `ve_phim_LK_phim` FOREIGN KEY (`id_phim`) REFERENCES `phim` (`id_phim`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `ve_phim_LK_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
