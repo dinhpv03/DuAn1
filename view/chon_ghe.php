@@ -47,7 +47,7 @@
 
         <form action="index.php?act=thanh_toan" method="post">
             <div class="row justify-content-center">
-                    <?= $html_seat; ?>
+                <?= $html_seat; ?>
             </div>
             <input type="hidden" name="id_phim" value="<?= $id_phim ?>">
             <input type="hidden" name="id_date" value="<?= $id_date ?>">
@@ -55,7 +55,6 @@
             <input id="seat1" type="hidden" name="seat" value="">
             <input id="price1" type="hidden" name="price" value="">
             <div class="row justify-content-around">
-                <!-- <div class="col-9"></div> -->
                 <div class="col-1"></div>
                 
                 <div class="col-4 py-2 px-5">

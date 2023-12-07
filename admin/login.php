@@ -1,4 +1,5 @@
 <?php
+    session_name("admin_session");
     session_start();
 
     $errUser = $errPass = $errRole = null; 
@@ -103,6 +104,6 @@
                 </div>
             </div>
         </div>
-</section>
+    </section>
 </body>
 </html>

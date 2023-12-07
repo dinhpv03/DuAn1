@@ -77,10 +77,23 @@ foreach ($chi_tiet_date as $d) {
                     <?=$html_showtimes;?>
                 </div>
             </div>
-
         </div>
     </div>
     <hr class="bg-while">
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    jQuery.noConflict();
+    jQuery(document).ready(function ($) {
+        $("#binhluan").load("view/binh_luan.php", {id_movie: <?= $id_phim ?>});
+
+    });
+</script>
+<div class="row">
+    <div <div class="col-md-12 bg-light">
+        <div id="binhluan"></div>
+    </div>
 </div>
 <script>
 

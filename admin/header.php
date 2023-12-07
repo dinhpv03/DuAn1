@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="layout_admin/assets/img/favicon.png" rel="icon" type="image/x-icon" >
+  <link href="layout_admin/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -148,11 +148,11 @@
                         <i class="bi bi-circle"></i><span>Thêm mới tài khoản</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="index.php?act=them_moi_suat_chieu">
-                        <i class="bi bi-circle"></i><span>Thêm suất chiếu</span>
-                        </a>
-                    </li>
+<!--                    <li>-->
+<!--                        <a href="index.php?act=them_moi_suat_chieu">-->
+<!--                        <i class="bi bi-circle"></i><span>Thêm suất chiếu</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
                     <li>
                         <a href="index.php?act=them_moi_loai_ve">
                         <i class="bi bi-circle"></i><span>Thêm loại vé</span>
@@ -192,23 +192,28 @@
                             <i class="bi bi-circle"></i><span>Danh sách loại vé</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="index.php?act=danh_sach_binh_luan">
+                            <i class="bi bi-circle"></i><span>Danh sách bình luận</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
                 <!-- end danh sách -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-bar-chart"></i><span>Biểu đồ thống kê</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-bar-chart"></i><span>Thống kê</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="charts-chartjs.html">
-                            <i class="bi bi-circle"></i><span>Chart.js</span>
+                            <i class="bi bi-circle"></i><span>Biểu đồ</span>
                         </a>
                     </li>
                     <li>
                         <a href="charts-apexcharts.html">
-                            <i class="bi bi-circle"></i><span>ApexCharts</span>
+                            <i class="bi bi-circle"></i><span>Tổng hợp</span>
                         </a>
                     </li>
                     <li>

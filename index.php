@@ -1,5 +1,7 @@
 <?php
+session_name("user_session");
 session_start();
+
 ob_start();
 $currentDate = date('Y-m-d');
 include "view/header.php";
@@ -234,6 +236,15 @@ include "model/cinema_room.php";
                 // var_dump($id_date);
                 include "view/chon_ghe.php";
                 break;
+            }
+            case "delete_binh_luan" : {
+                if (isset($_POST['commentId'])) {
+                    $commentId = $_POST['commentId'];
+                    delete_binhluan($commentId);
+                    // Respond with a success message (optional)
+                    echo "Comment deleted successfully!";
+                    exit();
+                }
             }
 
             default : {
