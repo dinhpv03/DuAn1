@@ -84,7 +84,13 @@
                                 <input type="hidden" name="date_month" value="<?= $date_month ?>">
                                 <input type="hidden" name="ghe_ngoi" value="<?= $ghe_ngoi ?>">
                                 <input type="hidden" name="total" value="<?= $price ?>">
-                                <input class="btn btn-primary py-2 px-5 mt-2 mx-1 rounded-pill" name="payment" type="submit" value="Thanh toán">
+
+                            <?php if(isset($_SESSION['user'])) {
+                                echo '<input class="btn btn-primary py-2 px-5 mt-2 mx-1 rounded-pill" name="payment" type="submit" value="Thanh toán">';
+                            } else {
+                                echo '<a class="btn btn-danger py-2 px-5 mt-2 mx-1 rounded-pill" href="index.php?act=dang_nhap">Đăng nhập để thanh toán</a>';
+                            } ?>
+
                                 <!-- <input class="btn btn-primary py-2 px-5 mt-2 mx-1 rounded-pill" name="return" type="submit" value="Quay lại"> -->
                                 <a class="btn text-white py-2 px-5 mt-2 mx-1 rounded-pill" href="<?= $_SESSION['get_link'] ?>">Quay lại</a>
                         </div>

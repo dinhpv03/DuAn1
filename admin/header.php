@@ -19,6 +19,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
     <!-- Icon Font Stylesheet -->
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -197,6 +199,11 @@
                             <i class="bi bi-circle"></i><span>Danh sách bình luận</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="index.php?act=danh_sach_ve_phim">
+                            <i class="bi bi-circle"></i><span>Danh sách vé phim</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
                 <!-- end danh sách -->
@@ -207,7 +214,7 @@
                 </a>
                 <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="charts-chartjs.html">
+                        <a href="index.php?act=bieu_do">
                             <i class="bi bi-circle"></i><span>Biểu đồ</span>
                         </a>
                     </li>

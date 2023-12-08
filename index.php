@@ -1,7 +1,6 @@
 <?php
-session_name("user_session");
-session_start();
 
+session_start();
 ob_start();
 if(!isset($_SESSION["ticket"])){
     $_SESSION["ticket"]=[];
@@ -273,9 +272,7 @@ include "model/ve_phim.php";
                     header('location: index.php');
                 }
 
-                var_dump($_SESSION["ticket"]);
                 include "view/thanh_toan.php";
-                var_dump($_SESSION["user"]);
                 break;
             }
 
