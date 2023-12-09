@@ -96,8 +96,8 @@
 
             <div class="col-md-3 mt-4">
                 <form class="d-flex" action="index.php?act=search_phim" method="post">
-                    <input class="form-control mr20" type="text" name="kyw" placeholder="Tìm kiếm phim" aria-label="Search" required>
-                    <input class="btn btn-primary py-1 px-3 mx-3 rounded-pill" name="timkiem" value="Tìm kiếm" type="submit">
+                    <input class="form-control mr20 py-1 px-3 rounded" type="text" name="kyw" placeholder="Tìm kiếm phim" aria-label="Search" required>
+                    <input class="btn btn-primary py-1 px-3 mx-2 rounded-pill" name="timkiem" value="Tìm kiếm" type="submit">
                 </form>
             </div>
 
@@ -142,7 +142,6 @@
                     <?php
                 }
                 ?>
-
             </div>
 
 

@@ -20,6 +20,7 @@
                 $html_seat.= '<div class="col-1 fs-5 seat '.$seat_vip.'" onclick="changeColor(this)">
                                 <p>'.$seat_name.$stt.'</p>
                                 <input type="hidden" name="price" value="'.$price.'">
+                                <input type="hidden" name="price" value="'.$price.'">
                             </div>';
             }
         } else {

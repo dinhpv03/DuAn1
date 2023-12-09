@@ -11,6 +11,7 @@
     $html_date = "";
     foreach ($chi_tiet_date as $d) {
         extract($d);
+        // $link = '';
         $link = 'index.php?act=chi_tiet_phim&id_phim='.$id_phim.'&id_date='.$id_date;
         // if ($stt == 1) {
         //     $active = 'active';
@@ -71,6 +72,7 @@
                     <?=$html_showtimes;?>
                 </div>
             </div>
+            
         </div>
     </div>
     <hr class="bg-while">
@@ -85,7 +87,7 @@
     });
 </script>
 <div class="row">
-    <div <div class="col-md-12 bg-light">
+    <div class="col-md-12 bg-light px-4">
         <div id="binhluan"></div>
     </div>
 </div>

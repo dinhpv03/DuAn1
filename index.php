@@ -18,7 +18,7 @@ include "model/seat.php";
 include "model/cinema_room.php";
 include "model/chi_tiet_ve_phim.php";
 include "model/ve_phim.php";
-
+include "model/voucher.php";
 
     // data trang chủ
     $ds_phim = get_phim(4);
@@ -170,7 +170,7 @@ include "model/ve_phim.php";
             }
 
             case "dang_xuat": {
-                session_destroy();
+                session_destroy();  
                 header('location:index.php');
                 break;
             }
@@ -273,6 +273,7 @@ include "model/ve_phim.php";
                 }
 
                 include "view/thanh_toan.php";
+                var_dump($_SESSION["user"]);
                 break;
             }
 
@@ -293,7 +294,7 @@ include "model/ve_phim.php";
                         $id_chitietvephim = insert_chi_tiet_ve_phim($ma_ve , $id_user , $film_name , $showtime , $date , $ghe_ngoi , $total , $pttt);
                         foreach ($_SESSION["ticket"] as $tik) {
                             extract($tik);
-                            insert_ve_phim($id_date , $time , $id_phim , $id_user , $price , $seat , $id_chitietvephim);
+                            insert_ve_phim($id_date , $time , $id_phim , $id_user , $total , $seat , $id_chitietvephim);
 
                             $arraySeat = explode(", ", $seat);
                             $pattern = '/^([A-Za-z]+)(\d+)$/';

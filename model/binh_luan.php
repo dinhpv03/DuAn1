@@ -5,7 +5,7 @@ function insert_binhluan($noi_dung, $user_name,$iduser, $id_phim, $ngaybinhluan)
     pdo_execute($sql);
 }
 
-function loadall_binhluan($id_movie) {
+function load_all_binhluan($id_movie) {
     $sql = "SELECT * FROM binh_luan WHERE id_phim =".$id_movie;
     $sql .= " ORDER BY id_binhluan DESC";
     $listBinhLuan = pdo_query($sql);

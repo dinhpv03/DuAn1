@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th12 07, 2023 lúc 06:55 PM
+-- Thời gian đã tạo: Th12 09, 2023 lúc 11:12 AM
 -- Phiên bản máy phục vụ: 8.0.30
 -- Phiên bản PHP: 8.1.10
 
@@ -24,6 +24,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `binh_luan`
+--
+
+CREATE TABLE `binh_luan` (
+  `id_binhluan` int NOT NULL,
+  `id_phim` int NOT NULL,
+  `id_user` int NOT NULL,
+  `user` varchar(30) NOT NULL,
+  `noi_dung` text NOT NULL,
+  `ngay_binh_luan` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `binh_luan`
+--
+
+INSERT INTO `binh_luan` (`id_binhluan`, `id_phim`, `id_user`, `user`, `noi_dung`, `ngay_binh_luan`) VALUES
+(23, 1, 1, 'duc', 'phim hay', '08-12-2023'),
+(24, 1, 1, 'duc', 'combat đã tay', '08-12-2023');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `chi_tiet_ve_phim`
 --
 
@@ -38,6 +61,13 @@ CREATE TABLE `chi_tiet_ve_phim` (
   `total` int NOT NULL,
   `pttt` tinyint NOT NULL COMMENT 'Phương thức thanh toán -\r\n1: Tiền mặt\r\n2: Ví điện tử\r\n3: Chuyển khoản\r\n4: Thanh toán online'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `chi_tiet_ve_phim`
+--
+
+INSERT INTO `chi_tiet_ve_phim` (`id_chitietvephim`, `ma_ve`, `id_user`, `film_name`, `showtime`, `date`, `ghe_ngoi`, `total`, `pttt`) VALUES
+(1, 'NC802020231207', 1, 'Five Nights At Freddy\'s', '15:00', '05-12-2023', 'D9, D10', 70, 2);
 
 -- --------------------------------------------------------
 
@@ -107,7 +137,7 @@ CREATE TABLE `loai_ve` (
   `id_loaive` int NOT NULL,
   `dinh_dang_ve` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `hang_ghe` tinyint NOT NULL DEFAULT '0' COMMENT '0: ghế thường - 1: ghế vip',
-  `price` varchar(10) NOT NULL
+  `price` double(10,3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -115,10 +145,10 @@ CREATE TABLE `loai_ve` (
 --
 
 INSERT INTO `loai_ve` (`id_loaive`, `dinh_dang_ve`, `hang_ghe`, `price`) VALUES
-(1, '2D', 0, '60.000'),
-(2, '2D', 1, '80.000'),
-(3, '3D', 0, '100.000'),
-(4, '3D', 1, '120.000');
+(1, '2D', 0, 60.000),
+(2, '2D', 1, 80.000),
+(3, '3D', 0, 100.000),
+(4, '3D', 1, 120.000);
 
 -- --------------------------------------------------------
 
@@ -203,8 +233,8 @@ INSERT INTO `seat` (`id_seat`, `seat_name`, `stt`, `status`, `id_loaive`) VALUES
 (36, 'D', 6, 0, 2),
 (37, 'D', 7, 0, 2),
 (38, 'D', 8, 0, 2),
-(39, 'D', 9, 0, 2),
-(40, 'D', 10, 0, 1);
+(39, 'D', 9, 1, 2),
+(40, 'D', 10, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -276,8 +306,41 @@ CREATE TABLE `ve_phim` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
+-- Đang đổ dữ liệu cho bảng `ve_phim`
+--
+
+INSERT INTO `ve_phim` (`id_vephim`, `id_date`, `time`, `id_phim`, `id_user`, `price`, `seat`, `id_chitietvephim`) VALUES
+(1, 4, '15:00', 2, 1, 140, 'D9, D10', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `voucher`
+--
+
+CREATE TABLE `voucher` (
+  `id_voucher` int NOT NULL,
+  `voucher_name` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'NC10: Mã giảm 10%',
+  `value` double(10,1) NOT NULL COMMENT 'Giảm giá theo %'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `voucher`
+--
+
+INSERT INTO `voucher` (`id_voucher`, `voucher_name`, `value`) VALUES
+(1, 'NC10', 0.1),
+(2, 'NC50', 0.5);
+
+--
 -- Chỉ mục cho các bảng đã đổ
 --
+
+--
+-- Chỉ mục cho bảng `binh_luan`
+--
+ALTER TABLE `binh_luan`
+  ADD PRIMARY KEY (`id_binhluan`);
 
 --
 -- Chỉ mục cho bảng `chi_tiet_ve_phim`
@@ -352,14 +415,26 @@ ALTER TABLE `ve_phim`
   ADD KEY `ve_phim_LK_chi_tiet_ve_phim` (`id_chitietvephim`);
 
 --
+-- Chỉ mục cho bảng `voucher`
+--
+ALTER TABLE `voucher`
+  ADD PRIMARY KEY (`id_voucher`);
+
+--
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
+
+--
+-- AUTO_INCREMENT cho bảng `binh_luan`
+--
+ALTER TABLE `binh_luan`
+  MODIFY `id_binhluan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT cho bảng `chi_tiet_ve_phim`
 --
 ALTER TABLE `chi_tiet_ve_phim`
-  MODIFY `id_chitietvephim` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_chitietvephim` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `cinema_room`
@@ -413,7 +488,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `ve_phim`
 --
 ALTER TABLE `ve_phim`
-  MODIFY `id_vephim` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_vephim` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `voucher`
+--
+ALTER TABLE `voucher`
+  MODIFY `id_voucher` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
