@@ -29,7 +29,7 @@
                                 <td>$time</td>
                                 <td>$id_phim </td>
                                 <td>$username </td>
-                                <td>$price</td>
+                                <td>$price.000đ</td>
                                 <td>$seat</td>
                                 <td>$id_chitietvephim </td>
                                 <td>

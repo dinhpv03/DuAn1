@@ -28,7 +28,7 @@
                                 <td><?php echo $showtime ?> </td>
                                 <td><?php echo $date ?></td>
                                 <td><?php echo $ghe_ngoi ?></td>
-                                <td><?php echo $total ?></td>
+                                <td><?php echo $total ?>.000đ</td>
                                 <td>
                                     <?php
                                     if ($pttt == 1) {

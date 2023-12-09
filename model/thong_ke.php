@@ -3,6 +3,10 @@
         $sql = "SELECT COUNT(*) as tong_so_tai_khoan FROM user";
         return pdo_query($sql);
     }
+function thong_ke_so_ve() {
+    $sql = "SELECT COUNT(*) as tong_so_ve FROM ve_phim";
+    return pdo_query($sql);
+}
     function loadall_thongke() {
         $sql = "SELECT lp.id_loaiphim as ma_theloai, lp.the_loai_phim as the_loai, 
                 COUNT(p.id_phim) as countphim
@@ -26,7 +30,6 @@ function load_thongke_binhluan() {
 }
 
 function thong_ke_ve_phim() {
-
     $sql = "SELECT phim.film_name, COUNT(ve_phim.id_vephim) as count_ve 
             FROM ve_phim 
             INNER JOIN phim ON ve_phim.id_phim = phim.id_phim
@@ -51,5 +54,21 @@ function doanh_thu() {
     return pdo_query_value($sql);
 }
 
+function thong_ke_doanh_thu_phim() {
+    $sql = "SELECT
+            p.film_name AS movie_name,
+            p.poster AS movie_image,
+            COUNT(v.id_vephim) AS ticket_count,
+            GROUP_CONCAT(v.seat) AS seats,
+            SUM(v.price) AS total_revenue
+        FROM
+            ve_phim v
+        JOIN
+            phim p ON v.id_phim = p.id_phim
+        GROUP BY
+            v.id_phim
+        ORDER BY ticket_count DESC;";
+        return pdo_query($sql);
+}
 
 

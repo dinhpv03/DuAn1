@@ -84,7 +84,6 @@
                                 <input type="hidden" name="date_month" value="<?= $date_month ?>">
                                 <input type="hidden" name="ghe_ngoi" value="<?= $ghe_ngoi ?>">
                                 <input type="hidden" name="total" value="<?= $price ?>">
-
                             <?php if(isset($_SESSION['user'])) {
                                 echo '<input class="btn btn-primary py-2 px-5 mt-2 mx-1 rounded-pill" name="payment" type="submit" value="Thanh toán">';
                             } else {

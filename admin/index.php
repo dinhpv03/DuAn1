@@ -422,9 +422,10 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
                 include "thong_ke/bieu_do.php";
                 break;
             }
-            case "ve_phim" : {
+            case "tong_hop" : {
+                $listThongKe = loadall_thongke();
                 $thongke_ve = thong_ke_ve_phim();
-                $json_doanh_thu = doanh_thu();
+                $listThongKeBinhLuan = load_thongke_binhluan();
 //                var_dump($doanh_thu);
                 include "thong_ke/thong_ke.php";
                 break;
@@ -459,7 +460,10 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
             }
         } else {
             $doanh_thu = doanh_thu();
+            $thongke_ve = thong_ke_ve_phim();
             $tong_tai_khoan = thong_ke_tai_khoan();
+            $thong_ke_doanh_thu_phim = thong_ke_doanh_thu_phim();
+            $thong_ke_so_ve = thong_ke_so_ve();
             include "home.php";
         }
 

@@ -5,10 +5,7 @@
                 <p class="h4 text-center text-danger">BIỂU ĐỒ THỐNG KÊ</p>
                 <div class="row">
                     <div class="col-6">
-                        <div id="myChart" style="width:100%; max-width:1200px; height:500px;">
-
-                        </div>
-
+                        <div id="myChart" style="width:100%; max-width:1200px; height:500px;"></div>
                         <script>
                             google.charts.load('current', {'packages':['corechart']});
                             google.charts.setOnLoadCallback(drawFirstChart);
@@ -47,6 +44,9 @@
 
                         </div>
                         <script>
+                            console.log(<?php echo json_encode($listThongKeBinhLuan); ?>);
+
+                            google.charts.load('current', {'packages':['corechart']});
                             google.charts.setOnLoadCallback(drawSecondChart);
 
                             function drawSecondChart() {
@@ -55,14 +55,15 @@
                                     <?php
                                     $tong = count($listThongKeBinhLuan);
                                     $i=1;
-                                    foreach ($listThongKeBinhLuan as $thonke_binhluan) {
-                                        extract($thonke_binhluan);
+                                    foreach ($listThongKeBinhLuan as $thongke_binhluan) {
+                                        extract($thongke_binhluan);
                                         if($i == $tong) {
                                             $dauphay = "";
                                         } else {
                                             $dauphay = ",";
                                         }
-                                        echo "['".$thonke_binhluan['ten_phim']."', ".$thonke_binhluan['countbinhluan']."]". $dauphay;
+                                        echo "['" . $thongke_binhluan['ten_phim'] . "', " . $thongke_binhluan['countbinhluan'] . "]". $dauphay;
+
                                         $i+=1;
                                     }
                                     ?>
@@ -79,7 +80,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div id="lineChart"></div>
             <p class="h6 text-center text-danger">THỐNG KÊ SỐ VÉ THEO TỪNG PHIM</p>
