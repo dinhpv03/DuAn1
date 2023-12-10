@@ -9,6 +9,13 @@ function get_date_by_id($id_date){
     $sql = "SELECT DATE_FORMAT(date_month, '%d-%m-%Y') AS date_month FROM date WHERE id_date = ".$id_date;
     return pdo_query($sql);
 }
+function date_all(){
+    $sql = "SELECT * FROM date
+            INNER JOIN phim ON date.id_phim = phim.id_phim
+            "; 
+    return pdo_query($sql);
+}
+
 
 
 // function phim_connect_bt_showtimes_by_id($id_phim){

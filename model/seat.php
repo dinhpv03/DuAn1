@@ -2,7 +2,9 @@
 require_once "pdo.php";
 
 function seat_all(){
-    $sql = "SELECT * FROM seat";
+    $sql = "SELECT * FROM seat
+            INNER JOIN loai_ve ON seat.id_loaive = loai_ve.id_loaive
+            ";
     return pdo_query($sql);
 }
 

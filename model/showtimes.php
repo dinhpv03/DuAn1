@@ -14,6 +14,15 @@ function get_showtimes_by_id_date($id_phim,$id_date){
     return pdo_query($sql);
 }
 
+function showtimes_all(){
+    $sql = "SELECT * FROM showtimes
+            INNER JOIN date ON date.id_date = showtimes.id_date
+            INNER JOIN phim ON date.id_phim = showtimes.id_phim
+            ORDER BY id_showtimes DESC ";
+    return pdo_query($sql);
+}
+
+
 // function phim_connect_bt_showtimes_by_id($id_phim){
 //     $sql = "SELECT time FROM phim
 //     INNER JOIN showtimes ON phim.id_phim = showtimes.id_phim

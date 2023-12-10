@@ -15,6 +15,9 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
     include "../model/binh_luan.php";
     include "../model/thong_ke.php";
     include "../model/ve_phim.php";
+    include "../model/seat.php";
+    include "../model/date.php";
+    include "../model/showtimes.php";
 
 
     if((isset($_GET['act'])) && ($_GET['act'] != "")){
@@ -175,6 +178,22 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
                 include "loai_ve/add.php";
                 break;
             }
+
+//            case "them_moi_gio_chieu" : {
+//                if($_SERVER["REQUEST_METHOD"] == 'POST') {
+//                    $gio_chieu = $_POST['gio_chieu'];
+//                    $id_phim = $_POST['id_phim'];
+//                    $id_date = $_POST['id_date'];
+//
+//                        them_moi_gio_chieu($gio_chieu, $id_phim,$id_date);
+//
+//
+//                }
+//                $ds_date = date_all();
+//                $ds_phim = all_phim();
+//                 include "showtimes/add.php";
+//                 break;
+//            }
 
 
 //            xóa
@@ -391,6 +410,26 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
                 include "ve_phim/list.php";
                 break;
             }
+
+            case "danh_sach_ghe" : {
+                $ds_ghe = seat_all();
+                include "seat/list.php";
+                break;
+            }
+
+            case "danh_sach_showtimes" : {
+                $ds_showtime = showtimes_all();
+                include "showtimes/list.php";
+                break;
+            }
+            case "danh_sach_date" : {
+                $ds_date = date_all();
+                include "date/list.php";
+                break;
+            }
+
+
+
 
             case "chi_tiet_ve" : {
                 if((isset($_GET['id_chitietvephim'])) && ($_GET['id_chitietvephim'] != "")){

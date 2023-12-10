@@ -160,6 +160,11 @@
                         <i class="bi bi-circle"></i><span>Thêm loại vé</span>
                         </a>
                     </li>
+<!--                    <li>-->
+<!--                        <a href="index.php?act=them_moi_ngay_chieu">-->
+<!--                        <i class="bi bi-circle"></i><span>Thêm mới ngày chiếu </span>-->
+<!--                        </a>-->
+<!--                    </li>-->
                 </ul>
                 <!-- end form thêm mới -->
 
@@ -199,6 +204,21 @@
                             <i class="bi bi-circle"></i><span>Danh sách vé phim</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="index.php?act=danh_sach_ghe">
+                            <i class="bi bi-circle"></i><span>Danh sách ghế</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php?act=danh_sach_date">
+                            <i class="bi bi-circle"></i><span>Danh sách ngày chiếu</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php?act=danh_sach_showtimes">
+                            <i class="bi bi-circle"></i><span>Danh sách giờ chiếu</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
                 <!-- end danh sách -->
@@ -211,11 +231,6 @@
                     <li>
                         <a href="index.php?act=bieu_do">
                             <i class="bi bi-circle"></i><span>Biểu đồ</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="index.php?act=tong_hop">
-                            <i class="bi bi-circle"></i><span>Tổng hợp</span>
                         </a>
                     </li>
 
