@@ -390,7 +390,7 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
                 break;
             }
             case "danh_sach_suat_chieu" : {
-                $ds_suat_chieu = load_all_suat_chieu();
+                // $ds_suat_chieu = load_all_suat_chieu();
                 include "suat_chieu/list.php";
                 break;
             }

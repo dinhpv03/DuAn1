@@ -14,6 +14,7 @@
                         <th>Ghế ngồi</th>
                         <th>Tổng tiền</th>
                         <th>Phương thức thanh toán</th>
+                        <th>Ngày giao dịch</th>
                     </tr>
 
                     <?php
@@ -44,6 +45,7 @@
                                     }
                                     ?>
                                 </td>
+                                <td><?= $ngay_giao_dich ?></td>
                             </tr>
                         <?php endforeach;?>
                     </table>

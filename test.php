@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -94,7 +94,7 @@ parentBoxes.forEach((parentBox, index) => {
   </script>
 </body>
 
-</html>
+</html> -->
 
 <?php
 // $strings = "A1, A2, A3";
@@ -116,7 +116,7 @@ parentBoxes.forEach((parentBox, index) => {
 // }
 
 ?>
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -125,58 +125,105 @@ parentBoxes.forEach((parentBox, index) => {
   <title>Document</title>
   <style>
     #notification {
-  display: none;
-  background-color: black;
-  border: #333;
-  margin-top: 8px;
-  color: #fff;
-  padding: 15px;
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%) translateY(-150%);
-  border-radius: 10px;
-}
+      display: none;
+      background-color: black;
+      border: #333;
+      margin-top: 8px;
+      color: #fff;
+      padding: 15px;
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%) translateY(-150%);
+      border-radius: 10px;
+    }
 
-#notification.show {
-  display: block;
-  animation: slideInOut 3s ease-in-out;
-}
+    #notification.show {
+      display: block;
+      animation: slideInOut 3s ease-in-out;
+    }
 
-@keyframes slideInOut {
-  0% { transform: translateX(-50%) translateY(-100%); }
-  30% { transform: translateX(-50%) translateY(0); }
-  70% { transform: translateX(-50%) translateY(0); }
-  100% { transform: translateX(-50%) translateY(-150%); }
-}
+    @keyframes slideInOut {
+      0% {
+        transform: translateX(-50%) translateY(-100%);
+      }
+
+      30% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      70% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      100% {
+        transform: translateX(-50%) translateY(-150%);
+      }
+    }
   </style>
   <script src="https://kit.fontawesome.com/836af14c7c.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <button id="showButton">Hiển thị thông báo</button>
-  <div id="notification"><i class="fa-solid fa-circle-check fa-lg" style="color: #2cd129;"></i><span style="font-size: large;"> Thông báo của bạn</span></div>
+  <?php
+  session_start();
+  $pass = 123;
+  var_dump($pass);
+  ?>
+  <!-- <button id="showButton">Hiển thị thông báo</button>
+  <div id="notification"><i class="fa-solid fa-circle-check fa-lg" style="color: #2cd129;"></i><span style="font-size: large;"> Thông báo của bạn</span></div> -->
+  <div id="notification">
+    <!-- Thông báo: Đăng nhập thành công! -->
+  </div>
 
+  <form id="loginForm">
+    <label for="username">Tên đăng nhập:</label>
+    <input type="text" id="username" name="username" required>
+    <br>
+    <label for="password">Mật khẩu:</label>
+    <input type="password" id="password" name="password" required>
+    <br>
+    <input type="submit" value="Đăng nhập">
+  </form>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-  var showButton = document.getElementById("showButton");
-  var notification = document.getElementById("notification");
+      var showButton = document.getElementById("showButton");
+      var notification = document.getElementById("notification");
+      var loginForm = document.getElementById("loginForm");
 
-  // Hiển thị thông báo khi tải lại trang
-  notification.classList.add("show");
-  setTimeout(function() {
-    notification.classList.remove("show");
-  }, 3000);
+      // Hiển thị thông báo khi tải lại trang
+      // notification.classList.add("show");
+      // setTimeout(function() {
+      //   notification.classList.remove("show");
+      // }, 2000);
 
-  showButton.addEventListener("click", function() {
-    notification.classList.add("show");
-    setTimeout(function() {
-      notification.classList.remove("show");
-    }, 3000);
-  });
-});
+      loginForm.addEventListener("submit", function(event) {
+        event.preventDefault(); // Ngăn chặn gửi form mặc định
+
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        // Kiểm tra thông tin đăng nhập
+        if (username !== "" && password !== "") {
+        notification.textContent = "Thông báo: Đăng nhập thành công";
+        notification.classList.add("show");
+        setTimeout(function() {
+          notification.classList.remove("show");
+        }, 2000);
+        } else {
+          notification.textContent = "Thông báo: Đăng nhập không thành công!";
+          notification.classList.add("show");
+          setTimeout(function() {
+            notification.classList.remove("show");
+          }, 2000);
+        }
+
+        // Đặt lại giá trị của form
+        loginForm.reset();
+      });
+    });
   </script>
 
 </body>
 
-</html> -->
+</html>

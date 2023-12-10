@@ -22,7 +22,7 @@
                                 <tr>
                                     <td>$id_loaive </td>
                                     <td>$dinh_dang_ve</td>
-                                    <td>$price đ</td>
+                                    <td>$price.000 đ</td>
                                     <td>
                                         <a class='btn btn-primary'  href='$edit'>Sửa</a>
                                         <button class='btn btn-outline-danger' type='button' onclick=\"if (confirm('Bạn có chắc muốn xóa ?')) window.location.href='$delete'\">Xóa</button>

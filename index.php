@@ -5,7 +5,9 @@ ob_start();
 if(!isset($_SESSION["ticket"])){
     $_SESSION["ticket"]=[];
 }
-$currentDate = date('Y-m-d');
+date_default_timezone_set('Asia/Ho_Chi_Minh');
+$currentDate = date('Y-m-d / H:i:s');
+
 include "view/header.php";
 
 include "model/pdo.php";    
@@ -168,6 +170,10 @@ include "model/voucher.php";
                 include "view/tai_khoan/thong_tin_tai_khoan.php";
                 break;
             }
+            case "lich_su_mua_ve": {
+                include "view/tai_khoan/thong_tin_tai_khoan.php";
+                break;
+            }
 
             case "dang_xuat": {
                 session_destroy();  
@@ -271,7 +277,6 @@ include "model/voucher.php";
                 if (empty($_SESSION["ticket"])) {
                     header('location: index.php');
                 }
-
                 include "view/thanh_toan.php";
                 break;
             }
@@ -290,7 +295,8 @@ include "model/voucher.php";
                         $ghe_ngoi = $_POST['ghe_ngoi'];
                         $total = $_POST['total'];
                         $pttt = $_POST['pttt'];
-                        $id_chitietvephim = insert_chi_tiet_ve_phim($ma_ve , $id_user , $film_name , $showtime , $date , $ghe_ngoi , $total , $pttt);
+                        $ngay_giao_dich = $currentDate;
+                        $id_chitietvephim = insert_chi_tiet_ve_phim($ma_ve , $id_user , $film_name , $showtime , $date , $ghe_ngoi , $total , $pttt, $ngay_giao_dich);
                         foreach ($_SESSION["ticket"] as $tik) {
                             extract($tik);
                             insert_ve_phim($id_date , $time , $id_phim , $id_user , $total , $seat , $id_chitietvephim);

@@ -8,8 +8,7 @@
 
     function load_all_ve_phim() {
         $sql = "SELECT * FROM ve_phim
-                INNER JOIN user ON ve_phim.id_user = user.id_user;
-                ";
+                INNER JOIN user ON ve_phim.id_user = user.id_user";
         return pdo_query($sql);
     }
     function load_chi_tiet_ve_phim($id_chitietvephim) {
@@ -19,4 +18,3 @@
         $ds = pdo_query($sql);
         return $ds;
     }
-

@@ -55,7 +55,13 @@ if (isset($_POST['apply_voucher']) && !empty($_POST['voucher_name'])) {
                         <tbody>
                             <tr style="border-style:none">
                                 <td class="py-3 text-white text-sm pl-4">Ghế(<?= $ghe_ngoi ?>)</td>
-                                <td class="py-3 text-white text-sm">1</td>
+                                <td class="py-3 text-white text-sm">
+                                    <?php 
+                                    $arraySeat = explode(", ", $seat);
+                                    $pattern = '/^([A-Za-z]+)(\d+)$/';
+                                    echo count($arraySeat);
+                                    ?>
+                                </td>
                                 <td class="py-3 text-white text-sm"><?= $price ?>.000đ</td>
                             </tr>
                         </tbody>
