@@ -52,9 +52,9 @@ function select_phim($dsphim){
     return $html_select_phim;
 }
 
-function them_phim_moi($name, $poster, $banner, $thoi_luong_phim, $mo_ta, $ngay_phat_hanh, $id_suatchieu, $id_loai_phim) {
-    $sql = "INSERT INTO phim (film_name, poster, banner, thoi_luong_phim, mo_ta, release_date, id_suatchieu, id_loaiphim) 
-            VALUES ('$name', '$poster', '$banner', '$thoi_luong_phim', '$mo_ta', '$ngay_phat_hanh', $id_suatchieu, $id_loai_phim)";
+function them_phim_moi($name, $poster, $banner, $thoi_luong_phim, $mo_ta, $ngay_phat_hanh, $id_loai_phim) {
+    $sql = "INSERT INTO phim (film_name, poster, banner, thoi_luong_phim, mo_ta, release_date, id_loaiphim) 
+            VALUES ('$name', '$poster', '$banner', '$thoi_luong_phim', '$mo_ta', '$ngay_phat_hanh', $id_loai_phim)";
     pdo_execute($sql);
 }
 

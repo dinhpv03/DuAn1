@@ -273,7 +273,6 @@ include "model/voucher.php";
                 }
 
                 include "view/thanh_toan.php";
-                var_dump($_SESSION["user"]);
                 break;
             }
 

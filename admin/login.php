@@ -95,7 +95,7 @@
                                         </div>
 
                                         <a href="/index.php" class="text-decoration-none">
-                                        <i class="fa-regular fa-hand-point-right"></i><span class="mb-5 pb-lg-2" style="color: #393f81;"> Quay lại trang User!</span>
+                                            <i class="fa-regular fa-hand-point-right"></i><span class="mb-5 pb-lg-2" style="color: #393f81;"> Quay lại trang User!</span>
                                         </a>
                                         <!-- <a href="#!" class="small text-muted">Điều khoản sử dụng</a>
                                         <a href="#!" class="small text-muted">Chính sách bảo mật</a> -->

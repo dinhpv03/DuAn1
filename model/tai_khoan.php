@@ -38,7 +38,7 @@ function load_all_tai_khoan() {
 
 function insert_taikhoan_admin($name,$email,$address,$number_phone,$password,$role) {
     $sql = "INSERT INTO user (username, email,address, number_phone, password, role) 
-            VALUES ('$name','$email','$address', $number_phone, '$password', $role)";
+            VALUES ('$name','$email','$address', '$number_phone', '$password', $role)";
 //    var_dump($sql);
 //    die;
     pdo_execute($sql);

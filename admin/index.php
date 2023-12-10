@@ -50,9 +50,6 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
                     if (empty($mo_ta)) {
                         $errMota = '*Vui lòng nhập mô tả';
                     }
-                    if (empty($id_suatchieu)) {
-                        $errSuat_chieu = '*Vui chọn suất chiếu';
-                    }
                     if (empty($id_loai_phim)) {
                         $errLoai_phim = '*Vui lòng chọn loại phim';
                     }
@@ -73,7 +70,7 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
                         move_uploaded_file($_FILES['poster']['tmp_name'], $target_poster);
                         move_uploaded_file($_FILES['banner']['tmp_name'], $target_banner);
 
-                        them_phim_moi($name, $poster, $banner,$thoi_luong_phim ,$mo_ta,$ngay_phat_hanh ,$id_suatchieu,$id_loai_phim);
+                        them_phim_moi($name, $poster, $banner,$thoi_luong_phim ,$mo_ta,$ngay_phat_hanh ,$id_loai_phim);
                         $ds_phim = all_phim();
                         include "phim/list.php";
                         break;
@@ -115,7 +112,7 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
                     $password = $_POST['password'];
                     $role = $_POST['role'];
 
-                    $errEmail = $errUser = $errPass = $errAddress = $errTel = null;
+                    $errEmail = $errUser = $errPass = $errAddress = $errTel = $errRole = null;
                     if (empty($email)) {
                         $errEmail = '*Vui lòng nhập email';
                     }
@@ -127,7 +124,14 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
                     if(empty($password)) {
                         $errPass = '*Vui lòng nhập mật khẩu';
                     }
-                    if(empty($errEmail) && empty($errUser) && empty($errPass)) {
+                    if (!isset($role)) {
+                        $errRole = '*Vui lòng nhập';
+                    } elseif ($role != 0 && $role != 1) {
+                        $errRole = 'Chỉ nhập 0 và 1';
+                    }
+
+
+                    if(empty($errEmail) && empty($errUser) && empty($errPass)&& empty($errRole)) {
                         insert_taikhoan_admin($name,$email,$address,$number_phone,$password,$role);
                         $ds_tai_khoan = load_all_tai_khoan();
                         include "tai_khoan/list.php";
@@ -135,21 +139,6 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
                     }
                 }
                 include "tai_khoan/add.php";
-                break;
-            }
-            case "them_moi_suat_chieu" : {
-                if($_SERVER["REQUEST_METHOD"] == 'POST') {
-                    $ngay_chieu = $_POST['ngay_chieu'];
-                    $gio_chieu = $_POST['gio_chieu'];
-
-                    them_moi_suat_chieu($ngay_chieu,$gio_chieu);
-                    $ds_suat_chieu = load_all_suat_chieu();
-                    include "suat_chieu/list.php";
-                    break;
-                }
-
-                $ds_suat_chieu = load_all_suat_chieu();
-                include "suat_chieu/add.php";
                 break;
             }
             case "them_moi_loai_ve" : {
@@ -193,8 +182,8 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
                 if (isset($_GET['id_user']) && ($_GET['id_user'] > 0)) {
                     delete_tai_khoan($_GET['id_user']);
                 }
-                $ds_loai_ve = load_add_loai_ve();
-                include "loai_ve/list.php";
+                $ds_tai_khoan = load_all_tai_khoan();
+                include "tai_khoan/list.php";
                 break;
             }
 
