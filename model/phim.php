@@ -17,6 +17,24 @@ function get_film_name_by_id($id_phim){
     return pdo_query_one($sql);
 }
 
+// function get_file_by_Loai_phim($id_loaiphim){
+//     $sql = "SELECT * FROM phim WHERE 1";
+//     if ($id_loaiphim > 0) {
+//         $sql.= " AND id_loaiphim = ?";
+//     }
+//     return pdo_query($sql, $id_loaiphim);
+// }
+
+function get_file_by_Loai_phim($id_loaiphim){
+    $sql = "SELECT * FROM phim 
+            INNER JOIN loai_phim ON phim.id_loaiphim = loai_phim.id_loaiphim WHERE 1";
+    if ($id_loaiphim > 0) {
+        $sql.= " AND loai_phim.id_loaiphim =".$id_loaiphim;
+    }
+    $sql.= " ORDER BY id_phim DESC";
+    return pdo_query($sql);
+}
+
 function select_phim($dsphim){
     $html_select_phim = "";
     foreach ($dsphim as $film) {

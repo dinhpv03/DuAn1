@@ -19,10 +19,10 @@
         //     $active = "";
         // }
         if ($id_phim == $_GET['id_phim']) {
-            $html_date.='
-                <a href="'.$link.'">
-                    <div class="box btn text-white py-3 px-5 mt-2 mx-1 border-1" onclick="changeColor(this)">'.$date_month.'</div>
-                </a>';
+            $html_date.='<li><a class="dropdown-item" href="'.$link.'">'.$date_month.'</a></li>';
+                // '<a href="'.$link.'">
+                //     <div class="box btn text-white py-3 px-5 mt-2 mx-1 border-1" onclick="changeColor(this)">'.$date_month.'</div>
+                // </a>';
         }
     }
 ?>
@@ -62,8 +62,18 @@
             <h6 class="section-title bg-dark text-start text-primary pe-3">Chọn ngày</h6>
             <div class="row gy-2 gx-4 mb-4">
                 <div class="col-sm-12">
-                    <?=$html_date;?>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ngày chiếu
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <?= $html_date; ?>
+                            <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+                        </ul>
+                    </div>
                 </div>
+                
             </div>
 
             <h6 class="section-title bg-dark text-start text-primary pe-3">Chọn khung giờ</h6>

@@ -1,6 +1,11 @@
 <?php
+    $html_loai_phim = "";
+    foreach ($ds_loai_phim as $loai) {
+        extract($loai);
+        $html_loai_phim .='<li><a class="dropdown-item" href="index.php?act=lich_chieu&id_loaiphim='.$id_loaiphim.'">'.$the_loai_phim.'</a></li>';
+    }
     $html_get_phim = "";
-    foreach ($phim_LK_loai_phim as $phim) {
+    foreach ($ds_film as $phim) {
         extract($phim);
         $link = "index.php?act=chi_tiet_phim&id_phim=".$id_phim;
         $html_get_phim.='
@@ -37,6 +42,7 @@
                             </div>
                         </div>';
     }
+
 ?>
 <div class="container-xxl py-4">
     <div class="container">
@@ -44,7 +50,16 @@
             <h5 class="section-title bg-dark text-center text-primary px-3">
             <i class="fa-solid fa-circle fa-sm" style="color: #df0c0c;"></i> Phim Đang chiếu</h5>
         </div>
-
+        <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Thể loại phim
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <?= $html_loai_phim; ?>
+                <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+            </ul>
+        </div>
         <div class = "row">
             <?=$html_get_phim;?>
         </div>

@@ -18,18 +18,18 @@
                     <tbody>
                     <tr style="border-top: 1px solid white;">
                         <td class="py-3 text-white text-sm">Ghế thường</td>
-                        <td class="py-3 text-white text-sm">60.000đ</td>
-                        <td class="py-3 text-white text-sm">90.000đ</td>
+                        <td class="py-3 text-white text-sm">60.000 đ</td>
+                        <td class="py-3 text-white text-sm">100.000 đ</td>
                     </tr>
                     <tr class="text-danger" style="border-top: 1px solid white;">
                         <td class="py-3 text-danger text-sm">Ghế VIP</td>
-                        <td class="py-3 text-danger text-sm">80.000đ</td>
-                        <td class="py-3 text-danger text-sm">120.000đ</td>
+                        <td class="py-3 text-danger text-sm">80.000 đ</td>
+                        <td class="py-3 text-danger text-sm">120.000 đ</td>
                     </tr>
                     <tr class="text-warning" style="border-top: 1px solid white;">
                         <td class="py-3 text-warning text-sm">Ghế đôi</td>
-                        <td class="py-3 text-warning text-sm">140.000đ</td>
-                        <td class="py-3 text-warning text-sm">200.000đ</td>
+                        <td class="py-3 text-warning text-sm">140.000 đ</td>
+                        <td class="py-3 text-warning text-sm">200.000 đ</td>
                     </tr>
                     </tbody>
                 </table>
@@ -47,18 +47,18 @@
                     </thead>
                     <tr style="border-top: 1px solid white;">
                         <td class="py-3 text-white text-sm">Ghế thường</td>
-                        <td class="py-3 text-white text-sm">80.000đ</td>
-                        <td class="py-3 text-white text-sm">120.000đ</td>
+                        <td class="py-3 text-white text-sm">100.000 đ</td>
+                        <td class="py-3 text-white text-sm">140.000 đ</td>
                     </tr>
                     <tr class="text-danger" style="border-top: 1px solid white;">
                         <td class="py-3 text-danger text-sm">Ghế VIP</td>
-                        <td class="py-3 text-danger text-sm">100.000đ</td>
-                        <td class="py-3 text-danger text-sm">170.000đ</td>
+                        <td class="py-3 text-danger text-sm">120.000 đ</td>
+                        <td class="py-3 text-danger text-sm">160.000 đ</td>
                     </tr>
                     <tr class="text-warning" style="border-top: 1px solid white;">
                         <td class="py-3 text-warning text-sm">Ghế đôi</td>
-                        <td class="py-3 text-warning text-sm">180.000đ</td>
-                        <td class="py-3 text-warning text-sm">280.000đ</td>
+                        <td class="py-3 text-warning text-sm">180.000 đ</td>
+                        <td class="py-3 text-warning text-sm">220.000 đ</td>
                     </tr>
                 </table>
             </div>

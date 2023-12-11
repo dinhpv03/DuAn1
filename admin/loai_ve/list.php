@@ -33,7 +33,7 @@
 
                     ?>
                 </table>
-                <a class="btn btn-outline-primary" href="index.php?act=them_moi_loai_ve">Thêm mới vé</a>
+                <a class="btn btn-outline-primary" href="index.php?act=them_moi_loai_ve">Thêm mới loại vé</a>
             </div>
     </section>
 </main>

@@ -94,7 +94,7 @@
                                             <button class="btn btn-dark btn-lg btn-block" type="submit">Đăng nhập</button>
                                         </div>
 
-                                        <a href="http://localhost/du-an-1/" class="text-decoration-none">
+                                        <a href="/index.php" class="text-decoration-none">
                                             <i class="fa-regular fa-hand-point-right"></i><span class="mb-5 pb-lg-2" style="color: #393f81;"> Quay lại trang User!</span>
                                         </a>
                                         <!-- <a href="#!" class="small text-muted">Điều khoản sử dụng</a>

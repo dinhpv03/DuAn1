@@ -22,9 +22,9 @@ $html_get_phim = select_phim($phim_LK_loai_phim);
             <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
             <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
             <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
-            <li data-bs-target="#myCarousel" data-bs-slide-to="3"></li>
+            <!-- <li data-bs-target="#myCarousel" data-bs-slide-to="3"></li>
             <li data-bs-target="#myCarousel" data-bs-slide-to="4"></li>
-            
+             -->
         </ol>
 
         <div class="carousel-inner">

@@ -230,6 +230,13 @@ include "model/voucher.php";
             }
 
             case "lich_chieu": {
+                $ds_loai_phim = loai_phim_all();
+                if (!isset($_GET['id_loaiphim'])) {
+                    $id_loaiphim = 0;
+                } else {
+                    $id_loaiphim = $_GET['id_loaiphim'];
+                }
+                $ds_film = get_file_by_Loai_phim($id_loaiphim);
                 include "view/lich_chieu.php";
                 break;
             }

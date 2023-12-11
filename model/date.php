@@ -2,7 +2,7 @@
 require_once "pdo.php";
 
 function get_date($id_phim){
-    $sql = "SELECT DATE_FORMAT(date_month, '%d-%m') AS date_month, id_date, stt FROM date WHERE id_phim = ".$id_phim;
+    $sql = "SELECT DATE_FORMAT(date_month, '%d/%m/%Y') AS date_month, id_date, stt FROM date WHERE id_phim = ".$id_phim;
     return pdo_query($sql);
 }
 function get_date_by_id($id_date){

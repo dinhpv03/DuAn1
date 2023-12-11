@@ -42,22 +42,3 @@
         </div>
     </div>
 </div>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var showButton = document.getElementById("showButton");
-        var notification = document.getElementById("notification");
-
-        // Hiển thị thông báo khi tải lại trang
-        // notification.classList.add("showSuccess");
-        // setTimeout(function() {
-        //     notification.classList.remove("showSuccess");
-        // }, 3000);
-
-        // showButton.addEventListener("click", function() {
-        //     notification.classList.add("showSuccess");
-        //     setTimeout(function() {
-        //         notification.classList.remove("showSuccess");
-        //     }, 3000);
-        // });
-    });
-</script>

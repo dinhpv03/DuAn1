@@ -2,9 +2,9 @@
     <section class="section dashboard">
         <div class="row">
             <div class="col-lg-12">
-                <p class="h4 text-center text-danger">BIỂU ĐỒ THỐNG KÊ</p>
+                <p class="text-center card-title">BIỂU ĐỒ THỐNG KÊ</p>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-12">
                         <div id="myChart" style="width:100%; max-width:1200px; height:500px;"></div>
                         <script>
                             google.charts.load('current', {'packages':['corechart']});
@@ -39,7 +39,7 @@
                         </script>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-12">
                         <div id="yourChart" style="width:100%; max-width:1200px; height:500px;">
 
                         </div>

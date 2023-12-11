@@ -138,7 +138,7 @@
                     <a class="text-light navbar-brand" href="index.php?act=gia_ve">Giá vé</a>
                     <!-- <a class="text-light navbar-brand" href="index.php?act=tin_tuc">Tin tức</a> -->
                     <!-- <a class="text-light navbar-brand" href="index.php?act=khuyen_mai">Khuyến mãi</a> -->
-                    <a class="text-light navbar-brand" href="index.php?act=gioi_thieu"><?= $currentDate ?></a>
+                    <a class="text-light navbar-brand" href="index.php?act=gioi_thieu">Giới thiệu</a>
                 </div>
 
                 <div class="col-md-3 mt-4">
@@ -184,6 +184,7 @@
                         <a href="index.php?act=dang_nhap" class="btn btn-primary rounded-pill py-2 px-4">Đăng nhập</a>
                     <?php endif ?>
                     <script>
+                        var notification = document.getElementById("notification");
                         notification.classList.add("showSuccess");
                         setTimeout(function() {
                             notification.classList.remove("showSuccess");
