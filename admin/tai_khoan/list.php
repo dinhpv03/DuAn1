@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h5 class="card-title text-center">DANH SÁCH TÀI KHOẢN</h5>
-                <table class="table table-light text-cente">
+                <table class="table table-light text-center">
                     <tr>
                         <th>Mã</th>
                         <th>Tên tài khoản</th>
@@ -14,20 +14,33 @@
                         <th>Vai trò</th>
                         <th></th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>phdinh</td> 
-                        <td>dinh03</td>
-                        <td>phdinh1403@gmail.com</td>
-                        <td>Hà Nội</td>
-                        <td>012345678</td>                      
-                        <td>0</td>
-                        <td>
-                            <a class='btn btn-primary' href="">Sửa</a>
-                            <button class='btn btn-outline-danger' type='button' onclick=\"if (confirm('Bạn có chắc muốn xóa ?')) window.location.href='$xoasp'\">Xóa</button>
-                        </td>
-                    </tr>
-                </table>   
+
+                    <?php
+                    foreach ($ds_tai_khoan as $ds) {
+                        extract($ds);
+
+                        $delete_user = "index.php?act=delete_user&id_user=" . $id_user;
+                        $edit_user = "index.php?act=edit_user&id_user=" . $id_user;
+
+                        echo "
+                                <tr>
+                                    <td>$id_user</td>
+                                    <td>$username</td>
+                                    <td>$password</td>
+                                    <td>$email</td>
+                                    <td>$address</td>
+                                    <td>$number_phone</td>
+                                    <td>$role</td>
+                                    <td>
+                                        <a class='btn btn-primary'  href='$edit_user'>Sửa</a>
+                                        <button class='btn btn-outline-danger' type='button' onclick=\"if (confirm('Bạn có chắc muốn xóa ?')) window.location.href='$delete_user'\">Xóa</button>
+                                    </td>
+                                </tr>
+                            ";
+                        }
+                    ?>
+                </table>
+                <a class="btn btn-outline-primary" href="index.php?act=them_moi_tai_khoan">Thêm mới tài khoản</a>
             </div>
         </div>
     </section>

@@ -2,26 +2,45 @@
     <section class="section dashboard">
         <div class="row">
             <div class="col-lg-12">
-                <h5 class="card-title text-center">DANH SÁCH LOẠI VÉ</h5>
+                <h5 class="card-title text-center">DANH SÁCH VÉ PHIM</h5>
                 <table class="table table-light text-center">
                     <tr>
-                        <th>Mã vé phim</th>
-                        <th>Loại vé</th>
-                        <th>Loại ghế</th>
+                        <th>Mã</th>
+                        <th>Mã ngày</th>
+                        <th>Giờ chiếu</th>
+                        <th>Mã phim</th>
+                        <th>Tên người dùng</th>
                         <th>Giá</th>
-                        <th></th>
+                        <th>Ghế</th>
+                        <th>Mã chi tiết vé phim</th>
+                        <th>Hành động</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>2D</td>
-                        <td>Ghế thường</td>
-                        <td>100.000đ</td>
-                        <td>
-                            <a class='btn btn-primary' href="">Sửa</a>
-                            <button style="border: none;"  type='button' onclick=\"if (confirm('Bạn có chắc muốn xóa ?')) window.location.href='$xoasp'\"><i class="fa-regular fa-trash-can fa-xl" style="color: #000000;"></i></button>
-                        </td>
-                    </tr>
-                </table>   
+
+                    <?php
+                    foreach ($ds_ve_phim as $ds) {
+                        extract($ds);
+
+                        $chi_tiet = "index.php?act=chi_tiet_ve&id_chitietvephim=" . $id_chitietvephim;
+
+                        echo "
+                            <tr>
+                                <td>$id_vephim</td>
+                                <td>$id_date </td>
+                                <td>$time</td>
+                                <td>$id_phim </td>
+                                <td>$username </td>
+                                <td>$price.000đ</td>
+                                <td>$seat</td>
+                                <td>$id_chitietvephim </td>
+                                <td>
+                                    <a class='btn btn-primary'  href='$chi_tiet'>Xem chi tiết</a>
+                                </td>
+                            </tr>
+                        ";
+                    }
+                    ?>
+                </table>
             </div>
+        </div>
     </section>
 </main>

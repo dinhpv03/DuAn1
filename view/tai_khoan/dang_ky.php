@@ -15,41 +15,41 @@
                 <div class="row g-3">
                     <div class="col-md-12">
                         <div class="form-floating">
-                            <input type="text" class="form-control" name="name" placeholder="Họ tên">
-                            <label for="name">Họ tên</label>
+                            <input type="text" class="form-control" name="name" placeholder="Nhập tên" required>
+                            <label for="name">Tên đăng nhập</label>
                             <span style="color: red"><?= isset($errUser) ? $errUser : '' ?></span>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-floating">
-                            <input type="email" class="form-control" name="email" placeholder="Email">
+                            <input type="email" class="form-control" name="email" placeholder="Nhập email" required>
                             <label for="email">Email</label>
                             <span style="color: red"><?= isset($errEmail) ? $errEmail : '' ?></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating">
-                            <input type="text" class="form-control" name="tel" placeholder="Số điện thoại">
+                            <input type="text" class="form-control" name="tel" placeholder="Nhập số điện thoại">
                             <label for="tel">Số điện thoại</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating">
-                            <input type="text" class="form-control" name="address" placeholder="Địa chỉ">
+                            <input type="text" class="form-control" name="address" placeholder="Nhập địa chỉ">
                             <label for="email">Địa chỉ</label>
 
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="form-floating">
-                            <input type="password" class="form-control" name="password" placeholder="Mật khẩu">
+                            <input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu" required>
                             <label for="">Mật khẩu</label>
                             <span style="color: red"><?= isset($errPass) ? $errPass : '' ?></span>
                         </div>  
                     </div>
                     <div class="col-12">
                         <div class="form-floating">
-                            <input type="password" class="form-control" name="repassword" placeholder="Xác nhận mật khẩu">
+                            <input type="password" class="form-control" name="repassword" placeholder="Xác nhận lại mật khẩu" required>
                             <label for="">Xác nhận mật khẩu</label>
                             <span style="color: red"><?= isset($errRepass) ? $errRepass : '' ?></span>
                         </div>  

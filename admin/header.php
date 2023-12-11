@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="layout_admin/assets/img/favicon.png" rel="icon" type="image/x-icon" >
+  <link href="layout_admin/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +19,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
     <!-- Icon Font Stylesheet -->
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -76,39 +78,45 @@
                     </a>
                 </li>    
                 <!-- End Messages Icon -->
+                <?php
+                if(isset($_SESSION['user']) && is_array($_SESSION['user'])) {
+                    extract($_SESSION['user'])?>
+                        <li class="nav-item dropdown pe-3">
+                            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                                <i class="fa-regular fa-user fa-xl" style="color: #98a4b9;"></i>
+                                <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $username ?></span>
+                            </a>
+                            <!--end  thông tin tài khoản -->
 
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                                <li class="dropdown-header">
+                                    <h6><?php echo $username ?></h6>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center" href="index.php?act=thong_tin_tai_khoan">
+                                        <i class="bi bi-person"></i>
+                                        <span>Thông tin tài khoản</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center" href="index.php?act=dang_xuat">
+                                        <i class="bi bi-box-arrow-right"></i>
+                                        <span>Đăng xuất</span>
+                                    </a>
+                                </li>
+                            </ul><!-- End Profile Dropdown Items -->
+                        </li><!-- End Profile Nav -->
+                        <?php
+                    }
+                ?>
                 <!-- thông tin tài khoản -->
-                <li class="nav-item dropdown pe-3">
-                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <i class="fa-regular fa-user fa-xl" style="color: #98a4b9;"></i>
-                        <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
-                    </a>  
-                <!--end  thông tin tài khoản -->
 
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                    <li class="dropdown-header">
-                        <h6>Kevin Anderson</h6>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="index.php?act=thong_tin_tai_khoan">
-                            <i class="bi bi-person"></i>
-                            <span>Thông tin tài khoản</span>
-                        </a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="index.php?act=dang_xuat">
-                            <i class="bi bi-box-arrow-right"></i>
-                            <span>Đăng xuất</span>
-                        </a>
-                    </li>
-                    </ul><!-- End Profile Dropdown Items -->
-                </li><!-- End Profile Nav -->
             </ul>
         </nav><!-- End Icons Navigation -->
     </header>
@@ -142,16 +150,21 @@
                         <i class="bi bi-circle"></i><span>Thêm mới tài khoản</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="index.php?act=them_moi_suat_chieu">
-                        <i class="bi bi-circle"></i><span>Thêm suất chiếu</span>
-                        </a>
-                    </li>
+<!--                    <li>-->
+<!--                        <a href="index.php?act=them_moi_suat_chieu">-->
+<!--                        <i class="bi bi-circle"></i><span>Thêm suất chiếu</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
                     <li>
                         <a href="index.php?act=them_moi_loai_ve">
                         <i class="bi bi-circle"></i><span>Thêm loại vé</span>
                         </a>
                     </li>
+<!--                    <li>-->
+<!--                        <a href="index.php?act=them_moi_ngay_chieu">-->
+<!--                        <i class="bi bi-circle"></i><span>Thêm mới ngày chiếu </span>-->
+<!--                        </a>-->
+<!--                    </li>-->
                 </ul>
                 <!-- end form thêm mới -->
 
@@ -177,13 +190,33 @@
                         </a>
                     </li>
                     <li>
-                        <a href="index.php?act=danh_sach_suat_chieu">
-                            <i class="bi bi-circle"></i><span>Danh sách suất chiếu</span>
+                        <a href="index.php?act=danh_sach_loai_ve">
+                            <i class="bi bi-circle"></i><span>Danh sách loại vé</span>
                         </a>
                     </li>
                     <li>
-                        <a href="index.php?act=danh_sach_loai_ve">
-                            <i class="bi bi-circle"></i><span>Danh sách loại vé</span>
+                        <a href="index.php?act=danh_sach_binh_luan">
+                            <i class="bi bi-circle"></i><span>Danh sách bình luận</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php?act=danh_sach_ve_phim">
+                            <i class="bi bi-circle"></i><span>Danh sách vé phim</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php?act=danh_sach_ghe">
+                            <i class="bi bi-circle"></i><span>Danh sách ghế</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php?act=danh_sach_date">
+                            <i class="bi bi-circle"></i><span>Danh sách ngày chiếu</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php?act=danh_sach_showtimes">
+                            <i class="bi bi-circle"></i><span>Danh sách giờ chiếu</span>
                         </a>
                     </li>
                 </ul>
@@ -192,58 +225,21 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-bar-chart"></i><span>Biểu đồ thống kê</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-bar-chart"></i><span>Thống kê</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="charts-chartjs.html">
-                            <i class="bi bi-circle"></i><span>Chart.js</span>
+                        <a href="index.php?act=bieu_do">
+                            <i class="bi bi-circle"></i><span>Biểu đồ</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="charts-apexcharts.html">
-                            <i class="bi bi-circle"></i><span>ApexCharts</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="charts-echarts.html">
-                            <i class="bi bi-circle"></i><span>ECharts</span>
-                        </a>
-                    </li>
+
                 </ul>
             </li><!-- End Charts Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="icons-bootstrap.html">
-                        <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="icons-remix.html">
-                        <i class="bi bi-circle"></i><span>Remix Icons</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="icons-boxicons.html">
-                        <i class="bi bi-circle"></i><span>Boxicons</span>
-                        </a>
-                    </li>
-                </ul>
-            </li><!-- End Icons Nav -->
 
             <li class="nav-heading">Pages</li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="users-profile.html">
-                    <i class="bi bi-person"></i>
-                    <span>Thông tin tài khoản</span>
-                </a>
-            </li><!-- End Profile Page Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="index.php?act=f_a_q">
@@ -259,19 +255,6 @@
                 </a>
             </li><!-- End Contact Page Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-register.html">
-                    <i class="bi bi-card-list"></i>
-                    <span>Register</span>
-                </a>
-            </li><!-- End Register Page Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-login.html">
-                    <i class="bi bi-box-arrow-in-right"></i>
-                    <span>Login</span>
-                </a>
-            </li><!-- End Login Page Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="index.php?act=erro_404">
@@ -281,11 +264,11 @@
             </li><!-- End Error 404 Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-blank.html">
-                    <i class="bi bi-file-earmark"></i>
-                    <span>Blank</span>
+                <a class="nav-link collapsed" href="index.php?act=dang_xuat">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    <span>Đăng xuất</span>
                 </a>
-            </li><!-- End Blank Page Nav -->
+            </li><!-- End Login Page Nav -->
         </ul>
     </aside>
     <!-- End Sidebar-->

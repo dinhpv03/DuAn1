@@ -13,20 +13,17 @@
                                     <li class="dropdown-header text-start">
                                     <h6>Lọc</h6>
                                     </li>
-                                    <li><a class="dropdown-item" href="#">Hôm nay</a></li>
-                                    <li><a class="dropdown-item" href="#">Tháng</a></li>
-                                    <li><a class="dropdown-item" href="#">Năm</a></li>
+                                    <li><a class="dropdown-item" href="index.php?act=danh_sach_ve_phim">Danh sách vé phim</a></li>
                                 </ul>
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">Bán hàng <span>| Hôm nay</span></h5>
+                                <h5 class="card-title">Vé đã bán </h5>
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                         <i class="bi bi-cart"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>145</h6>
-                                        <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">tăng</span>
+                                        <h6><?php echo $thong_ke_so_ve[0]['tong_so_ve'] ?? ''; ?></h6>
                                     </div>
                                 </div>
                             </div>
@@ -48,14 +45,13 @@
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title">Doanh thu <span>| Hôm nay</span></h5>
+                                <h5 class="card-title">Doanh thu </h5>
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                         <i class="bi bi-currency-dollar"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>$3,264</h6>
-                                        <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">tăng</span>
+                                        <h6><?php echo $doanh_thu ?>.000đ</h6>
                                     </div>
                                 </div>
                             </div>
@@ -70,24 +66,22 @@
                                 <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                     <li class="dropdown-header text-start">
-                                    <h6>Lọc</h6>
+                                    <h6>Xem</h6>
                                     </li>
-
-                                    <li><a class="dropdown-item" href="#">Hôm nay</a></li>
-                                    <li><a class="dropdown-item" href="#">Tháng</a></li>
-                                    <li><a class="dropdown-item" href="#">Năm</a></li>
+                                    <li><a class="dropdown-item" href="index.php?act=danh_sach_tai_khoan">Danh sách</a></li>
+                                    <li><a class="dropdown-item" href="index.php?act=them_moi_tai_khoan">Thêm mới</a></li>
                                 </ul>
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title">Khách hàng <span>| Hôm nay</span></h5>
+                                <h5 class="card-title">Khách hàng </h5>
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                         <i class="bi bi-people"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>1244</h6>
-                                        <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">tăng</span>
+                                        <h6><?php echo $tong_tai_khoan[0]['tong_so_tai_khoan'] ?? ''; ?></h6>
+<!--                                        <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">tăng</span>-->
                                     </div>
                                 </div>
                             </div>
@@ -96,59 +90,47 @@
                     <!-- End Customers Card -->
 
                     <!-- bieu thong ke -->
-                    <div id="reportsChart"></div>
-                        <script>
+                    <div id="lineChart""></div>
+                    <p class="h6 text-center text-danger mb-5">SỐ VÉ THEO TỪNG PHIM</p>
+                    <script>
                         document.addEventListener("DOMContentLoaded", () => {
-                            new ApexCharts(document.querySelector("#reportsChart"), {
-                            series: [{
-                                name: 'Bán hàng',
-                                data: [31, 40, 28, 51, 42, 82, 56],
-                            }, {
-                                name: 'Doanh thu',
-                                data: [11, 32, 45, 32, 34, 52, 41]
-                            }, {
-                                name: 'Khách hàng',
-                                data: [15, 11, 32, 18, 9, 24, 11]
-                            }],
-                            chart: {
-                                height: 350,
-                                type: 'area',
-                                toolbar: {
-                                show: false
+                            const chartData = <?php echo $thongke_ve; ?>;
+
+                            const seriesData = chartData.map(item => item.count_ve);
+                            const categories = chartData.map(item => item.film_name);
+
+                            const lineChart = new ApexCharts(document.querySelector("#lineChart"), {
+                                series: [{
+                                    name: "Số lượng vé",
+                                    data: seriesData,
+                                }],
+                                chart: {
+                                    height: 350,
+                                    type: 'line',
+                                    zoom: {
+                                        enabled: false
+                                    }
                                 },
-                            },
-                            markers: {
-                                size: 4
-                            },
-                            colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                            fill: {
-                                type: "gradient",
-                                gradient: {
-                                shadeIntensity: 1,
-                                opacityFrom: 0.3,
-                                opacityTo: 0.4,
-                                stops: [0, 90, 100]
+                                dataLabels: {
+                                    enabled: false
+                                },
+                                stroke: {
+                                    curve: 'straight'
+                                },
+                                grid: {
+                                    row: {
+                                        colors: ['#f3f3f3', 'transparent'],
+                                        opacity: 0.5
+                                    },
+                                },
+                                xaxis: {
+                                    categories: categories,
                                 }
-                            },
-                            dataLabels: {
-                                enabled: false
-                            },
-                            stroke: {
-                                curve: 'smooth',
-                                width: 2
-                            },
-                            xaxis: {
-                                type: 'datetime',
-                                categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                            },
-                            tooltip: {
-                                x: {
-                                format: 'dd/MM/yy HH:mm'
-                                },
-                            }
-                            }).render();
+                            });
+
+                            lineChart.render();
                         });
-                        </script>
+                    </script>
                     <!-- end bieu thong ke -->
 
 
@@ -167,53 +149,40 @@
                                 </ul>
                             </div>
                             <div class="card-body pb-0">
-                                <h5 class="card-title">Top Bán chạy <span>| Hôm nay</span></h5>
+                                <h5 class="card-title">Top bán chạy</h5>
                                 <table class="table table-borderless">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Preview</th>
-                                            <th scope="col">Product</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">Sold</th>
-                                            <th scope="col">Revenue</th>
+                                            <th scope="col">Xem trước</th>
+                                            <th scope="col">Phim</th>
+                                            <th scope="col">Ghế</th>
+                                            <th scope="col">Đã bán</th>
+                                            <th scope="col">Tổng doanh thu</th>
                                         </tr>
                                     </thead>
                                         <tbody>
+                                        <?php foreach($thong_ke_doanh_thu_phim as $doanh_thu_phim) {
+                                            extract($doanh_thu_phim);
+
+
+                                            $imagePath = './upload/' . $movie_image;
+                                            if(is_file($imagePath)) {
+                                                $movie_image = "<img src = '".$imagePath."' height = '80'>";
+                                            } else {
+                                                $movie_image = "Không có ảnh banner.";
+                                            }
+
+                                        ?>
                                         <tr>
-                                            <th scope="row"><a href="#"><img src="layout_admin/assets/img/product-1.jpg" alt=""></a></th>
-                                            <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                                            <td>$64</td>
-                                            <td class="fw-bold">124</td>
-                                            <td>$5,828</td>
+                                            <th><?php echo $movie_image ?></th>
+                                            <td><?php echo $movie_name ?></td>
+                                            <td><?php echo $seats ?></td>
+                                            <td><?php echo $ticket_count ?></td>
+                                            <td><?php echo $total_revenue ?>.000đ</td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#"><img src="layout_admin/assets/img/product-2.jpg" alt=""></a></th>
-                                            <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
-                                            <td>$46</td>
-                                            <td class="fw-bold">98</td>
-                                            <td>$4,508</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#"><img src="layout_admin/assets/img/product-3.jpg" alt=""></a></th>
-                                            <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                                            <td>$59</td>
-                                            <td class="fw-bold">74</td>
-                                            <td>$4,366</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#"><img src="layout_admin/assets/img/product-4.jpg" alt=""></a></th>
-                                            <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                                            <td>$32</td>
-                                            <td class="fw-bold">63</td>
-                                            <td>$2,016</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#"><img src="layout_admin/assets/img/product-5.jpg" alt=""></a></th>
-                                            <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                                            <td>$79</td>
-                                            <td class="fw-bold">41</td>
-                                            <td>$3,239</td>
-                                        </tr>
+                                        <?php
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -222,6 +191,7 @@
                 </div>
             </div>
         </div>
+        <a href="index.php?act=dang_xuat">LOG OUT</a>
     </section>
 </main>
 <!-- end top bán chạy hôm nay -->
